@@ -1,1 +1,1 @@
-web: gunicorn mateirobescu.wsgi
+web: gunicorn mateirobescu.wsgi --chdir backend
