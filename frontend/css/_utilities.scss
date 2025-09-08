@@ -1,0 +1,39 @@
+.grid {
+  &--left {
+    justify-self: start;
+  }
+
+  &--center {
+    justify-self: center;
+  }
+
+  &--right {
+    justify-self: end;
+  }
+}
+.clear__btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.no-select {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none; /* Standard */
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.rotate360 {
+  transform: rotate(-360deg);
+}

@@ -1,0 +1,29 @@
+{
+  "name": "mateirobescu.com",
+  "version": "1.0.0",
+  "description": "A personal developer portfolio built with **Django** and **Bootstrap**, deployed on **Render**.",
+  "scripts": {
+    "dev": "parcel watch frontend/css/style.scss frontend/js/index.js --dist-dir backend/portfolio/static/portfolio --public-url /static/portfolio --no-content-hash",
+    "build": "parcel build frontend/css/style.scss frontend/js/index.js --dist-dir backend/portfolio/static/portfolio --public-url /static/portfolio --no-content-hash"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateirobescu/mateirobescu.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mateirobescu/mateirobescu.com/issues"
+  },
+  "homepage": "https://github.com/mateirobescu/mateirobescu.com#readme",
+  "browserslist": {
+    "production": [">0.5%", "last 2 versions", "not dead"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.4",
+    "parcel": "^2.15.4"
+  }
+}

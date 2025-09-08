@@ -1,0 +1,256 @@
+@use "variables";
+
+.header {
+  background-color: var(--c-bg);
+  height: 7vh;
+  height: 7dvh;
+  min-height: 3.5rem;
+  display: grid;
+  z-index: 1000;
+
+  grid-template-columns: 2fr 1fr 2fr;
+  @media (max-width: variables.$bp-lg) {
+    position: relative;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  align-items: center;
+
+  padding: 0 variables.$spacer-5;
+  color: var(--c-text);
+  font-size: 1.5rem;
+}
+
+.logo__img {
+  height: 2.5rem;
+  max-height: 70%;
+  align-self: flex-start;
+  width: auto;
+  aspect-ratio: 1024 / 526;
+}
+
+@mixin active--state {
+  color: var(--c-text-secondary);
+  border-color: var(--c-text-secondary);
+}
+
+.navbar {
+  @media (max-width: variables.$bp-lg) {
+    display: none;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: variables.$spacer-3;
+  }
+
+  &__item {
+    font-size: 1.5rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    padding-bottom: 1px;
+    color: var(--c-text);
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s, border-bottom 0.3s;
+
+    &:hover {
+      color: var(--c-text-secondary);
+    }
+
+    &:active {
+      @include active--state;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--c-text-secondary);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+  }
+
+  &__icon {
+    display: block;
+    color: var(--c-text);
+    background-color: var(--c-bg);
+    font-size: 2rem;
+    border: none;
+    transition: transform 1s ease-in-out;
+  }
+}
+
+.active {
+  @include active--state;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: variables.$spacer-4;
+
+  @media (max-width: variables.$bp-lg) {
+    display: none;
+  }
+
+  &__btn {
+    background-color: var(--c-text);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+    z-index: 2;
+    color: var(--c-bg);
+    font-size: 1.5rem;
+
+    &:hover {
+      background-color: #495057;
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--c-text);
+      outline-offset: 3px;
+    }
+  }
+}
+
+.settings {
+  position: relative;
+  transition: transform 1s ease-in-out;
+  display: inline-flex;
+  z-index: 1;
+
+  &-panel {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+
+    gap: variables.$spacer-2;
+    padding: 0 variables.$spacer-5;
+  }
+
+  &-theme {
+    display: inline-flex;
+  }
+
+  &__btn:focus-visible {
+    outline: 2px solid var(--c-text);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+.lang__list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: variables.$spacer-1;
+}
+
+.mobile__nav {
+  display: none;
+
+  @media (max-width: variables.$bp-lg) {
+    display: block;
+
+    &__btn {
+      border: 2px solid var(--c-text);
+      padding: 2px;
+      border-radius: 7px;
+    }
+
+    &__panel {
+      position: fixed;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: calc(-100vh + 100%);
+      transition: top 0.7s ease, opacity 0.7s ease;
+      opacity: 0;
+
+      &.mobile-open {
+        top: 100%;
+        opacity: 1;
+      }
+
+      z-index: 2;
+
+      height: calc(100vh - 100%);
+      height: calc(100dvh - 100%);
+      overflow-y: auto;
+      width: 100dvw;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      gap: 5rem;
+
+      .navbar {
+        display: block;
+        &__list {
+          flex-direction: column;
+        }
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .settings {
+        &__btn {
+          display: none;
+        }
+        &-panel {
+          position: relative;
+          left: auto;
+          top: auto;
+          transform: none;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: variables.$bp-lg) {
+  html.mobile-open,
+  html.mobile-open body {
+    // overflow: hidden;
+  }
+
+  body {
+    overscroll-behavior: contain;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar__icon {
+    transition: none;
+    transform: none;
+  }
+
+  .settings {
+    transition: none;
+    transform: none;
+  }
+
+  .settings-panel {
+    transition: none;
+  }
+
+  .mobile__nav__panel {
+    transition: none;
+  }
+}

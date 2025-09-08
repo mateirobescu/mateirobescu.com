@@ -1,0 +1,19 @@
+// Spacing
+$spacer: 1rem;
+$spacer-1: $spacer * 0.25;
+$spacer-2: $spacer * 0.5;
+$spacer-3: $spacer * 0.75;
+$spacer-4: $spacer;
+$spacer-5: $spacer * 1.5;
+$spacer-6: $spacer * 3;
+
+// Colors
+$primary: #fff;
+$secondary: #212529;
+$secondary-light: #868e96;
+
+// Breakpoints (em)
+$bp-xs: 30em; // ~480px
+$bp-md: 48em; // ~768px
+$bp-lg: 64em; // ~1024px
+$bp-xl: 80em; // ~1280px

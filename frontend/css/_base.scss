@@ -1,0 +1,21 @@
+@use "variables";
+:root {
+  --c-bg: #fff;
+  --c-text: #212529;
+  --c-text-secondary: #868e96;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: "Funnel Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  line-height: 1.5;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  min-height: 100vh;
+}
