@@ -160,6 +160,10 @@
 .mobile__nav {
   display: none;
 
+  &__panel {
+    display: none;
+  }
+
   @media (max-width: variables.$bp-lg) {
     display: block;
 
