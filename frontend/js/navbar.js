@@ -26,9 +26,7 @@ const toggleSettingsPanel = function () {
     if (isHidden) {
       settingsPanel.classList.remove("disabled");
       settingsButton.setAttribute("aria-expanded", "true");
-      settingsContainer.style.transform = prefersReduced
-        ? ""
-        : `translateX(-${panelWidth}px)`;
+      settingsContainer.style.transform = `translateX(-${panelWidth}px)`;
     } else {
       settingsContainer.style.transform = "";
       settingsButton.setAttribute("aria-expanded", "false");
@@ -39,22 +37,47 @@ const toggleSettingsPanel = function () {
       }
     }
 
-    if (settingsIcon) settingsIcon.classList.toggle("rotate360");
+    if (settingsIcon) settingsIcon.classList.toggle("rotate180");
   });
 };
 
 const toggleMobileNav = function () {
   const navbarPanelBtn = document.querySelector(".mobile__nav__btn");
   const navbarPanel = document.querySelector(".mobile__nav__panel");
+  if (!navbarPanelBtn || !navbarPanel) return;
+
+  const prefersReduced =
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  let pendingClose = false;
 
   navbarPanelBtn.addEventListener("click", function (e) {
     const isOpen = navbarPanel.classList.contains("mobile-open");
+    console.log(isOpen);
 
     const parentDoc = document.documentElement.classList;
     isOpen ? parentDoc.remove("mobile-open") : parentDoc.add("mobile-open");
 
-    navbarPanelBtn.setAttribute("aria-expanded", `${isOpen}`);
+    navbarPanelBtn.setAttribute("aria-expanded", `${!isOpen}`);
     navbarPanel.classList.toggle("mobile-open");
+    pendingClose = prefersReduced ? pendingClose : isOpen;
+
+    if (!isOpen) navbarPanel.classList.remove("disabled");
+    if (prefersReduced && isOpen) navbarPanel.classList.add("disabled");
+
+    const icon = navbarPanelBtn.querySelector("ion-icon");
+    if (icon) {
+      icon.setAttribute("name", isOpen ? "menu-outline" : "close-outline");
+      icon.classList.toggle("is-open", !isOpen);
+    }
+  });
+
+  navbarPanel.addEventListener("transitionend", function (e) {
+    if (e.propertyName !== "transform") return;
+    if (pendingClose) {
+      navbarPanel.classList.add("disable");
+      pendingClose = false;
+    }
   });
 };
 

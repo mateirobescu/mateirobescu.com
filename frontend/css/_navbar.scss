@@ -7,10 +7,10 @@
   min-height: 3.5rem;
   display: grid;
   z-index: 1000;
+  position: relative;
 
   grid-template-columns: 2fr 1fr 2fr;
   @media (max-width: variables.$bp-lg) {
-    position: relative;
     grid-template-columns: 1fr 1fr;
   }
 
@@ -76,7 +76,7 @@
   &__icon {
     display: block;
     color: var(--c-text);
-    background-color: var(--c-bg);
+    background-color: transparent;
     font-size: 2rem;
     border: none;
     transition: transform 1s ease-in-out;
@@ -171,23 +171,29 @@
       border: 2px solid var(--c-text);
       padding: 2px;
       border-radius: 7px;
+      .navbar__icon {
+        transition: transform 0.3s ease;
+      }
+      .navbar__icon.is-open {
+        transform: rotate(180deg);
+      }
     }
 
     &__panel {
-      position: fixed;
       position: absolute;
       left: 0;
       right: 0;
-      top: calc(-100vh + 100%);
-      transition: top 0.7s ease, opacity 0.7s ease;
+      top: 100%;
+      transform: translateY(calc(-110%));
+      transition: transform 0.7s ease, opacity 0.7s ease;
       opacity: 0;
+      will-change: transform;
+      z-index: 0;
 
       &.mobile-open {
-        top: 100%;
+        transform: translateY(0);
         opacity: 1;
       }
-
-      z-index: 2;
 
       height: calc(100vh - 100%);
       height: calc(100dvh - 100%);
@@ -231,7 +237,7 @@
 @media (max-width: variables.$bp-lg) {
   html.mobile-open,
   html.mobile-open body {
-    // overflow: hidden;
+    overflow: hidden;
   }
 
   body {
@@ -240,14 +246,19 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .navbar__icon {
+  .mobile__nav__btn .navbar__icon {
     transition: none;
     transform: none;
   }
 
+  .settings__btn .navbar__icon {
+    transition: none;
+    // transform: none;
+  }
+
   .settings {
     transition: none;
-    transform: none;
+    // transform: none;
   }
 
   .settings-panel {
