@@ -1,9 +1,18 @@
 @use "variables";
-:root {
+:root[data-theme="light"] {
   --c-bg: #fff;
   --c-text: #212529;
   --c-text-secondary: #868e96;
+  --c-btn-bg: #495057;
 }
+
+:root[data-theme="dark"] {
+  --c-bg: #212529;
+  --c-text: #ced4da;
+  --c-text-secondary: #e9ecef;
+  --c-btn-bg: #e9ecef;
+}
+
 * {
   padding: 0;
   margin: 0;

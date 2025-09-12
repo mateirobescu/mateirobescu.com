@@ -1,12 +1,27 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="utf-8">
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}mateirobescu.com{% endblock %}</title>
+    <script>
+      try {
+        let s = localStorage.getItem('data-theme');
+        let preferedTheme = s ? s  : (
+          (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
+        );
+        if(preferedTheme)
+          document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      }
+    </script>
+
     <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
     <script type="module" src="{% static 'portfolio/js/index.js' %}" defer></script>
     
@@ -43,7 +58,7 @@
 
 <header class="header">
   <div class="grid--left ">
-    <img class="logo__img" src="{% static "portfolio/images/logo_black.svg" %}" alt="Logo of mateirobescu.com" width="1024" height="526">
+    <img class="logo__img" src="{% static 'portfolio/images/logo_black.svg' %}" data-src-light="{% static 'portfolio/images/logo_black.svg' %}" data-src-dark="{% static 'portfolio/images/logo_white.svg' %}" alt="Logo of mateirobescu.com" width="1024" height="526">
   </div>
   <nav class="navbar grid--center">
     <ul class="navbar__list">
