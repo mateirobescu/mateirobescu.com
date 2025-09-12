@@ -3,7 +3,7 @@
 .header {
   background-color: var(--c-bg);
   height: 7vh;
-  height: 7dvh;
+  // height: 7dvh;
   min-height: 3.5rem;
   display: grid;
   z-index: 1000;
@@ -189,16 +189,17 @@
       opacity: 0;
       will-change: transform;
       z-index: 0;
+      padding: 2rem 0;
 
       &.mobile-open {
         transform: translateY(0);
         opacity: 1;
       }
 
-      height: calc(100vh - 100%);
-      height: calc(100dvh - 100%);
+      min-height: calc(100vh - 100%);
+      // height: calc(100dvh - 100%);
       overflow-y: auto;
-      width: 100dvw;
+      width: 100%;
 
       display: flex;
       flex-direction: column;

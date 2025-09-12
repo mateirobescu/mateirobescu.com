@@ -9,6 +9,22 @@
     <title>{% block title %}mateirobescu.com{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
     <script type="module" src="{% static 'portfolio/js/index.js' %}" defer></script>
+    
+    <!-- SVG favicons for light/dark modes -->
+    <link rel="icon" href="{% static 'portfolio/images/logo_black.svg' %}" type="image/svg+xml" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="{% static 'portfolio/images/logo_white.svg' %}" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+    
+    <!-- Safari pinned tab (monochrome SVG) -->
+    <link rel="mask-icon" href="{% static 'portfolio/images/logo_white.svg' %}" color="#000000">
+    
+    <!-- iOS Home Screen icon (PNG required) -->
+    <!-- TODO: add 180x180 PNG at static path below -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'portfolio/images/apple-touch-icon.png' %}">
+    
+    <!-- PNG favicon fallbacks for older browsers -->
+    <!-- TODO: generate and add these PNGs to the same folder -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'portfolio/images/favicon-32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'portfolio/images/favicon-16.png' %}">
 
 
     {% comment %} DOWNLOAD IT {% endcomment %}

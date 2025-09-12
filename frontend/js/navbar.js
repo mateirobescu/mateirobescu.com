@@ -53,7 +53,6 @@ const toggleMobileNav = function () {
 
   navbarPanelBtn.addEventListener("click", function (e) {
     const isOpen = navbarPanel.classList.contains("mobile-open");
-    console.log(isOpen);
 
     const parentDoc = document.documentElement.classList;
     isOpen ? parentDoc.remove("mobile-open") : parentDoc.add("mobile-open");
