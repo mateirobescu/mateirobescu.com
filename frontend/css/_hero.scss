@@ -11,18 +11,18 @@
   align-items: center;
   height: 93vh;
   min-height: 50rem;
-  @media (max-width: variables.$bp-xs) {
-    min-height: 60rem;
-  }
+  // @media (max-width: variables.$bp-xs) {
+  //   min-height: 60rem;
+  // }
 
   &__title {
     display: flex;
     align-items: center;
 
-    font-size: clamp(4rem, 8vw, 6rem);
+    font-size: clamp(2.5rem, 8vw, 6rem);
     font-weight: 700;
     line-height: 0.9;
-    letter-spacing: clamp(-0.4rem, -1vw, -0.5rem);
+    letter-spacing: clamp(-0.3rem, -1vw, -0.5rem);
 
     height: 60%;
     padding-right: 2rem;
