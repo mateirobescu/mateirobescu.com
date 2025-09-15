@@ -9,8 +9,11 @@
 
   column-gap: 2rem;
   align-items: center;
-  height: 90vh;
-  // height: 93vh;
+  height: 93vh;
+  min-height: 50rem;
+  @media (max-width: variables.$bp-xs) {
+    min-height: 60rem;
+  }
 
   &__title {
     display: flex;
