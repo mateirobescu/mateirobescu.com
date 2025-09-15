@@ -51,11 +51,11 @@
 }
 
 .intro-hi {
-  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
 }
 
 .about-me {
-  margin-bottom: clamp(2rem, 3vw, 5rem);
+  margin-bottom: clamp(2rem, 2vw, 5rem);
   &__p {
     margin-top: 0.8rem;
   }
@@ -68,14 +68,63 @@
     flex-wrap: wrap;
 
     gap: clamp(1.5rem, 2vw, 2rem);
-    margin-top: 2rem;
+    margin-top: clamp(1.5rem, 2vw, 3rem);
   }
 
-  i {
+  .skill {
     font-size: clamp(2.5rem, 2vw, 3rem);
-    color: var(--c-text) !important; /* override Devicon's inline color */
+    color: var(--c-text);
+    pointer-events: all;
+    transition: color 0.3s ease-in-out;
+
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
-  i:hover {
-    color: unset !important; /* override Devicon's inline color */
+
+  .skill::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--c-text);
+    color: var(--c-bg);
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 1;
+  }
+
+  .skill:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(4px);
+  }
+
+  .skill[data-label="Python"]:hover {
+    color: #3776ab;
+  }
+  .skill[data-label="Django"]:hover {
+    color: #092e20;
+  }
+  .skill[data-label="Javascript"]:hover {
+    color: #f7df1e;
+  }
+  .skill[data-label="HTML5"]:hover {
+    color: #e34f26;
+  }
+  .skill[data-label="CSS3"]:hover {
+    color: #1572b6;
+  }
+  .skill[data-label="Git"]:hover {
+    color: #f05032;
+  }
+  .skill[data-label="Linux"]:hover {
+    color: #fcc624;
   }
 }

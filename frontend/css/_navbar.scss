@@ -148,7 +148,8 @@
     display: inline-flex;
   }
 
-  &__btn:focus-visible {
+  &__btn:focus-visible,
+  &-theme__btn:focus-visible {
     outline: 2px solid var(--c-text);
     outline-offset: 3px;
     border-radius: 6px;
@@ -193,6 +194,11 @@
         .navbar__icon {
           color: var(--c-text-secondary);
         }
+      }
+      &:focus-visible {
+        outline: 2px solid var(--c-text-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
       }
     }
 
