@@ -1,0 +1,78 @@
+@use "variables";
+
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  @media (max-width: variables.$bp-lg) {
+    grid-template-columns: 1fr;
+  }
+
+  column-gap: 2rem;
+  align-items: center;
+  height: 90vh;
+  // height: 93vh;
+
+  &__title {
+    display: flex;
+    align-items: center;
+
+    font-size: clamp(4rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: clamp(-0.4rem, -1vw, -0.5rem);
+
+    height: 60%;
+    padding-right: 2rem;
+    border-right: 1px solid var(--c-text);
+
+    @media (max-width: variables.$bp-lg) {
+      grid-template-columns: 1fr;
+      border-right: none;
+      padding-right: 0;
+      height: 100%;
+
+      border-bottom: 1px solid var(--c-text);
+    }
+  }
+
+  &__description {
+    justify-self: center;
+
+    font-size: clamp(1rem, 2vw, 1.3rem);
+
+    max-width: 60ch;
+    overflow-wrap: break-word;
+    min-width: 0;
+    line-height: 1.6;
+  }
+}
+
+.intro-hi {
+  font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+}
+
+.about-me {
+  margin-bottom: clamp(2rem, 3vw, 5rem);
+  &__p {
+    margin-top: 0.8rem;
+  }
+}
+
+.my-skills {
+  &__icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: clamp(1.5rem, 2vw, 2rem);
+    margin-top: 2rem;
+  }
+
+  i {
+    font-size: clamp(2.5rem, 2vw, 3rem);
+    color: var(--c-text) !important; /* override Devicon's inline color */
+  }
+  i:hover {
+    color: unset !important; /* override Devicon's inline color */
+  }
+}

@@ -35,6 +35,7 @@
     "parcel": "^2.15.4"
   },
   "dependencies": {
+    "devicon": "^2.17.0",
     "ionicons": "^8.0.13"
   }
 }

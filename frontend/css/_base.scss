@@ -28,3 +28,9 @@ html {
   color: var(--c-text);
   min-height: 100vh;
 }
+
+.main {
+  max-width: 80rem;
+  margin: auto;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+}
