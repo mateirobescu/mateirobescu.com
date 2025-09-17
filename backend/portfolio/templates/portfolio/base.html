@@ -59,8 +59,47 @@
 
 <body>
 
+
+<div class="mobile__nav__panel disabled">
+    <nav class="navbar">
+    <ul class="navbar__list">
+      <li class="navbar__item"><a class="navbar__link" href="#">home</a></li>
+      <li class="navbar__item "><a class="navbar__link" href="#">projects</a></li>
+      <li class="navbar__item"><a class="navbar__link" href="#">CV</a></li>
+    </ul>
+    </nav>
+    <div class="contact">
+      <button class="clear__btn contact__btn">
+        <span>Contact</span>
+      </button>
+      <div class="settings">
+          <div class="settings-lang">
+            <ul class="lang__list">
+              <li class="lang__item">
+                <button class="clear__btn navbar__link ">ro</button>
+              </li>
+              <li class="lang__item">
+                <span class="no-select" aria-hidden="true">/</span>
+              </li>
+              <li class="lang__item">
+                <button class="clear__btn navbar__link">en</button>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="settings-theme">
+            <button class="settings-theme__btn clear__btn">
+              <ion-icon class="navbar__icon" name="invert-mode-outline"></ion-icon>
+            </button>
+          </div>
+      </div>
+      
+    </div>
+
+  </div>
+
 <header class="header">
-  <div class="grid--left ">
+  <div class="logo grid--left ">
     <img class="logo__img" src="{% static 'portfolio/images/logo_black.svg' %}" data-src-light="{% static 'portfolio/images/logo_black.svg' %}" data-src-dark="{% static 'portfolio/images/logo_white.svg' %}" alt="Logo of mateirobescu.com" width="1024" height="526">
   </div>
   <nav class="navbar grid--center">
@@ -111,51 +150,6 @@
       <ion-icon class="navbar__icon" name="menu-outline"></ion-icon>
     </button>
   </div>
-
-  <div class="mobile__nav__panel disabled">
-    <nav class="navbar">
-    <ul class="navbar__list">
-      {% comment %} class active to show active traits {% endcomment %}
-      <li class="navbar__item"><a class="navbar__link" href="#">home</a></li>
-      <li class="navbar__item "><a class="navbar__link" href="#">projects</a></li>
-      <li class="navbar__item"><a class="navbar__link" href="#">CV</a></li>
-    </ul>
-    </nav>
-    <div class="contact">
-      <button class="clear__btn contact__btn">
-        <span>Contact</span>
-      </button>
-      <div class="settings">
-        <button class="settings__btn clear__btn" aria-expanded="false" aria-controls="settings-panel">
-          <ion-icon class="navbar__icon" name="settings-sharp"></ion-icon>
-        </button>
-        <div class="settings-panel">
-          <div class="settings-lang">
-            <ul class="lang__list">
-              <li class="lang__item">
-                <button class="clear__btn navbar__link ">ro</button>
-              </li>
-              <li class="lang__item">
-                <span class="no-select" aria-hidden="true">/</span>
-              </li>
-              <li class="lang__item">
-                <button class="clear__btn navbar__link">en</button>
-              </li>
-            </ul>
-          </div>
-          
-          <div class="settings-theme">
-            <button class="settings-theme__btn clear__btn">
-              <ion-icon class="navbar__icon" name="invert-mode-outline"></ion-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-
-  </div>
-
 
 </header>
 

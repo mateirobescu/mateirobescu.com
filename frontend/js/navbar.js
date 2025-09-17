@@ -8,10 +8,11 @@
  * @returns {void}
  */
 const toggleSettingsPanel = function () {
-  const settingsButton = document.querySelector(".settings__btn");
-  const settingsContainer = document.querySelector(".settings");
-  const settingsPanel = document.querySelector(".settings-panel");
-  const settingsIcon = document.querySelector(".settings__btn .navbar__icon");
+  const header = document.querySelector(".header");
+  const settingsButton = header.querySelector(".settings__btn");
+  const settingsContainer = header.querySelector(".settings");
+  const settingsPanel = header.querySelector(".settings-panel");
+  const settingsIcon = header.querySelector(".settings__btn .navbar__icon");
 
   // Bail if required elements are missing
   if (!settingsButton || !settingsContainer || !settingsPanel) return;
@@ -33,6 +34,7 @@ const toggleSettingsPanel = function () {
   settingsButton.addEventListener("click", function () {
     const isHidden = settingsPanel.classList.contains("disabled");
     const panelWidth = settingsPanel.offsetWidth;
+    console.log(panelWidth);
 
     if (isHidden) {
       // Open: reveal panel and slide container left by panel width
