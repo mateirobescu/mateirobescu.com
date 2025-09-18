@@ -1,3 +1,5 @@
+import { documentSharp } from "ionicons/icons";
+
 /**
  * Toggle the settings panel.
  *
@@ -34,7 +36,6 @@ const toggleSettingsPanel = function () {
   settingsButton.addEventListener("click", function () {
     const isHidden = settingsPanel.classList.contains("disabled");
     const panelWidth = settingsPanel.offsetWidth;
-    console.log(panelWidth);
 
     if (isHidden) {
       // Open: reveal panel and slide container left by panel width
@@ -144,9 +145,76 @@ const setupThemeToggle = function () {
   );
 };
 
+const removeHash = function () {
+  const navbars = document.querySelectorAll(".navbar");
+  navbars.forEach((nav) =>
+    nav.addEventListener("click", function (e) {
+      const anchor = e.target.closest(".navbar__link");
+      if (!anchor) return;
+
+      e.preventDefault();
+
+      const sectionId = anchor.getAttribute("href");
+      const sectionToScroll = document.querySelector(
+        sectionId == "#" ? "#home" : sectionId
+      );
+
+      if (sectionToScroll) {
+        sectionToScroll.scrollIntoView({ behavior: "smooth" });
+      }
+    })
+  );
+};
+
+const closeMobileNav = function () {
+  const mobileNavPanel = document.querySelector(".mobile__nav__panel");
+  const mobileNav = mobileNavPanel.querySelector(".navbar");
+  const mobileNavBtn = document.querySelector(".mobile__nav__btn");
+
+  mobileNav.addEventListener("click", function (e) {
+    const anchor = e.target.closest(".navbar__link");
+    if (!anchor) return;
+
+    e.preventDefault();
+    mobileNavBtn.click();
+  });
+};
+
+const scrollSpyInit = function () {
+  const allSections = document.querySelectorAll("section");
+  const allLinks = document.querySelectorAll(".navbar__scroll");
+
+  const sectionObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const sectionId = entry.target.getAttribute("id");
+
+        allLinks.forEach((link) => {
+          link.classList.remove("active");
+
+          const linkHref = link.getAttribute("href").slice(1);
+          if (linkHref == sectionId) link.classList.add("active");
+        });
+      });
+    },
+    {
+      threshold: 0.5,
+      rootMargin: `-${
+        document.querySelector(".header").offsetHeight
+      }px 0px 0px 0px`,
+    }
+  );
+
+  allSections.forEach((sect) => sectionObserver.observe(sect));
+};
+
 export const initNavbar = function () {
   toggleSettingsPanel();
   toggleMobileNav();
   loadInitialTheme();
   setupThemeToggle();
+  removeHash();
+  closeMobileNav();
+  scrollSpyInit();
 };

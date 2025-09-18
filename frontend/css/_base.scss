@@ -33,6 +33,14 @@ html {
   max-width: 80rem;
   margin: auto;
   padding: 0 clamp(1rem, 5vw, 3rem);
+  // padding-top: 7vh;
+  // padding-top: 7dvh;
+}
+
+section {
+  scroll-margin-top: 7vh;
+  scroll-margin-top: 7dvh;
+  margin-bottom: clamp(3rem, 8vw, 6rem);
 }
 
 /* Firefox */
@@ -41,6 +49,7 @@ body,
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--c-text) var(--c-bg);
+  scroll-behavior: smooth;
 }
 
 /* Chrome / Safari / Edge (WebKit) */

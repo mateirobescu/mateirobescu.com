@@ -4,10 +4,11 @@
 
 {% block content %}
 <main class="main">
-  <section class="hero">
+  <section class="hero" id="home" aria-label="About me" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
     <div class="hero__title">
       <h1>ABOUT<br>ME</h1>
     </div >
+    <div class="divider" aria-hidden="true"></div>
     <div class="hero__description">
       <article class="about-me">
         <p class="about-me__p intro-hi">Hi!</p>
@@ -24,20 +25,26 @@
         <p class="my-skills__p">Technologies I’ve worked with — and I’m always open to learning more.</p>
         <div class="my-skills__icons">
           
-            <div class="skill" data-label="Python"><i class="devicon-python-plain " ></i></div>
-            <div class="skill" data-label="Django"><i class="devicon-django-plain " ></i></div>
-            <div class="skill" data-label="Javascript"><i class="devicon-javascript-plain " ></i></div>
-            <div class="skill" data-label="HTML5"><i class="devicon-html5-plain " ></i></div>
-            <div class="skill" data-label="CSS3"><i class="devicon-css3-plain " ></i></div>
-            <div class="skill" data-label="Git"><i class="devicon-git-plain " ></i></div>
-            <div class="skill" data-label="Linux"><i class="devicon-linux-plain " ></i></div>
-        </div>
+            <div class="skill" data-label="Python"><i class="devicon-python-plain" role="img" aria-label="Python"></i></div>
+            <div class="skill" data-label="Django"><i class="devicon-django-plain" role="img" aria-label="Django"></i></div>
+            <div class="skill" data-label="JavaScript"><i class="devicon-javascript-plain" role="img" aria-label="JavaScript"></i></div>
+            <div class="skill" data-label="HTML5"><i class="devicon-html5-plain" role="img" aria-label="HTML5"></i></div>
+            <div class="skill" data-label="CSS3"><i class="devicon-css3-plain" role="img" aria-label="CSS3"></i></div>
+            <div class="skill" data-label="Git"><i class="devicon-git-plain" role="img" aria-label="Git"></i></div>
+            <div class="skill" data-label="Linux"><i class="devicon-linux-plain" role="img" aria-label="Linux"></i></div>
       </div>
+      </div>
+    </div>
+
+    <div class="scroll-down">
+      <a href="#projects">
+        <ion-icon name="chevron-down-outline" class="scroll-down__icon"></ion-icon>
+      </a>
     </div>
     
   </section>
-  <section class="projects">
-    
+  <section class="projects" id="projects" aria-label="Projects">
+    <h2>Projects</h2>
   </section>
 
 
