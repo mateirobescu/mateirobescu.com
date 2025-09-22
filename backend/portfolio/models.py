@@ -52,7 +52,7 @@ def project_image_path(instance, filename):
 class Project(models.Model):
 	title = models.CharField(max_length=50, unique=True)
 	description = models.TextField()
-	image = models.ImageField(upload_to=project_image_path, null=True, blank=True)
+	image = models.ImageField(upload_to=project_image_path,)
 	stacks = models.ManyToManyField(Stack, through="ProjectStack", related_name="projects")
 	github_url = models.URLField(null=True, blank=True)
 	live_demo_url = models.URLField(null=True, blank=True)
