@@ -2,12 +2,12 @@
 
 .header {
   background-color: var(--c-bg);
-  height: 7vh;
-  height: 7dvh;
-  // min-height: 3.5rem;
+  height: max(3.5rem, 7vh);
+  height: max(3.5rem, 7dvh);
+
   display: grid;
   z-index: 2;
-  position: sticky;
+  position: fixed;
   width: 100%;
   top: 0;
 
@@ -97,7 +97,7 @@
   @include active--state;
 }
 
-.contact {
+.contact-settings {
   display: flex;
   align-items: center;
   gap: variables.$spacer-4;
@@ -248,7 +248,7 @@
         }
       }
 
-      .contact {
+      .contact-settings {
         display: flex;
         flex-direction: column;
         align-items: center;

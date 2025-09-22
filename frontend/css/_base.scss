@@ -4,6 +4,7 @@
   --c-text: #212529;
   --c-text-secondary: #868e96;
   --c-btn-bg: #495057;
+  --card-shadow-hover: 0 14px 32px rgba(0, 0, 0, 0.14);
 }
 
 :root[data-theme="dark"] {
@@ -11,6 +12,7 @@
   --c-text: #ced4da;
   --c-text-secondary: #e9ecef;
   --c-btn-bg: #e9ecef;
+  --card-shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.55);
 }
 
 * {
@@ -33,13 +35,13 @@ html {
   max-width: 80rem;
   margin: auto;
   padding: 0 clamp(1rem, 5vw, 3rem);
-  // padding-top: 7vh;
-  // padding-top: 7dvh;
+  padding-top: max(3.5rem, 7vh);
+  padding-top: max(3.5rem, 7dvh);
 }
 
 section {
-  scroll-margin-top: 7vh;
-  scroll-margin-top: 7dvh;
+  scroll-margin-top: max(3.5rem, 7vh);
+  scroll-margin-top: max(3.5rem, 7dvh);
   margin-bottom: clamp(3rem, 8vw, 6rem);
 }
 

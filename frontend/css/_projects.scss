@@ -1,3 +1,209 @@
+@use "variables";
+
 .projects {
-  height: 110vh;
+  min-height: 93vh;
+
+  &__header {
+    font-size: clamp(2rem, 6vw, 4rem);
+    text-transform: uppercase;
+    margin-bottom: clamp(0.5rem, 2vh, 1rem);
+  }
+
+  &-stacks {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: clamp(2rem, 8vh, 4rem);
+    gap: clamp(1rem, 2vw, 1.5rem);
+    z-index: 100;
+
+    @mixin active-stack {
+      color: var(--c-bg);
+      background-color: var(--c-text);
+      border-color: var(--c-text);
+    }
+
+    @mixin unactive-stack {
+      color: var(--c-text);
+      background-color: var(--c-bg);
+      border-color: var(--c-text);
+    }
+
+    .stack {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      @include unactive-stack;
+      padding: 0.2rem 0.4rem;
+      border-radius: 8px;
+      border: 1.5px solid;
+      transition: 0.3s color ease-in-out, 0.3s background-color ease-in-out,
+        0.3s border-color ease-in-out, 0.3s transform ease-in-out;
+
+      &:hover {
+        @include active-stack;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+
+    .active-stack {
+      @include active-stack;
+
+      &:hover {
+        @include unactive-stack;
+      }
+    }
+    .just-clicked-active {
+      @include active-stack;
+      &:hover {
+        @include active-stack;
+      }
+    }
+    .just-clicked-unactive {
+      @include unactive-stack;
+      &:hover {
+        @include unactive-stack;
+      }
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    @media (max-width: variables.$bp-xl) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: variables.$bp-md) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    transition: opacity 0.3s ease-in-out;
+    &.container--hidden {
+      opacity: 0;
+    }
+
+    gap: 4rem;
+  }
+  .card {
+    background-color: var(--c-bg);
+    border: 4px solid var(--c-text);
+    border-radius: 32px;
+    overflow: hidden;
+    justify-self: center;
+    align-self: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+      opacity 0.3s ease-in-out;
+    height: 100%;
+    &.card--disabled {
+      display: none;
+      pointer-events: none;
+    }
+
+    &:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    @media (max-width: variables.$bp-xl) {
+      max-width: 35vw;
+    }
+    @media (max-width: variables.$bp-md) {
+      max-width: 70vw;
+    }
+
+    &__img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+    &-body {
+      padding: 2.4rem 1.8rem;
+      flex-grow: 1;
+    }
+
+    &-title {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      text-align: center;
+    }
+
+    &-description {
+      display: -webkit-box; /* use a flexbox-like layout */
+      -webkit-line-clamp: 5; /* number of lines */
+      -webkit-box-orient: vertical; /* vertical orientation */
+      overflow: hidden;
+      margin-bottom: clamp(1.5rem, 4vh, 2rem);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+
+      height: 5lh;
+
+      white-space: normal; /* allow wrapping */
+      overflow-wrap: break-word; /* break long words/URLs */
+      word-break: break-word;
+    }
+
+    &-stacks {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: clamp(2rem, 6vh, 3rem);
+
+      .stack-icon {
+        font-size: 2rem;
+        display: block;
+        position: relative;
+
+        &::after {
+          content: attr(data-label);
+          position: absolute;
+          bottom: -1.75rem;
+          left: 50%;
+          transform: translateX(-50%);
+          background: var(--c-text);
+          color: var(--c-bg);
+          font-size: 0.8rem;
+          padding: 4px 8px;
+          border-radius: 4px;
+          white-space: nowrap;
+          opacity: 0;
+          pointer-events: none;
+          transition: opacity 0.2s ease, transform 0.2s ease;
+          z-index: 1;
+        }
+
+        &:hover::after {
+          opacity: 1;
+          transform: translateX(-50%) translateY(4px);
+        }
+      }
+    }
+
+    &-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      justify-content: center;
+
+      .link-icon {
+        font-size: 3rem;
+      }
+
+      .github,
+      .live-demo {
+        &:link,
+        &:visited {
+          display: flex;
+          text-decoration: none;
+          justify-self: center;
+          color: var(--c-text);
+          align-items: center;
+        }
+      }
+
+      .live-demo-text {
+        font-size: clamp(1rem, 2vw, 1.3rem);
+        border-bottom: 1px solid var(--c-text);
+      }
+    }
+  }
 }

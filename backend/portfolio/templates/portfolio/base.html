@@ -74,8 +74,8 @@
         <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#">CV</a></li>
       </ul>
     </nav>
-    <div class="contact">
-      <button class="clear__btn contact__btn">
+    <div class="contact-settings">
+      <button class="clear__btn contact-settings__btn">
         <span>Contact</span>
       </button>
       <div class="settings">
@@ -118,7 +118,7 @@
       </ul>
     </nav>
 
-    <div class="contact grid--right">
+    <div class="contact-settings grid--right">
       <div class="settings">
         <button class="settings__btn clear__btn" aria-expanded="false" aria-controls="settings-panel">
           <ion-icon class="navbar__icon" name="settings-sharp"></ion-icon>
@@ -145,7 +145,7 @@
           </div>
         </div>
       </div>
-      <button class="clear__btn contact__btn">
+      <button class="clear__btn contact-settings__btn">
         <span>Contact</span>
       </button>
     </div>
@@ -159,6 +159,38 @@
   </header>
 
   {% block content %}{% endblock content %}
+
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__img-nav-social">
+        <img class="logo__img" src="{% static 'portfolio/images/logo_black.svg' %}" data-src-light="{% static 'portfolio/images/logo_black.svg' %}" data-src-dark="{% static 'portfolio/images/logo_white.svg' %}" alt="Logo of mateirobescu.com" width="1024" height="526">
+
+        <div class="footer__social">
+          <a href="https://github.com/mateirobescu">
+            <ion-icon class="social__icon" name="logo-github"></ion-icon>
+          </a>
+          <a href="">
+            <ion-icon class="social__icon" name="logo-linkedin"></ion-icon>
+          </a>
+          <a href="mailto:matei.robescu@gmail.com">
+            <ion-icon class="social__icon" name="mail-outline"></ion-icon>
+          </a>
+        </div>
+
+        <nav>
+          <ul class="footer__navbar">
+            <li class="navbar__item"><a class="navbar__link" href="#home">home</a></li>
+            <li class="navbar__item "><a class="navbar__link" href="#projects">projects</a></li>
+            <li class="navbar__item"><a class="navbar__link" href="#">CV</a></li>
+            <li class="navbar__item"><a class="navbar__link" href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__copyright">
+        <span>&copy; {% now "Y" %} Matei Robescu. Built with Django.</span>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-import { documentSharp } from "ionicons/icons";
+import { documentSharp, enter } from "ionicons/icons";
 
 /**
  * Toggle the settings panel.
@@ -146,7 +146,7 @@ const setupThemeToggle = function () {
 };
 
 const removeHash = function () {
-  const navbars = document.querySelectorAll(".navbar");
+  const navbars = document.querySelectorAll("nav");
   navbars.forEach((nav) =>
     nav.addEventListener("click", function (e) {
       const anchor = e.target.closest(".navbar__link");
@@ -188,6 +188,7 @@ const scrollSpyInit = function () {
     function (entries) {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
+
         const sectionId = entry.target.getAttribute("id");
 
         allLinks.forEach((link) => {

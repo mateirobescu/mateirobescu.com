@@ -6,3 +6,6 @@ psycopg2-binary==2.9.10
 python-decouple==3.8
 sqlparse==0.5.3
 whitenoise==6.7.0
+pillow==11.3.0
+cloudinary==1.44.1
+django-cloudinary-storage==0.3.0

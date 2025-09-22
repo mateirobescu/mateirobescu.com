@@ -44,8 +44,78 @@
     
   </section>
   <section class="projects" id="projects" aria-label="Projects">
-    <h2>Projects</h2>
+    <h2 class="projects__header">Projects</h2>
+    <div class="projects-stacks">
+      <button class="stack stack-all active-stack clear__btn" data-filter="all">All</button>
+
+      {% for stack in stacks %}
+        <button class="stack clear__btn" data-filter="{{ stack.name_lower }}">{{ stack.name }}</button>
+      {% endfor %}
+
+      
+    </div>
+    <div class="projects__container">
+
+      {% for project in projects %}
+
+        <div class="card" data-stacks="{{ project.data_stacks }}">
+          <img class="card__img" src="{{ project.image.url }}" alt="{{ project.title }}">
+          <div class="card-body">
+            <h3 class="card-title">{{ project.title }}</h3>
+            <p class="card-description">{{ project.description }}</p>
+            <div class="card-stacks">
+              {% for stack in project.stacks.all %}
+                <i class="{{ stack.icon }} stack-icon" role="img" aria-label="{{ stack.name }}" data-label="{{ stack.name }}"></i>
+              {% endfor %}
+            </div>
+            <div class="card-links">
+
+              {% if project.github_url %}
+                <a class="github" href="{{ project.github_url }}">
+                  <i class="devicon-github-original link-icon"></i>
+                </a>
+              {% endif %}
+              
+              {% if project.live_demo_url %}
+                <a class="live-demo" href="{{ project.live_demo_url }}">
+                  <span class="live-demo-text">Live demo</span>
+                </a>  
+              {% endif %}
+              
+            </div>
+          </div>
+        </div>
+      
+      
+      
+      {% endfor %}
+
+      <div class="card" data-stacks="python;django">
+        <img class="card__img" src="https://images.unsplash.com/photo-1580757468214-c73f7062a5cb?q=80&w=3732&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        <div class="card-body">
+          <h3 class="card-title">Title1</h3>
+          <p class="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque quam tempora necessitatibus. Magni maiores sapiente ipsam molestias, obcaecati expedita doloremque, aperiam beatae laboriosam rerum officiis modi debitis, quos quam quibusdam.</p>
+          <div class="card-stacks">
+            <i class="devicon-python-plain stack-icon" role="img" aria-label="Python" data-label="Python"></i>
+            <i class="devicon-python-plain stack-icon" role="img" aria-label="Python" data-label="Python"></i>
+            <i class="devicon-python-plain stack-icon" role="img" aria-label="Python" data-label="Python"></i>
+            <i class="devicon-python-plain stack-icon" role="img" aria-label="Python" data-label="Python"></i>
+          </div>
+          <div class="card-links">
+            <a class="github" href="">
+              <i class="devicon-github-original link-icon"></i>
+            </a>
+            <a class="live-demo" href="">
+              <span class="live-demo-text">Live demo</span>
+            </a>
+          </div>
+        </div>
+      </div>    
+    </div>
+
   </section>
+  {% comment %} <section class="cv" id="cv" aria-label="CV"></section>
+  <section class="contact" id="cv" aria-label="CV"></section> {% endcomment %}
 
 
 </main>
