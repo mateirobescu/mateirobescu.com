@@ -17,15 +17,15 @@ application = get_wsgi_application()
 
 from django.contrib.auth import get_user_model
 
-User = get_user_model()
-
-username = os.getenv("USER", "admin")
-email = os.getenv("EMAIL", "admin@example.com")
-password = os.getenv("PASSWORD", "changeme123")
-
-if not User.objects.filter(username=username).exists():
-    User.objects.create_superuser(
-        username=username,
-        email=email,
-        password=password
-    )
+# User = get_user_model()
+#
+# username = os.getenv("USER", "admin")
+# email = os.getenv("EMAIL", "admin@example.com")
+# password = os.getenv("PASSWORD", "changeme123")
+#
+# if not User.objects.filter(username=username).exists():
+#     User.objects.create_superuser(
+#         username=username,
+#         email=email,
+#         password=password
+#     )
