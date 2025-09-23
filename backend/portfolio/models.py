@@ -1,9 +1,13 @@
 import os.path
 
+from cloudinary.api import upload_preset
+from cloudinary.models import CloudinaryField
+from cloudinary.uploader import destroy
 from django.db import models
 from django.core.validators import RegexValidator
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 from django.utils.text import slugify
-
 
 # Create your models here.
 class Stack(models.Model):
@@ -38,21 +42,12 @@ class Stack(models.Model):
 
 	def __str__(self):
 		return self.name
-	
-	
-def project_image_path(instance, filename):
-	project_slug = slugify(instance.title)
-	ext = filename.split('.')[-1]
-	
-	filename = f"{project_slug}.{ext}"
-	
-	return os.path.join("projects", project_slug, filename)
-	
-	
+
+
 class Project(models.Model):
 	title = models.CharField(max_length=50, unique=True)
 	description = models.TextField()
-	image = models.ImageField(upload_to=project_image_path,)
+	image = CloudinaryField('img', upload_preset="projects_default")
 	stacks = models.ManyToManyField(Stack, through="ProjectStack", related_name="projects")
 	github_url = models.URLField(null=True, blank=True)
 	live_demo_url = models.URLField(null=True, blank=True)
@@ -68,7 +63,15 @@ class Project(models.Model):
 	@property
 	def data_stacks(self):
 		return ";".join(stack.name_lower for stack in self.stacks.all())
+
 		
+@receiver(post_delete, sender=Project)
+def delete_project_image(sender, instance, **kwargs):
+	if instance.image and getattr(instance.image, "public_id", None):
+		public_id = str(instance.image)
+		print("deleted",public_id)
+		print(destroy(public_id))
+			
 		
 class ProjectStack(models.Model):
 	project = models.ForeignKey("Project", on_delete=models.CASCADE, related_name="projects_stacks")

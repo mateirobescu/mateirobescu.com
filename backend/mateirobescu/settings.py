@@ -16,6 +16,9 @@ from decouple import config, Csv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -37,9 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'cloudinary',
     'portfolio',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -78,12 +80,30 @@ WSGI_APPLICATION = 'mateirobescu.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+import dj_database_url
+
+if DEBUG:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": config("DB_NAME"),
+            "USER": config("DB_USER"),
+            "PASSWORD": config("DB_PASSWORD"),
+            "HOST": config("DB_HOST"),
+            "PORT": "5432",
+            "CONN_MAX_AGE": 600,
+            "OPTIONS": {
+                "options": "-c search_path=portfolio,public"
+            }
+        }
+    }
 
 
 # Password validation
@@ -132,11 +152,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': config('CLOUDINARY_API_KEY'),
-    'API_SECRET': config('CLOUDINARY_API_SECRET'),
-}
-
-MEDIA_URL = ""
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+cloudinary.config(
+    cloud_name=config('CLOUDINARY_CLOUD_NAME'),
+    api_key=config('CLOUDINARY_API_KEY'),
+    api_secret=config('CLOUDINARY_API_SECRET'),
+    secure=True,
+)

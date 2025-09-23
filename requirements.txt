@@ -8,4 +8,5 @@ sqlparse==0.5.3
 whitenoise==6.7.0
 pillow==11.3.0
 cloudinary==1.44.1
-django-cloudinary-storage==0.3.0
+dj-database-url==3.0.1
+psycopg2-binary==2.9.10
