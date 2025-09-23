@@ -1,221 +1,169 @@
 import { documentSharp, enter } from "ionicons/icons";
+import ThemeManager from "./themeManager";
 
 /**
- * Toggle the settings panel.
+ * Checks if the browser prefers reduced motion
  *
- * Slides the settings container left by the panel width to reveal the panel.
- * Honors reduced-motion preference by skipping transition-dependent hiding.
- * Updates `aria-expanded` and rotates the button icon to reflect state.
- *
- * @returns {void}
+ * @returns {boolean} - true if the browser prefers reduce motion, else false
  */
-const toggleSettingsPanel = function () {
-  const header = document.querySelector(".header");
-  const settingsButton = header.querySelector(".settings__btn");
-  const settingsContainer = header.querySelector(".settings");
-  const settingsPanel = header.querySelector(".settings-panel");
-  const settingsIcon = header.querySelector(".settings__btn .navbar__icon");
-
-  // Bail if required elements are missing
-  if (!settingsButton || !settingsContainer || !settingsPanel) return;
-
-  // Defer applying `disabled` until the slide-out transition completes
-  let pendingClose = false;
-  const prefersReduced =
+const prefersReduced = function () {
+  return (
     typeof window !== "undefined" &&
-    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-
-  settingsContainer.addEventListener("transitionend", function (e) {
-    if (e.propertyName !== "transform") return;
-    if (pendingClose) {
-      settingsPanel.classList.add("disabled");
-      pendingClose = false;
-    }
-  });
-
-  settingsButton.addEventListener("click", function () {
-    const isHidden = settingsPanel.classList.contains("disabled");
-    const panelWidth = settingsPanel.offsetWidth;
-
-    if (isHidden) {
-      // Open: reveal panel and slide container left by panel width
-      settingsPanel.classList.remove("disabled");
-      settingsButton.setAttribute("aria-expanded", "true");
-      settingsContainer.style.transform = `translateX(-${panelWidth}px)`;
-    } else {
-      // Close: reset transform; hide after transition unless reduced-motion
-      settingsContainer.style.transform = "";
-      settingsButton.setAttribute("aria-expanded", "false");
-      if (prefersReduced) {
-        settingsPanel.classList.add("disabled");
-      } else {
-        pendingClose = true;
-      }
-    }
-
-    // Rotate the gear icon to reflect open/close state
-    if (settingsIcon) settingsIcon.classList.toggle("rotate180");
-  });
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+  );
 };
 
-/**
- * Toggle the mobile navigation overlay panel.
- *
- * Toggles the `.mobile-open` class on the root and panel, updates
- * `aria-expanded`, and swaps the hamburger/close icon. Defers applying
- * the `disabled` class until the close transition ends unless the
- * user prefers reduced motion.
- *
- * @returns {void}
- */
-const toggleMobileNav = function () {
-  const navbarPanelBtn = document.querySelector(".mobile__nav__btn");
-  const navbarPanel = document.querySelector(".mobile__nav__panel");
-  if (!navbarPanelBtn || !navbarPanel) return;
+class Navbar {
+  // Mobile Navigation
+  #mobileNavPanel = document.querySelector(".mobile__nav__panel");
+  #mobileNav = document.querySelector(".mobile__nav__panel > .navbar");
+  #mobileNavBtn = document.querySelector(".mobile__nav__btn");
+  #mobileNavIsOpen = false;
 
-  const prefersReduced =
-    typeof window !== "undefined" &&
-    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-  let pendingClose = false;
+  //Themes
+  #themeToggleBtns = document.querySelectorAll(".settings-theme__btn");
 
-  navbarPanelBtn.addEventListener("click", function (e) {
-    const isOpen = navbarPanel.classList.contains("mobile-open");
+  #nav = document.querySelector(".header > .navbar");
+
+  #allSections = document.querySelectorAll("section");
+  #allLinks = document.querySelectorAll(".navbar__scroll");
+
+  #initMobileNav() {
+    if (!this.#mobileNavPanel || !this.#mobileNavBtn) return;
+
+    this.#mobileNavBtn.addEventListener(
+      "click",
+      this.#handleMobileNavState.bind(this)
+    );
+    this.#mobileNavPanel.addEventListener(
+      "transitionend",
+      this.#disableAfterTransition.bind(this)
+    );
+  }
+
+  #handleMobileNavState(event) {
+    this.#mobileNavIsOpen = !this.#mobileNavIsOpen;
 
     // Mirror state on the root for layout/body scroll locking via CSS
     const parentDoc = document.documentElement.classList;
-    isOpen ? parentDoc.remove("mobile-open") : parentDoc.add("mobile-open");
+    parentDoc.toggle("mobile-open");
 
-    navbarPanelBtn.setAttribute("aria-expanded", `${!isOpen}`);
-    navbarPanel.classList.toggle("mobile-open");
-    pendingClose = prefersReduced ? pendingClose : isOpen;
+    this.#mobileNavBtn.setAttribute(
+      "aria-expanded",
+      `${this.#mobileNavIsOpen}`
+    );
+    this.#mobileNavPanel.classList.toggle("mobile-open");
 
-    if (!isOpen) navbarPanel.classList.remove("disabled");
-    if (prefersReduced && isOpen) navbarPanel.classList.add("disabled");
+    // Enabling mobileNavPanel functions
+    if (this.#mobileNavIsOpen)
+      this.#mobileNavPanel.classList.remove("disabled");
 
-    // Swap hamburger/close icon
-    const icon = navbarPanelBtn.querySelector("ion-icon");
-    if (icon) {
-      icon.setAttribute("name", isOpen ? "menu-outline" : "close-outline");
-      icon.classList.toggle("is-open", !isOpen);
-    }
-  });
+    // If reduce motion si preferred disable imediately, otherwise the panel will disabled later on, after the transition ends
+    if (prefersReduced() && !this.#mobileNavIsOpen)
+      this.#mobileNavPanel.classList.add("disabled");
 
-  navbarPanel.addEventListener("transitionend", function (e) {
-    if (e.propertyName !== "transform") return;
-    if (pendingClose) {
-      navbarPanel.classList.add("disabled");
-      pendingClose = false;
-    }
-  });
-};
+    this.#changeMobileNavBtnIcon();
+  }
 
-const applyTheme = function (theme) {
-  const htmlDOC = document.documentElement;
-  htmlDOC.setAttribute("data-theme", theme);
+  #disableAfterTransition(event) {
+    if (event.propertyName !== "transform") return;
 
-  localStorage.setItem("data-theme", theme);
+    if (!this.#mobileNavIsOpen) this.#mobileNavPanel.classList.add("disabled");
+  }
 
-  const logoImg = document.querySelector(".logo__img");
-  const nextSrc =
-    theme === "dark" ? logoImg.dataset.srcDark : logoImg.dataset.srcLight;
-  logoImg.src = nextSrc;
-};
+  #changeMobileNavBtnIcon() {
+    const icon = this.#mobileNavBtn.querySelector("ion-icon");
+    if (!icon) return;
 
-const loadInitialTheme = function () {
-  let preferedTheme = localStorage.getItem("data-theme");
+    icon.setAttribute(
+      "name",
+      this.#mobileNavIsOpen ? "close-outline" : "menu-outline"
+    );
+    icon.classList.toggle("is-open");
+  }
 
-  if (!preferedTheme)
-    preferedTheme = matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+  #initThemeToggle() {
+    this.#themeToggleBtns.forEach((btn) =>
+      btn.addEventListener("click", function () {
+        ThemeManager.switchTheme();
+      })
+    );
+  }
 
-  applyTheme(preferedTheme);
-};
+  // Closing the mobileNav when clicking an anchor
+  #initCloseMobileNav() {
+    this.#mobileNav.addEventListener(
+      "click",
+      this.#CloseMobileNavOnAnchor.bind(this)
+    );
+  }
 
-const setupThemeToggle = function () {
-  const themeBtns = document.querySelectorAll(".settings-theme__btn");
-  const htmlDOC = document.documentElement;
-
-  themeBtns.forEach((btn) =>
-    btn.addEventListener("click", function () {
-      const currTheme = htmlDOC.getAttribute("data-theme");
-      const switchTheme = currTheme === "dark" ? "light" : "dark";
-      applyTheme(switchTheme);
-    })
-  );
-};
-
-const removeHash = function () {
-  const navbars = document.querySelectorAll("nav");
-  navbars.forEach((nav) =>
-    nav.addEventListener("click", function (e) {
-      const anchor = e.target.closest(".navbar__link");
-      if (!anchor) return;
-
-      e.preventDefault();
-
-      const sectionId = anchor.getAttribute("href");
-      const sectionToScroll = document.querySelector(
-        sectionId == "#" ? "#home" : sectionId
-      );
-
-      if (sectionToScroll) {
-        sectionToScroll.scrollIntoView({ behavior: "smooth" });
-      }
-    })
-  );
-};
-
-const closeMobileNav = function () {
-  const mobileNavPanel = document.querySelector(".mobile__nav__panel");
-  const mobileNav = mobileNavPanel.querySelector(".navbar");
-  const mobileNavBtn = document.querySelector(".mobile__nav__btn");
-
-  mobileNav.addEventListener("click", function (e) {
-    const anchor = e.target.closest(".navbar__link");
+  #CloseMobileNavOnAnchor(event) {
+    const anchor = event.target.closest(".navbar__link");
     if (!anchor) return;
 
-    e.preventDefault();
-    mobileNavBtn.click();
-  });
-};
+    event.preventDefault();
+    this.#mobileNavBtn.click();
+  }
 
-const scrollSpyInit = function () {
-  const allSections = document.querySelectorAll("section");
-  const allLinks = document.querySelectorAll(".navbar__scroll");
+  #initScrollToSection() {
+    const navbars = [this.#nav, this.#mobileNav];
+    navbars.forEach((navbar) =>
+      navbar.addEventListener("click", this.#scrollToSection.bind(this))
+    );
+  }
 
-  const sectionObserver = new IntersectionObserver(
-    function (entries) {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
+  #scrollToSection(event) {
+    const anchor = event.target.closest(".navbar__link");
+    if (!anchor) return;
+    event.preventDefault();
 
-        const sectionId = entry.target.getAttribute("id");
+    const sectionId = anchor.getAttribute("href");
+    const sectionToScroll = document.querySelector(
+      sectionId === "#" ? "#home" : sectionId
+    );
 
-        allLinks.forEach((link) => {
-          link.classList.remove("active");
-
-          const linkHref = link.getAttribute("href").slice(1);
-          if (linkHref == sectionId) link.classList.add("active");
-        });
-      });
-    },
-    {
-      threshold: 0.5,
-      rootMargin: `-${
-        document.querySelector(".header").offsetHeight
-      }px 0px 0px 0px`,
+    if (sectionToScroll) {
+      sectionToScroll.scrollIntoView({ behavior: "smooth" });
     }
-  );
+  }
 
-  allSections.forEach((sect) => sectionObserver.observe(sect));
-};
+  #initScrollSpy() {
+    const sectionObserver = new IntersectionObserver(
+      this.#setActiveSection.bind(this),
+      {
+        threshold: 0.5,
+        rootMargin: `-${
+          document.querySelector(".header").offsetHeight
+        }px 0px 0px 0px`,
+      }
+    );
 
-export const initNavbar = function () {
-  toggleSettingsPanel();
-  toggleMobileNav();
-  loadInitialTheme();
-  setupThemeToggle();
-  removeHash();
-  closeMobileNav();
-  scrollSpyInit();
-};
+    this.#allSections.forEach((sect) => sectionObserver.observe(sect));
+  }
+
+  #setActiveSection(entries) {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      const sectionId = entry.target.getAttribute("id");
+
+      this.#allLinks.forEach((link) => {
+        link.classList.remove("active");
+
+        const linkHref = link.getAttribute("href").slice(1);
+        if (linkHref === sectionId) link.classList.add("active");
+      });
+    });
+  }
+
+  init() {
+    this.#initMobileNav();
+    this.#initThemeToggle();
+    this.#initCloseMobileNav();
+    this.#initScrollToSection();
+    this.#initScrollSpy();
+  }
+}
+
+export default new Navbar();
