@@ -1,21 +1,28 @@
 import { scanOutline } from "ionicons/icons";
 
-const initScrollArrow = function () {
-  const scrollDownArow = document.querySelector(".scroll-down");
-  const hero = document.querySelector(".hero");
+class Hero {
+  #scrollDownArrow = document.querySelector(".scroll-down");
+  #hero = document.querySelector(".hero");
 
-  const oberver = new IntersectionObserver((entries) =>
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        scrollDownArow.classList.add("disabled");
-        oberver.disconnect();
-      }
-    })
-  );
+  constructor() {}
 
-  oberver.observe(hero);
-};
+  #initScrollArrow() {
+    if (!this.#scrollDownArrow || !this.#hero) return;
 
-export const initHero = function () {
-  initScrollArrow();
-};
+    const observer = new IntersectionObserver((entries) =>
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          this.#scrollDownArrow.classList.add("disabled");
+          observer.disconnect();
+        }
+      })
+    );
+    observer.observe(this.#hero);
+  }
+
+  init() {
+    this.#initScrollArrow();
+  }
+}
+
+export default new Hero();
