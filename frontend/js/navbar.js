@@ -58,7 +58,7 @@ class Navbar {
     if (this.#mobileNavIsOpen)
       this.#mobileNavPanel.classList.remove("disabled");
 
-    // If reduce motion si preferred disable imediately, otherwise the panel will disabled later on, after the transition ends
+    // If reduce motion is preferred disable imediately, otherwise the panel will be disabled later on, after the transition ends
     if (prefersReduced() && !this.#mobileNavIsOpen)
       this.#mobileNavPanel.classList.add("disabled");
 

@@ -1,5 +1,6 @@
 import Navbar from "./navbar";
 import ThemeManager from "./themeManager";
+import Projects from "./projects";
 import { initHero } from "./hero";
 import { initProjects } from "./projects";
 import AOS from "aos";
@@ -22,8 +23,9 @@ const init = function () {
   resetScroll();
   Navbar.init();
   ThemeManager.init();
+  Projects.init();
+  // initProjects();
   initHero();
-  initProjects();
   AOS.init();
 };
 

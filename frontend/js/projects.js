@@ -1,82 +1,104 @@
 import { documentOutline, tabletLandscape } from "ionicons/icons";
 
-const filterProjectsInit = function () {
-  const projectStacksContainer = document.querySelector(".projects-stacks");
-  const stacksBtns = document.querySelectorAll(".stack");
-  const allStacksBtn = document.querySelector(".stack-all");
-  const projectsContainer = document.querySelector(".projects__container");
-  const porjectCards = document.querySelectorAll(".card");
+class Projects {
+  #projectStacksContainer = document.querySelector(".projects-stacks");
+  #stackBtns = Array.from(document.querySelectorAll(".stack")).filter(
+    (btn) => btn.dataset.filter !== "all"
+  );
+  #allStacksBtn = document.querySelector(".stack-all");
+  #projectCards = document.querySelectorAll(".card");
 
-  const activeStacks = new Set([allStacksBtn.dataset.filter]);
+  #activeStacks = new Set();
 
-  projectStacksContainer.addEventListener("click", function (e) {
-    const target = e.target.closest(".stack");
+  constructor() {}
+
+  #initStateManager() {
+    this.#projectStacksContainer.addEventListener(
+      "click",
+      this.#manageStates.bind(this)
+    );
+    [this.#allStacksBtn, ...this.#stackBtns].forEach((btn) =>
+      btn.addEventListener("mouseleave", this.#disableJustClicked)
+    );
+  }
+
+  #isActiveStack(stackBtn) {
+    return stackBtn.classList.contains("active-stack");
+  }
+
+  #manageStates(event) {
+    const target = event.target.closest(".stack");
     if (!target) return;
-    e.preventDefault();
+    event.preventDefault();
 
-    if (target.classList.contains("active-stack")) {
-      if (target.dataset.filter === "all") return;
-      else {
-        target.classList.remove("active-stack");
-        target.classList.add("just-clicked-unactive");
-        activeStacks.delete(target.dataset.filter);
-      }
-    } else if (target.dataset.filter === "all") {
-      stacksBtns.forEach((st) => st.classList.remove("active-stack"));
-      allStacksBtn.classList.add("active-stack");
-      allStacksBtn.classList.add("just-clicked-active");
+    if (target.dataset.filter === "all") {
+      if (this.#isActiveStack(target)) return;
 
-      activeStacks.clear();
-      activeStacks.add(target.dataset.filter);
-    } else {
+      this.#stackBtns.forEach((st) => st.classList.remove("active-stack"));
       target.classList.add("active-stack");
-      allStacksBtn.classList.remove("active-stack");
       target.classList.add("just-clicked-active");
 
-      activeStacks.add(target.dataset.filter);
-      activeStacks.delete(allStacksBtn.dataset.filter);
+      this.#activeStacks.clear();
+      this.#activeStacks.add(target.dataset.filter);
+    } else {
+      if (this.#isActiveStack(target)) {
+        target.classList.remove("active-stack");
+        target.classList.add("just-clicked-unactive");
+        this.#activeStacks.delete(target.dataset.filter);
+      } else {
+        target.classList.add("active-stack");
+        this.#allStacksBtn.classList.remove("active-stack");
+        target.classList.add("just-clicked-active");
+
+        this.#activeStacks.add(target.dataset.filter);
+        this.#activeStacks.delete(this.#allStacksBtn.dataset.filter);
+      }
     }
 
-    if (activeStacks.size === 0) {
-      activeStacks.add(allStacksBtn.dataset.filter);
-      allStacksBtn.classList.add("active-stack");
+    // If no options, choose all
+    if (this.#activeStacks.size === 0) {
+      this.#activeStacks.add(this.#allStacksBtn.dataset.filter);
+      this.#allStacksBtn.classList.add("active-stack");
     }
 
-    target.addEventListener("mouseleave", () => {
-      target.classList.remove("just-clicked-active");
-      target.classList.remove("just-clicked-unactive");
-    });
+    this.#filterProjects();
+  }
 
-    // FILTERING PROJECTS
-    const enableProj = function (proj) {
-      proj.classList.remove("card--disabled");
-    };
+  #disableJustClicked(event) {
+    event.target.classList.remove("just-clicked-active");
+    event.target.classList.remove("just-clicked-unactive");
+  }
 
-    const disableProj = function (proj) {
-      proj.classList.add("card--disabled");
-    };
+  #enableProject(proj) {
+    proj.classList.remove("card--disabled");
+  }
 
-    porjectCards.forEach((proj) => {
-      if (activeStacks.has("all")) {
-        enableProj(proj);
+  #disableProject(proj) {
+    proj.classList.add("card--disabled");
+  }
+
+  #filterProjects() {
+    this.#projectCards.forEach((proj) => {
+      if (this.#activeStacks.has("all")) {
+        this.#enableProject(proj);
         return;
       }
 
-      console.log(proj);
-
       const projStacks = new Set(proj.dataset.stacks.split(";"));
-      const activeArr = [...activeStacks];
-      console.log(activeArr, projStacks);
-
-      console.log(activeArr.every((stack) => projStacks.has(stack)));
+      const activeArr = [...this.#activeStacks];
 
       if (activeArr.every((stack) => projStacks.has(stack))) {
-        enableProj(proj);
-      } else disableProj(proj);
+        this.#enableProject(proj);
+      } else this.#disableProject(proj);
     });
-  });
-};
+  }
 
-export const initProjects = function () {
-  filterProjectsInit();
-};
+  init() {
+    if (this.#allStacksBtn) {
+      this.#activeStacks.add(this.#allStacksBtn.dataset.filter);
+    }
+    this.#initStateManager();
+  }
+}
+
+export default new Projects();
