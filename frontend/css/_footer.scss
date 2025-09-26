@@ -30,6 +30,13 @@
     .social__icon {
       font-size: 2.5rem;
       color: var(--c-text);
+      display: block;
+
+      a:focus-visible {
+        outline: 2px solid var(--c-text-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
     }
   }
 

@@ -1,6 +1,7 @@
 @use "variables";
 
 .projects {
+  position: relative;
   min-height: 93vh;
 
   &__header {
@@ -44,6 +45,11 @@
       &:active {
         transform: scale(0.95);
       }
+      &:focus-visible {
+        outline: 2px solid var(--c-text-secondary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
     }
 
     .active-stack {
@@ -84,6 +90,21 @@
     }
 
     gap: 4rem;
+
+    .no-projects {
+      position: absolute;
+      width: 90%;
+      text-align: center;
+
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(2rem, 6vw, 3rem);
+
+      &.disabled {
+        display: none;
+      }
+    }
   }
   .card {
     background-color: var(--c-bg);
@@ -118,6 +139,7 @@
       object-fit: cover;
       display: block;
     }
+
     &-body {
       padding: 2.4rem 1.8rem;
       flex-grow: 1;

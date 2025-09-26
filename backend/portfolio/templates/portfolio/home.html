@@ -59,7 +59,7 @@
       {% for project in projects %}
 
         <div class="card" data-stacks="{{ project.data_stacks }}">
-          <img class="card__img" src="{{ project.image.url }}" alt="{{ project.title }}">
+          <img class="card__img" src="{{ project.image.url }}" alt="{{ project.title }}" lazy>
           <div class="card-body">
             <h3 class="card-title">{{ project.title }}</h3>
             <p class="card-description">{{ project.description }}</p>
@@ -86,7 +86,7 @@
           </div>
         </div>
       
-      
+        <span class="no-projects disabled">I haven't built anything like this... yet!</span>
       
       {% endfor %}  
     </div>
@@ -94,6 +94,51 @@
   </section>
   {% comment %} <section class="cv" id="cv" aria-label="CV"></section>
   <section class="contact" id="cv" aria-label="CV"></section> {% endcomment %}
+
+  <section class="contact" id="contact">
+    <h2 class="contact__header">Let's get in touch!</h2>
+
+    <form id="contact-form" class="contact__form" method="post" data-url="{% url 'contact_api' %}">
+      {% csrf_token %}
+
+      <div class="form__group">
+        <label for="first_name">First Name</label>
+        <input class="form__input" type="text" id="first_name" name="first_name" placeholder="e.g., John" required/>
+        <small class="error-message">This field shoud not be empty.</small>
+      </div>
+      <div class="form__group">
+        <label for="last_name">Last Name</label>
+        <input class="form__input" type="text" id="last_name" name="last_name" placeholder="e.g., Doe" required />
+        <small class="error-message">This field shoud not be empty.</small>
+      </div>
+      <div class="form__group">
+        <label for="email">Email</label>
+        <input class="form__input" type="email" id="email" name="email" placeholder="e.g., john.doe@example.com" required />
+        <small class="error-message">Please enter a valid email address.</small>
+      </div>
+      <div class="form__group">
+        <label for="company">Company (optional)</label>
+        <input class="form__input" type="text" id="company" name="company" placeholder="e.g., YourCompany Inc."/>
+        <small class="error-message">No error.</small>
+      </div>
+      <div class="form__group message">
+        <label for="message">Message</label>
+        <textarea class="form__input" id="message" name="message" rows="5" 
+              placeholder="Write your message here..." required></textarea>
+        <small class="error-message">This field shoud not be empty.</small>
+        <p class="confirmation-disclaimer">We'll send you a quick confirmation email so you know it went through. </p>
+        <p class="confirmation-disclaimer">Check your spam folder if you don't see it.</p>
+      </div>
+
+      <div class="submit">
+        <button type="submit" class="submit__btn clear__btn contact-settings__btn ">
+          <span>Sent</span>
+        </button>
+      </div>
+    </form>
+
+
+  </section>
 
 
 </main>

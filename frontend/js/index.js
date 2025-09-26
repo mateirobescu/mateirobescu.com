@@ -2,6 +2,7 @@ import Navbar from "./navbar";
 import ThemeManager from "./themeManager";
 import Projects from "./projects";
 import Hero from "./hero";
+import Form from "./contact";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -24,6 +25,7 @@ const init = function () {
   ThemeManager.init();
   Projects.init();
   Hero.init();
+  Form.init();
   AOS.init();
 };
 

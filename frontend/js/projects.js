@@ -7,6 +7,7 @@ class Projects {
   );
   #allStacksBtn = document.querySelector(".stack-all");
   #projectCards = document.querySelectorAll(".card");
+  #noProjectsText = document.querySelector(".no-projects");
 
   #activeStacks = new Set();
 
@@ -78,8 +79,11 @@ class Projects {
   }
 
   #filterProjects() {
+    let noProjects = true;
+
     this.#projectCards.forEach((proj) => {
       if (this.#activeStacks.has("all")) {
+        noProjects = false;
         this.#enableProject(proj);
         return;
       }
@@ -88,9 +92,13 @@ class Projects {
       const activeArr = [...this.#activeStacks];
 
       if (activeArr.every((stack) => projStacks.has(stack))) {
+        noProjects = false;
         this.#enableProject(proj);
       } else this.#disableProject(proj);
     });
+
+    if (noProjects) this.#noProjectsText.classList.remove("disabled");
+    else this.#noProjectsText.classList.add("disabled");
   }
 
   init() {

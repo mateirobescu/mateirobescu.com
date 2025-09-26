@@ -1,0 +1,11 @@
+{% block content %}{% endblock content %}
+
+-------------------------------------------------
+Name: {{first_name}} {{last_name}}
+Email: {{email}}
+Company: {{company}}
+Message: {{message}}
+-------------------------------------------------
+
+Best regards,  
+Matei Robescu  

@@ -112,9 +112,9 @@
     border-radius: 9999px;
     cursor: pointer;
     transition: transform 0.3s, background-color 0.3s;
-    z-index: 2;
     color: var(--c-bg);
     font-size: 1.5rem;
+    text-decoration: none;
 
     &:hover {
       background-color: var(--c-btn-bg);

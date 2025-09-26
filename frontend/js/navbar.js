@@ -24,6 +24,9 @@ class Navbar {
   #themeToggleBtns = document.querySelectorAll(".settings-theme__btn");
 
   #nav = document.querySelector(".header > .navbar");
+  #header = document.querySelector(".header");
+
+  #footerNav = document.querySelector(".footer__navbar");
 
   #allSections = document.querySelectorAll("section");
   #allLinks = document.querySelectorAll(".navbar__scroll");
@@ -92,14 +95,14 @@ class Navbar {
 
   // Closing the mobileNav when clicking an anchor
   #initCloseMobileNav() {
-    this.#mobileNav.addEventListener(
+    this.#mobileNavPanel.addEventListener(
       "click",
       this.#CloseMobileNavOnAnchor.bind(this)
     );
   }
 
   #CloseMobileNavOnAnchor(event) {
-    const anchor = event.target.closest(".navbar__link");
+    const anchor = event.target.closest(".navbar__scroll");
     if (!anchor) return;
 
     event.preventDefault();
@@ -107,14 +110,17 @@ class Navbar {
   }
 
   #initScrollToSection() {
-    const navbars = [this.#nav, this.#mobileNav];
-    navbars.forEach((navbar) =>
+    const navbars = [
+      this.#header,
+      this.#mobileNavPanel,
+      this.#footerNav,
+    ].forEach((navbar) =>
       navbar.addEventListener("click", this.#scrollToSection.bind(this))
     );
   }
 
   #scrollToSection(event) {
-    const anchor = event.target.closest(".navbar__link");
+    const anchor = event.target.closest(".navbar__scroll");
     if (!anchor) return;
     event.preventDefault();
 

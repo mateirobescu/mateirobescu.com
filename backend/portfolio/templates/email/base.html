@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        color: #333;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+      }
+      h2 {
+        color: #222;
+      }
+      .message-box {
+        background: #f4f4f4;
+        padding: 12px;
+        border-radius: 6px;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+      .footer {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+
+      {% block content %}{% endblock content %}
+
+      <div class="message-box">
+        <p><strong>Name:</strong> {{first_name}} {{last_name}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Company:</strong> {{company}}</p>
+        <p><strong>Message:</strong><br />{{message}}</p>
+      </div>
+
+      <p class="footer">
+        This email was sent automatically from
+        <a href="https://mateirobescu.com">mateirobescu.com</a>
+      </p>
+
+    </div>
+  </body>
+</html>
