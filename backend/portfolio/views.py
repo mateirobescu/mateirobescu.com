@@ -1,4 +1,5 @@
 import re
+from threading import Thread
 
 from decouple import config
 from django.core.mail import send_mail
@@ -53,8 +54,10 @@ def contact_api(request):
 
 	
 	try:
-		send_email(data)
-		send_email(data, confiramtion=True)
+		# send_email(data)
+		# send_email(data, confiramtion=True)
+		Thread(target=send_email, args=(data,)).start()
+		Thread(target=send_email, args=(data,True)).start()
 		
 		return JsonResponse({"success": "sent"})
 	except Exception as e:
