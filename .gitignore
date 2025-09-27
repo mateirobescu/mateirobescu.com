@@ -36,8 +36,8 @@ dist/
 build/
 .parcel-cache/
 
-# AWS
+# AWS SSH Key
 *.pem
 
-#
+# Bash Scripts
 *.sh
