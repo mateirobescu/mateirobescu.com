@@ -106,6 +106,7 @@ class Projects {
       this.#activeStacks.add(this.#allStacksBtn.dataset.filter);
     }
     this.#initStateManager();
+    this.#filterProjects();
   }
 }
 

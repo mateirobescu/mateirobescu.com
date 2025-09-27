@@ -74,7 +74,9 @@ WSGI_APPLICATION = 'mateirobescu.wsgi.application'
 
 tmpPostgres = urlparse(config("DATABASE_URL"))
 
-if DEBUG:
+DEBUG_DB = config("DEBUG_DB", default=False, cast=bool)
+
+if DEBUG_DB:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
