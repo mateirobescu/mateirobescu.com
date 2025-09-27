@@ -34,3 +34,8 @@ window.addEventListener("load", () => {
 });
 
 init();
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => {
+    window.location.reload();
+  });
+}

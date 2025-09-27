@@ -259,7 +259,7 @@
 
 @media (max-width: variables.$bp-lg) {
   html.mobile-open,
-  html.mobile-open body {
+  body.mobile-open {
     overflow: hidden;
   }
 

@@ -50,7 +50,9 @@ class Navbar {
 
     // Mirror state on the root for layout/body scroll locking via CSS
     const parentDoc = document.documentElement.classList;
+    const body = document.body.classList;
     parentDoc.toggle("mobile-open");
+    body.toggle("mobile-open");
 
     this.#mobileNavBtn.setAttribute(
       "aria-expanded",
