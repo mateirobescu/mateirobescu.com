@@ -68,9 +68,9 @@
   <div class="mobile__nav__panel disabled">
     <nav class="navbar">
       <ul class="navbar__list">
-        <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#home">home</a></li>
-        <li class="navbar__item "><a class="navbar__link navbar__scroll" href="#projects">projects</a></li>
-        <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#">CV</a></li>
+        <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">home</a></li>
+        <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">projects</a></li>
+        <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#">CV</a></li>
       </ul>
     </nav>
     <div class="contact-settings">
@@ -109,11 +109,11 @@
     <nav class="navbar grid--center">
       <ul class="navbar__list">
         {% comment %} class active to show active traits {% endcomment %}
-        <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#home">home</a></li>
+        <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">home</a></li>
         <li class="navbar__item no-select" aria-hidden="true">/</li>
-        <li class="navbar__item "><a class="navbar__link navbar__scroll" href="#projects">projects</a></li>
+        <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">projects</a></li>
         <li class="navbar__item no-select" aria-hidden="true">/</li>
-        <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#">CV</a></li>
+        <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#">CV</a></li>
       </ul>
     </nav>
 
@@ -162,13 +162,13 @@
         <img class="logo__img" src="{% static 'portfolio/images/logo_black.svg' %}" data-src-light="{% static 'portfolio/images/logo_black.svg' %}" data-src-dark="{% static 'portfolio/images/logo_white.svg' %}" alt="Logo of mateirobescu.com" width="1024" height="526">
 
         <div class="footer__social">
-          <a href="https://github.com/mateirobescu">
+          <a href="https://github.com/mateirobescu" target="_blank" rel="noopener noreferrer">
             <ion-icon class="social__icon" name="logo-github"></ion-icon>
           </a>
-          <a href="https://www.linkedin.com/in/matei-robescu-758665241/">
+          <a href="https://www.linkedin.com/in/matei-robescu-758665241/" target="_blank" rel="noopener noreferrer">
             <ion-icon class="social__icon" name="logo-linkedin"></ion-icon>
           </a>
-          <a href="mailto:matei.robescu@gmail.com">
+          <a href="mailto:matei.robescu@gmail.com" target="_blank" rel="noopener noreferrer">
             <ion-icon class="social__icon" name="mail-outline"></ion-icon>
           </a>
         </div>

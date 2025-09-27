@@ -29,9 +29,8 @@ const init = function () {
   AOS.init();
 };
 
+window.addEventListener("load", () => {
+  AOS.refresh();
+});
+
 init();
-if (import.meta.hot) {
-  import.meta.hot.dispose(() => {
-    window.location.reload();
-  });
-}

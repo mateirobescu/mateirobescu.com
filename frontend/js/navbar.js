@@ -30,6 +30,7 @@ class Navbar {
 
   #allSections = document.querySelectorAll("section");
   #allLinks = document.querySelectorAll(".navbar__scroll");
+  #scrollSpyLinks = document.querySelectorAll(".scrollspy");
 
   #initMobileNav() {
     if (!this.#mobileNavPanel || !this.#mobileNavBtn) return;
@@ -154,7 +155,7 @@ class Navbar {
 
       const sectionId = entry.target.getAttribute("id");
 
-      this.#allLinks.forEach((link) => {
+      this.#scrollSpyLinks.forEach((link) => {
         link.classList.remove("active");
 
         const linkHref = link.getAttribute("href").slice(1);
