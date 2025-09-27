@@ -71,13 +71,13 @@
             <div class="card-links">
 
               {% if project.github_url %}
-                <a class="github" href="{{ project.github_url }}">
+                <a class="github" href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer"> 
                   <i class="devicon-github-original link-icon"></i>
                 </a>
               {% endif %}
               
               {% if project.live_demo_url %}
-                <a class="live-demo" href="{{ project.live_demo_url }}">
+                <a class="live-demo" href="{{ project.live_demo_url }}" target="_blank" rel="noopener noreferrer">
                   <span class="live-demo-text">Live demo</span>
                 </a>  
               {% endif %}
