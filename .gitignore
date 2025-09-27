@@ -37,4 +37,7 @@ build/
 .parcel-cache/
 
 # AWS
-.pem
+*.pem
+
+#
+*.sh
