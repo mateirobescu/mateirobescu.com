@@ -47,7 +47,7 @@ class Stack(models.Model):
 class Project(models.Model):
 	title = models.CharField(max_length=50, unique=True)
 	description = models.TextField()
-	image = CloudinaryField('img', upload_preset="projects_default")
+	image = CloudinaryField('img', null=True, blank=True, upload_preset="projects_default")
 	stacks = models.ManyToManyField(Stack, through="ProjectStack", related_name="projects")
 	github_url = models.URLField(null=True, blank=True)
 	live_demo_url = models.URLField(null=True, blank=True)
