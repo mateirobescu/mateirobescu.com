@@ -11,7 +11,7 @@ from .models import Stack, Project
 
 def home(request):
 	stacks = Stack.objects.all()
-	projects = Project.objects.all()
+	projects = Project.objects.filter(hide=False)
 	
 	return render(request, 'portfolio/home.html', {"stacks": stacks, "projects": projects})
 

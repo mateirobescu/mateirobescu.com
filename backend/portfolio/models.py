@@ -52,6 +52,7 @@ class Project(models.Model):
 	github_url = models.URLField(null=True, blank=True)
 	live_demo_url = models.URLField(null=True, blank=True)
 	order = models.PositiveIntegerField(default=0)
+	hide = models.BooleanField(default=False)
 	
 	class Meta:
 		ordering = ["order"]
