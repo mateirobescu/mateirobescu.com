@@ -17,8 +17,7 @@ class ProjectStackInline(admin.TabularInline):
     
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("title", "hide")
-    # hide.boolean = True
+    list_display = ("title", "active")
     search_fields = ("title",)
     inlines = [ProjectStackInline]
     ordering = ("order",)
