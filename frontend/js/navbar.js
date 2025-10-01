@@ -20,13 +20,16 @@ class Navbar {
   #mobileNavBtn = document.querySelector(".mobile__nav__btn");
   #mobileNavIsOpen = false;
 
-  //Themes
+  //THEMES
   #themeToggleBtns = document.querySelectorAll(".settings-theme__btn");
 
   #nav = document.querySelector(".header > .navbar");
   #header = document.querySelector(".header");
 
   #footerNav = document.querySelector(".footer__navbar");
+
+  // SCROLL
+  #scrollingTo;
 
   #allSections = document.querySelectorAll("section");
   #allLinks = document.querySelectorAll(".navbar__scroll");
@@ -133,6 +136,8 @@ class Navbar {
     );
 
     if (sectionToScroll) {
+      this.#scrollingTo = sectionId.slice(1);
+      this.#setActiveAnchor(this.#scrollingTo);
       sectionToScroll.scrollIntoView({ behavior: "smooth" });
     }
   }
@@ -151,22 +156,31 @@ class Navbar {
     this.#allSections.forEach((sect) => sectionObserver.observe(sect));
   }
 
+  #setActiveAnchor(sectionId) {
+    this.#scrollSpyLinks.forEach((link) => {
+      link.classList.remove("active");
+
+      const linkHref = link.getAttribute("href").slice(1);
+      if (linkHref === sectionId) link.classList.add("active");
+    });
+  }
+
   #setActiveSection(entries) {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
 
       const sectionId = entry.target.getAttribute("id");
+      if (this.#scrollingTo) {
+        if (this.#scrollingTo === sectionId) this.#scrollingTo = null;
+        return;
+      }
 
-      this.#scrollSpyLinks.forEach((link) => {
-        link.classList.remove("active");
-
-        const linkHref = link.getAttribute("href").slice(1);
-        if (linkHref === sectionId) link.classList.add("active");
-      });
+      this.#setActiveAnchor(sectionId);
     });
   }
 
   init() {
+    this.#scrollingTo = null;
     this.#initMobileNav();
     this.#initThemeToggle();
     this.#initCloseMobileNav();
