@@ -192,4 +192,14 @@
   </footer>
 
 </body>
+
+<script>
+  (function() {
+    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.querySelectorAll(".logo__img").forEach(img => {
+      img.src = dark ? img.dataset.srcDark : img.dataset.srcLight;
+    });
+  })();
+</script>
+
 </html>
