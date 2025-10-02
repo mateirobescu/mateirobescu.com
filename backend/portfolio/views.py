@@ -17,9 +17,9 @@ def home(request):
 
 
 
-def send_email(data, confiramtion=False):
+def send_email(data, confirmation=False):
 	
-	if confiramtion:
+	if confirmation:
 		subject = "We've received your message – Matei Robescu Portfolio"
 		mail_file = 'confirmation'
 		to_email = [data["email"]]
@@ -33,7 +33,7 @@ def send_email(data, confiramtion=False):
 	text_content = render_to_string(f"email/{mail_file}.txt", data)
 	html_content = render_to_string(f"email/{mail_file}.html", data)
 
-	msg = EmailMultiAlternatives(subject, text_content, from_email, to_email, reply_to=[config("PERSONAL_EMAIL")])
+	msg = EmailMultiAlternatives(subject, text_content, from_email, to_email, reply_to=[config("PERSONAL_EMAIL")] if confirmation else None)
 	msg.attach_alternative(html_content, "text/html")
 	msg.send()
 	
@@ -53,7 +53,7 @@ def contact_api(request):
 	
 	try:
 		send_email(data)
-		send_email(data, confiramtion=True)
+		send_email(data, confirmation=True)
 		
 		return JsonResponse({"success": "sent"})
 	except Exception as e:
