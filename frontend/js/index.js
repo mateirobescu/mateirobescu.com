@@ -3,8 +3,6 @@ import ThemeManager from "./themeManager";
 import Projects from "./projects";
 import Hero from "./hero";
 import Form from "./contact";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const resetScroll = function () {
   if ("scrollRestoration" in history) {
@@ -26,12 +24,7 @@ const init = function () {
   Projects.init();
   Hero.init();
   Form.init();
-  AOS.init();
 };
-
-window.addEventListener("load", () => {
-  AOS.refresh();
-});
 
 init();
 if (import.meta.hot) {
