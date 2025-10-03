@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mateirobescu.com 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-03 21:20+0300\n"
+"POT-Creation-Date: 2025-10-03 21:32+0300\n"
 "PO-Revision-Date: 2025-10-03 22:20+0300\n"
 "Last-Translator: Matei Robescu <EMAIL@ADDRESS>\n"
 "Language-Team: Romanian\n"
@@ -243,12 +243,16 @@ msgstr "Competențe"
 msgid "Awards and Certifications"
 msgstr "Premii și certificări"
 
-#: backend/portfolio/templates/portfolio/home.html:252
-#: backend/portfolio/templates/portfolio/home.html:262
+#: backend/portfolio/templates/portfolio/home.html:247
+msgid "Winner of <em>\"Realiști fără egal\"</em>, edition XI, Informatics discipline"
+msgstr "Câștigător al <em>„Realiști fără egal”</em>, ediția a XI-a, disciplina Informatică"
+
+#: backend/portfolio/templates/portfolio/home.html:251
+#: backend/portfolio/templates/portfolio/home.html:261
 msgid "Apr. 2024"
 msgstr "Apr. 2024"
 
-#: backend/portfolio/templates/portfolio/home.html:258
+#: backend/portfolio/templates/portfolio/home.html:257
 msgid ""
 "Participant of <em>\"Inovative Evaluation Methods\"</em>, University of "
 "Bucharest"
@@ -256,115 +260,115 @@ msgstr ""
 "Participant la <em>„Metode inovative de evaluare”</em>, Universitatea din "
 "București"
 
-#: backend/portfolio/templates/portfolio/home.html:269
+#: backend/portfolio/templates/portfolio/home.html:268
 msgid "European Computer Driving Licence (ECDL)"
 msgstr "Certificat European de Operare a Computerului (ECDL)"
 
-#: backend/portfolio/templates/portfolio/home.html:272
+#: backend/portfolio/templates/portfolio/home.html:271
 msgid "Mar. 2024"
 msgstr "Mar. 2024"
 
-#: backend/portfolio/templates/portfolio/home.html:279
+#: backend/portfolio/templates/portfolio/home.html:278
 msgid "Cambridge B1 Certificate"
 msgstr "Certificat Cambridge B1"
 
-#: backend/portfolio/templates/portfolio/home.html:282
+#: backend/portfolio/templates/portfolio/home.html:281
 msgid "Mar. 2018"
 msgstr "Mar. 2018"
 
-#: backend/portfolio/templates/portfolio/home.html:289
+#: backend/portfolio/templates/portfolio/home.html:288
 msgid "Languages"
 msgstr "Limbi"
 
-#: backend/portfolio/templates/portfolio/home.html:294
+#: backend/portfolio/templates/portfolio/home.html:293
 msgid "Romanian:"
 msgstr "Română:"
 
-#: backend/portfolio/templates/portfolio/home.html:306
+#: backend/portfolio/templates/portfolio/home.html:305
 msgid "English:"
 msgstr "Engleză:"
 
-#: backend/portfolio/templates/portfolio/home.html:318
+#: backend/portfolio/templates/portfolio/home.html:317
 msgid "Spanish:"
 msgstr "Spaniolă:"
 
-#: backend/portfolio/templates/portfolio/home.html:336
+#: backend/portfolio/templates/portfolio/home.html:335
 msgid "Let's get in touch!"
 msgstr "Hai să luăm legătura!"
 
-#: backend/portfolio/templates/portfolio/home.html:342
+#: backend/portfolio/templates/portfolio/home.html:341
 msgid "First Name"
 msgstr "Prenume"
 
-#: backend/portfolio/templates/portfolio/home.html:343
+#: backend/portfolio/templates/portfolio/home.html:342
 msgid "e.g., John"
 msgstr "ex.: Ion"
 
-#: backend/portfolio/templates/portfolio/home.html:344
-#: backend/portfolio/templates/portfolio/home.html:349
-#: backend/portfolio/templates/portfolio/home.html:365
+#: backend/portfolio/templates/portfolio/home.html:343
+#: backend/portfolio/templates/portfolio/home.html:348
+#: backend/portfolio/templates/portfolio/home.html:364
 msgid "This field shoud not be empty."
 msgstr "Acest câmp nu trebuie să fie gol."
 
-#: backend/portfolio/templates/portfolio/home.html:347
+#: backend/portfolio/templates/portfolio/home.html:346
 msgid "Last Name"
 msgstr "Nume"
 
-#: backend/portfolio/templates/portfolio/home.html:348
+#: backend/portfolio/templates/portfolio/home.html:347
 msgid "e.g., Doe"
 msgstr "ex.: Popescu"
 
-#: backend/portfolio/templates/portfolio/home.html:352
+#: backend/portfolio/templates/portfolio/home.html:351
 msgid "Email"
 msgstr "Email"
 
-#: backend/portfolio/templates/portfolio/home.html:353
+#: backend/portfolio/templates/portfolio/home.html:352
 msgid "e.g., john.doe@example.com"
 msgstr "ex.: ion.popescu@example.com"
 
-#: backend/portfolio/templates/portfolio/home.html:354
+#: backend/portfolio/templates/portfolio/home.html:353
 msgid "Please enter a valid email address."
 msgstr "Te rog introdu o adresă de email validă."
 
-#: backend/portfolio/templates/portfolio/home.html:357
+#: backend/portfolio/templates/portfolio/home.html:356
 msgid "Company (optional)"
 msgstr "Companie (opțional)"
 
-#: backend/portfolio/templates/portfolio/home.html:358
+#: backend/portfolio/templates/portfolio/home.html:357
 msgid "e.g., YourCompany Inc."
 msgstr "ex.: CompaniaTa SRL"
 
-#: backend/portfolio/templates/portfolio/home.html:359
+#: backend/portfolio/templates/portfolio/home.html:358
 msgid "No error."
 msgstr "Nicio eroare."
 
-#: backend/portfolio/templates/portfolio/home.html:362
+#: backend/portfolio/templates/portfolio/home.html:361
 msgid "Message"
 msgstr "Mesaj"
 
-#: backend/portfolio/templates/portfolio/home.html:364
+#: backend/portfolio/templates/portfolio/home.html:363
 msgid "Write your message here..."
 msgstr "Scrie mesajul tău aici..."
 
-#: backend/portfolio/templates/portfolio/home.html:366
+#: backend/portfolio/templates/portfolio/home.html:365
 msgid "We'll send you a quick confirmation email so you know it went through."
 msgstr ""
 "Îți vom trimite rapid un email de confirmare ca să știi că mesajul a fost "
 "trimis."
 
-#: backend/portfolio/templates/portfolio/home.html:367
+#: backend/portfolio/templates/portfolio/home.html:366
 msgid "Check your spam folder if you don't see it."
 msgstr "Verifică folderul Spam dacă nu îl vezi."
 
-#: backend/portfolio/templates/portfolio/home.html:371
+#: backend/portfolio/templates/portfolio/home.html:370
 #: backend/portfolio/templates/portfolio/home.html:377
 msgid "Send"
 msgstr "Trimite"
 
-#: backend/portfolio/templates/portfolio/home.html:372
+#: backend/portfolio/templates/portfolio/home.html:371
 msgid "Sent"
 msgstr "Trimis"
 
-#: backend/portfolio/templates/portfolio/home.html:373
+#: backend/portfolio/templates/portfolio/home.html:372
 msgid "Failed"
 msgstr "Eșuat"

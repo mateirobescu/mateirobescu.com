@@ -23,6 +23,10 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+LANGUAGE_CODE = "en"
+USE_I18N = True
+USE_L10N = True
+
 # Application definition
 
 INSTALLED_APPS = [
