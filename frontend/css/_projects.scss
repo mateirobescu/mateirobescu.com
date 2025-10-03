@@ -114,7 +114,7 @@
     justify-self: center;
     align-self: center;
     transition: transform 0.25s ease, box-shadow 0.25s ease,
-      opacity 0.3s ease-in-out;
+      opacity 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
     height: 100%;
     &.card--disabled {
       display: none;

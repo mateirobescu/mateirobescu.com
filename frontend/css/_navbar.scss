@@ -4,6 +4,7 @@
   background-color: var(--c-bg);
   height: max(3.5rem, 7vh);
   height: max(3.5rem, 7dvh);
+  transition: 0.3s ease, color 0.3s ease;
 
   display: grid;
   z-index: 2;
@@ -212,7 +213,8 @@
       top: 7dvh;
       bottom: 0;
       transform: translateY(calc(-120%));
-      transition: transform 0.7s ease, opacity 0.7s ease;
+      transition: transform 0.7s ease, opacity 0.7s ease,
+        background-color 0.3s ease, color 0.3s ease;
       opacity: 0;
       will-change: transform;
       z-index: 1;

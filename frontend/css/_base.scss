@@ -45,6 +45,15 @@ section {
   margin-bottom: 6rem;
 }
 
+html,
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logo__img {
+  transition: fill 0.3s ease, color 0.3s ease;
+}
+
 /* Firefox */
 html,
 body,
