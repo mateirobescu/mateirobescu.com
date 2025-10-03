@@ -7,7 +7,7 @@
   @media (max-width: variables.$bp-lg) {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1px 3fr;
-    row-gap: clamp(1rem, 1vh, 1.5rem);
+    row-gap: clamp(3rem, 3vw, 4.5rem);
   }
 
   column-gap: 2rem;
@@ -20,8 +20,12 @@
     display: flex;
     align-items: center;
 
+    @media (max-width: variables.$bp-lg) {
+      align-self: end;
+    }
+
     h1 {
-      font-size: clamp(2.5rem, 25vw, 9rem);
+      font-size: clamp(5rem, 10vw, 9rem);
       font-weight: 700;
       line-height: 0.9;
       letter-spacing: clamp(-0.3rem, -1vw, -0.5rem);
@@ -32,6 +36,9 @@
     justify-self: center;
 
     font-size: clamp(1rem, 2vw, 1.3rem);
+    @media (max-width: variables.$bp-lg) {
+      align-self: start;
+    }
 
     max-width: 60ch;
     overflow-wrap: break-word;
