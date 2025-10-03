@@ -2,204 +2,235 @@
 
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-    <meta charset="utf-8">
-    <meta name="color-scheme" content="light dark">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}mateirobescu.com{% endblock %}</title>
-    <meta name="description" content="Personal portfolio of Matei Robescu — showcasing web development projects, Django apps, and AWS cloud experiments.">
-    <meta name="keywords" content="Matei Robescu, portfolio, Django, AWS, Python, web development, projects">
-    <meta name="author" content="Matei Robescu">
+  <head>
+      <meta charset="utf-8">
+      <meta name="color-scheme" content="light dark">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>{% block title %}mateirobescu.com{% endblock %}</title>
+      <meta name="description" content="Personal portfolio of Matei Robescu — showcasing web development projects, Django apps, and AWS cloud experiments.">
+      <meta name="keywords" content="Matei Robescu, mateirobescu, portfolio, Django, AWS, Python, web development, projects">
+      <meta name="author" content="Matei Robescu">
 
 
-    <script>
-      try {
-        let s = localStorage.getItem('data-theme');
-        let preferedTheme = s ? s  : (
-          (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
-        );
-        if(preferedTheme)
-          document.documentElement.setAttribute('data-theme', theme);
-      } catch (e) {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.documentElement.setAttribute('data-theme', 'dark');
+      <script>
+        try {
+          let s = localStorage.getItem('data-theme');
+          let preferedTheme = s ? s  : (
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light")
+          );
+          if(preferedTheme)
+            document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
         }
-      }
-    </script>
+      </script>
 
-    <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
-    
-    <!-- SVG favicons for light/dark modes -->
-    <link rel="icon" href="{% static 'portfolio/images/logo_black.svg' %}" type="image/svg+xml" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="{% static 'portfolio/images/logo_white.svg' %}" type="image/svg+xml" media="(prefers-color-scheme: dark)">
-    
-    <!-- Safari pinned tab (monochrome SVG) -->
-    <link rel="mask-icon" href="{% static 'portfolio/images/logo_white.svg' %}" color="#000000">
-    
-    <!-- Apple touch icon (light default) -->
-    <link id="apple-touch-icon" rel="apple-touch-icon" sizes="180x180" href="{% static 'portfolio/images/logo_black180.png' %}">
-    <!-- Apple touch icon (dark, system) -->
-    <link rel="apple-touch-icon" sizes="180x180" media="(prefers-color-scheme: dark)" href="{% static 'portfolio/images/logo_white180.png' %}">
-
-    <!-- PNG favicon fallbacks -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'portfolio/images/logo_black32.png' %}" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'portfolio/images/logo_white16.png' %}" media="(prefers-color-scheme: dark)">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'portfolio/images/logo_black16.png' %}" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'portfolio/images/logo_white16.png' %}" media="(prefers-color-scheme: dark)">
-
-
-    {% comment %} DOWNLOAD IT {% endcomment %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-
-    <script type="module" src="{% static 'portfolio/ionicons/ionicons.esm.js' %}"></script>
-    <script nomodule src="{% static 'portfolio/ionicons/ionicons.js' %}"></script>
-
-    {% comment %} Maybe put it just in the home view {% endcomment %}
-    <link rel="stylesheet" href="{% static 'portfolio/devicon/devicon.min.css' %}">
-
-
-    <script type="module" src="{% static 'portfolio/js/index.js' %}" defer></script>
-
-
-
-</head>
-
-<body>
-
-  <div class="mobile__nav__panel disabled">
-    <nav class="navbar">
-      <ul class="navbar__list">
-        <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">home</a></li>
-        <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">projects</a></li>
-        <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#cv">CV</a></li>
-      </ul>
-    </nav>
-    <div class="contact-settings">
-      <a href="#contact" class="clear__btn contact-settings__btn navbar__scroll">
-        <span>Contact</span>
-      </a>
-      <div class="settings">
-          {% comment %} <div class="settings-lang">
-            <ul class="lang__list">
-              <li class="lang__item">
-                <button class="clear__btn navbar__link ">ro</button>
-              </li>
-              <li class="lang__item">
-                <span class="no-select" aria-hidden="true">/</span>
-              </li>
-              <li class="lang__item">
-                <button class="clear__btn navbar__link">en</button>
-              </li>
-            </ul>
-          </div> {% endcomment %}
-          
-          <div class="settings-theme">
-            <button class="settings-theme__btn clear__btn">
-              <ion-icon class="navbar__icon" name="invert-mode-outline"></ion-icon>
-            </button>
-          </div>
-      </div>
+      <link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}">
       
-    </div>
-  </div>
+      <!-- SVG favicons for light/dark modes -->
+      <link rel="icon" href="{% static 'portfolio/images/logo_black.svg' %}" type="image/svg+xml" media="(prefers-color-scheme: light)">
+      <link rel="icon" href="{% static 'portfolio/images/logo_white.svg' %}" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+      
+      <!-- Safari pinned tab (monochrome SVG) -->
+      <link rel="mask-icon" href="{% static 'portfolio/images/logo_white.svg' %}" color="#000000">
+      
+      <!-- Apple touch icon (light default) -->
+      <link id="apple-touch-icon" rel="apple-touch-icon" sizes="180x180" href="{% static 'portfolio/images/logo_black180.png' %}">
+      <!-- Apple touch icon (dark, system) -->
+      <link rel="apple-touch-icon" sizes="180x180" media="(prefers-color-scheme: dark)" href="{% static 'portfolio/images/logo_white180.png' %}">
 
-  <header class="header">
-    <div class="logo grid--left ">
-      <img class="logo__img" src="{% static 'portfolio/images/logo_black.svg' %}" data-src-light="{% static 'portfolio/images/logo_black.svg' %}" data-src-dark="{% static 'portfolio/images/logo_white.svg' %}" alt="Logo of mateirobescu.com" width="1024" height="526">
-    </div>
-    <nav class="navbar grid--center">
-      <ul class="navbar__list">
-        {% comment %} class active to show active traits {% endcomment %}
-        <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">home</a></li>
-        <li class="navbar__item no-select" aria-hidden="true">/</li>
-        <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">projects</a></li>
-        <li class="navbar__item no-select" aria-hidden="true">/</li>
-        <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#cv">CV</a></li>
-      </ul>
-    </nav>
+      <!-- PNG favicon fallbacks -->
+      <link rel="icon" type="image/png" sizes="32x32" href="{% static 'portfolio/images/logo_black32.png' %}" media="(prefers-color-scheme: light)">
+      <link rel="icon" type="image/png" sizes="32x32" href="{% static 'portfolio/images/logo_white16.png' %}" media="(prefers-color-scheme: dark)">
+      <link rel="icon" type="image/png" sizes="16x16" href="{% static 'portfolio/images/logo_black16.png' %}" media="(prefers-color-scheme: light)">
+      <link rel="icon" type="image/png" sizes="16x16" href="{% static 'portfolio/images/logo_white16.png' %}" media="(prefers-color-scheme: dark)">
 
-    <div class="contact-settings grid--right">
-      <div class="settings">
-        <div class="settings-panel">
-          {% comment %} <div class="settings-lang">
-            <ul class="lang__list">
-              <li class="lang__item">
-                <button class="clear__btn navbar__link ">ro</button>
-              </li>
-              <li class="lang__item">
-                <span class="no-select" aria-hidden="true">/</span>
-              </li>
-              <li class="lang__item">
-                <button class="clear__btn navbar__link">en</button>
-              </li>
-            </ul>
-          </div> {% endcomment %}
-          
-          <div class="settings-theme">
-            <button class="settings-theme__btn clear__btn">
-              <ion-icon class="navbar__icon" name="invert-mode-outline"></ion-icon>
-            </button>
+
+      {% comment %} DOWNLOAD IT {% endcomment %}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+      <script type="module" src="{% static 'portfolio/ionicons/ionicons.esm.js' %}"></script>
+      <script nomodule src="{% static 'portfolio/ionicons/ionicons.js' %}"></script>
+
+      {% comment %} Maybe put it just in the home view {% endcomment %}
+      <link rel="stylesheet" href="{% static 'portfolio/devicon/devicon.min.css' %}">
+
+
+      <script type="module" src="{% static 'portfolio/js/index.js' %}" defer></script>
+
+
+
+  </head>
+
+  <body>
+
+    <div class="mobile__nav__panel disabled">
+      <nav class="navbar">
+        <ul class="navbar__list">
+          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">home</a></li>
+          <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">projects</a></li>
+          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#cv">CV</a></li>
+        </ul>
+      </nav>
+      <div class="contact-settings">
+        <a href="#contact" class="clear__btn contact-settings__btn navbar__scroll">
+          <span>Contact</span>
+        </a>
+        <div class="settings">
+            {% comment %} <div class="settings-lang">
+              <ul class="lang__list">
+                <li class="lang__item">
+                  <button class="clear__btn navbar__link ">ro</button>
+                </li>
+                <li class="lang__item">
+                  <span class="no-select" aria-hidden="true">/</span>
+                </li>
+                <li class="lang__item">
+                  <button class="clear__btn navbar__link">en</button>
+                </li>
+              </ul>
+            </div> {% endcomment %}
+            
+            <div class="settings-theme">
+              <button class="settings-theme__btn clear__btn">
+                <ion-icon class="navbar__icon" name="invert-mode-outline"></ion-icon>
+              </button>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="logo grid--left ">
+        <svg xmlns="http://www.w3.org/2000/svg"
+        width="1024" height="526" viewBox="0 0 1024 526"
+        preserveAspectRatio="xMidYMid meet"
+        class="logo__img" role="img" aria-labelledby="logoTitle">
+          <title id="logoTitle">Logo of mateirobescu.com</title>
+
+          <g transform="translate(0,526) scale(0.1,-0.1)"
+            fill="currentColor" stroke="none">
+            <path d="M4137 5248 c-3 -7 -935 -1185 -2071 -2618 -1136 -1433 -2066 -2611
+            -2066 -2617 0 -10 106 -13 498 -13 l497 1 1230 1552 1230 1552 3 -1552 2
+            -1553 368 0 367 1 1230 1552 1230 1552 3 -1552 2 -1553 365 0 365 0 0 2631 0
+            2630 -22 -3 c-15 -2 -489 -593 -1597 -1991 l-1576 -1988 -3 1991 -2 1990 -24
+            0 c-13 0 -26 -6 -29 -12z"/>
+            <path d="M7710 4851 l0 -410 558 -4 c606 -4 590 -2 737 -64 255 -107 450 -357
+            494 -633 59 -363 -152 -739 -494 -883 -147 -62 -131 -60 -737 -64 l-558 -4 0
+            -410 0 -410 755 -974 c415 -536 755 -979 755 -985 0 -7 164 -10 511 -10 495 0
+            510 1 507 19 -2 10 -337 450 -746 977 -409 528 -743 963 -743 969 0 5 39 15
+            87 22 445 64 862 330 1122 715 320 475 370 1077 131 1596 -199 433 -597 773
+            -1055 902 -197 55 -262 60 -818 60 l-506 0 0 -409z"/>
+          </g>
+        </svg>
+      </div>
+      <nav class="navbar grid--center">
+        <ul class="navbar__list">
+          {% comment %} class active to show active traits {% endcomment %}
+          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">home</a></li>
+          <li class="navbar__item no-select" aria-hidden="true">/</li>
+          <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">projects</a></li>
+          <li class="navbar__item no-select" aria-hidden="true">/</li>
+          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#cv">CV</a></li>
+        </ul>
+      </nav>
+
+      <div class="contact-settings grid--right">
+        <div class="settings">
+          <div class="settings-panel">
+            {% comment %} <div class="settings-lang">
+              <ul class="lang__list">
+                <li class="lang__item">
+                  <button class="clear__btn navbar__link ">ro</button>
+                </li>
+                <li class="lang__item">
+                  <span class="no-select" aria-hidden="true">/</span>
+                </li>
+                <li class="lang__item">
+                  <button class="clear__btn navbar__link">en</button>
+                </li>
+              </ul>
+            </div> {% endcomment %}
+            
+            <div class="settings-theme">
+              <button class="settings-theme__btn clear__btn">
+                <ion-icon class="navbar__icon" name="invert-mode-outline"></ion-icon>
+              </button>
+            </div>
           </div>
         </div>
+        <a href="#contact" class="clear__btn contact-settings__btn navbar__scroll">
+          <span>Contact</span>
+        </a>
       </div>
-      <a href="#contact" class="clear__btn contact-settings__btn navbar__scroll">
-        <span>Contact</span>
-      </a>
-    </div>
 
-    <div class="mobile__nav grid--right">
-      <button class="mobile__nav__btn  clear__btn" aria-expanded="false" aria-controls="navigation-panel">
-        <ion-icon class="navbar__icon" name="menu-outline"></ion-icon>
-      </button>
-    </div>
+      <div class="mobile__nav grid--right">
+        <button class="mobile__nav__btn  clear__btn" aria-expanded="false" aria-controls="navigation-panel">
+          <ion-icon class="navbar__icon" name="menu-outline"></ion-icon>
+        </button>
+      </div>
 
-  </header>
+    </header>
 
-  {% block content %}{% endblock content %}
+    {% block content %}{% endblock content %}
 
-  <footer class="footer">
-    <div class="footer__container">
-      <div class="footer__img-nav-social">
-        <img class="logo__img" src="{% static 'portfolio/images/logo_black.svg' %}" data-src-light="{% static 'portfolio/images/logo_black.svg' %}" data-src-dark="{% static 'portfolio/images/logo_white.svg' %}" alt="Logo of mateirobescu.com" width="1024" height="526">
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__img-nav-social">
+          <svg xmlns="http://www.w3.org/2000/svg"
+          width="1024" height="526" viewBox="0 0 1024 526"
+          preserveAspectRatio="xMidYMid meet"
+          class="logo__img" role="img" aria-labelledby="logoTitle">
+            <title id="logoTitle">Logo of mateirobescu.com</title>
 
-        <div class="footer__social">
-          <a href="https://github.com/mateirobescu" target="_blank" rel="noopener noreferrer">
-            <ion-icon class="social__icon" name="logo-github"></ion-icon>
-          </a>
-          <a href="https://www.linkedin.com/in/matei-robescu-758665241/" target="_blank" rel="noopener noreferrer">
-            <ion-icon class="social__icon" name="logo-linkedin"></ion-icon>
-          </a>
-          <a href="mailto:matei.robescu@gmail.com" target="_blank" rel="noopener noreferrer">
-            <ion-icon class="social__icon" name="mail-outline"></ion-icon>
-          </a>
+            <g transform="translate(0,526) scale(0.1,-0.1)"
+              fill="currentColor" stroke="none">
+              <path d="M4137 5248 c-3 -7 -935 -1185 -2071 -2618 -1136 -1433 -2066 -2611
+              -2066 -2617 0 -10 106 -13 498 -13 l497 1 1230 1552 1230 1552 3 -1552 2
+              -1553 368 0 367 1 1230 1552 1230 1552 3 -1552 2 -1553 365 0 365 0 0 2631 0
+              2630 -22 -3 c-15 -2 -489 -593 -1597 -1991 l-1576 -1988 -3 1991 -2 1990 -24
+              0 c-13 0 -26 -6 -29 -12z"/>
+              <path d="M7710 4851 l0 -410 558 -4 c606 -4 590 -2 737 -64 255 -107 450 -357
+              494 -633 59 -363 -152 -739 -494 -883 -147 -62 -131 -60 -737 -64 l-558 -4 0
+              -410 0 -410 755 -974 c415 -536 755 -979 755 -985 0 -7 164 -10 511 -10 495 0
+              510 1 507 19 -2 10 -337 450 -746 977 -409 528 -743 963 -743 969 0 5 39 15
+              87 22 445 64 862 330 1122 715 320 475 370 1077 131 1596 -199 433 -597 773
+              -1055 902 -197 55 -262 60 -818 60 l-506 0 0 -409z"/>
+            </g>
+          </svg>
+
+          <div class="footer__social">
+            <a href="https://github.com/mateirobescu" target="_blank" rel="noopener noreferrer">
+              <ion-icon class="social__icon" name="logo-github"></ion-icon>
+            </a>
+            <a href="https://www.linkedin.com/in/matei-robescu-758665241/" target="_blank" rel="noopener noreferrer">
+              <ion-icon class="social__icon" name="logo-linkedin"></ion-icon>
+            </a>
+            <a href="mailto:matei.robescu@gmail.com" target="_blank" rel="noopener noreferrer">
+              <ion-icon class="social__icon" name="mail-outline"></ion-icon>
+            </a>
+          </div>
+
+          <nav>
+            <ul class="footer__navbar">
+              <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#home">home</a></li>
+              <li class="navbar__item "><a class="navbar__link navbar__scroll" href="#projects">projects</a></li>
+              <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#cv">CV</a></li>
+              <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#contact">Contact</a></li>
+            </ul>
+          </nav>
         </div>
-
-        <nav>
-          <ul class="footer__navbar">
-            <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#home">home</a></li>
-            <li class="navbar__item "><a class="navbar__link navbar__scroll" href="#projects">projects</a></li>
-            <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#cv">CV</a></li>
-            <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+        <div class="footer__copyright">
+          <span>&copy; {% now "Y" %} Matei Robescu. Built with Django.</span>
+        </div>
       </div>
-      <div class="footer__copyright">
-        <span>&copy; {% now "Y" %} Matei Robescu. Built with Django.</span>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-</body>
-
-<script>
-  (function() {
-    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    document.querySelectorAll(".logo__img").forEach(img => {
-      img.src = dark ? img.dataset.srcDark : img.dataset.srcLight;
-    });
-  })();
-</script>
+  </body>
 
 </html>
