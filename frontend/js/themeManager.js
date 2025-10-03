@@ -1,6 +1,5 @@
 class ThemeManager {
   #htmlDOC = document.documentElement;
-  #logos = document.querySelectorAll(".logo__img");
   #preferedTheme;
 
   #applyTheme() {
