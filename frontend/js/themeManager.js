@@ -6,15 +6,6 @@ class ThemeManager {
   #applyTheme() {
     this.#htmlDOC.setAttribute("data-theme", this.#preferedTheme);
     localStorage.setItem("data-theme", this.#preferedTheme);
-
-    // Logos handling
-    this.#logos.forEach(
-      (logo) =>
-        (logo.src =
-          this.#preferedTheme === "dark"
-            ? logo.dataset.srcDark
-            : logo.dataset.srcLight)
-    );
   }
 
   #getPreferedTheme() {
