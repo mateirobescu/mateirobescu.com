@@ -16,6 +16,7 @@ function getCookie(name) {
 class Form {
   #submitBtn = document.querySelector(".submit__btn");
   #form = document.querySelector(".contact__form");
+  #translations = document.querySelector(".btn-translations").dataset;
 
   #inputs = [];
 
@@ -29,7 +30,7 @@ class Form {
 
   #BTN_STATES = {
     0: {
-      html: `<span>Send</span>`,
+      html: `<span>${this.#translations.send}</span>`,
       disabled: false,
       timeout: 0,
       classToAdd: "",
@@ -50,14 +51,18 @@ class Form {
       classToRemove: "",
     },
     2: {
-      html: `<ion-icon name="checkmark-outline"></ion-icon><span>Sent</span>`,
+      html: `<ion-icon name="checkmark-outline"></ion-icon><span>${
+        this.#translations.sent
+      }</span>`,
       disabled: true,
       timeout: 5000,
       classToAdd: "deactivated",
       classToRemove: "",
     },
     3: {
-      html: `<ion-icon name="close-outline"></ion-icon><span>Failed</span>`,
+      html: `<ion-icon name="close-outline"></ion-icon><span>${
+        this.#translations.failed
+      }</span>`,
       disabled: true,
       timeout: 2000,
       classToAdd: "deactivated",

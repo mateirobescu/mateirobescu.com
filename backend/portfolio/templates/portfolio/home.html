@@ -1,29 +1,26 @@
 {% extends 'portfolio/base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Matei Robescu | Personal Portfolio{% endblock %}
+{% block title %}{% trans "Matei Robescu | Personal Portfolio" %}{% endblock %}
 
 {% block content %}
 <main class="main">
-  <section class="hero" id="home" aria-label="About me">
+  <section class="hero" id="home" aria-label="{% trans 'About me' %}">
     <div class="hero__title">
-      <h1>ABOUT<br>ME</h1>
+      <h1>{% blocktrans trimmed %}ABOUT<br>ME{% endblocktrans %}</h1>
     </div >
     <div class="divider" aria-hidden="true"></div>
     <div class="hero__description">
       <article class="about-me">
-        <p class="about-me__p intro-hi">Hi!</p>
-         <p class="about-me__p">My name is <strong>Matei Robescu</strong>, I'm 20 years old and currently
-          a 2nd year student at <strong>Faculty of Cybernetics, Statistics and Economic Informatics, ASE</strong>,
-          specializing in <em>Informatica Economică</em>.
+        <p class="about-me__p intro-hi">{% trans "Hi!" %}</p>
+         <p class="about-me__p">{% blocktrans trimmed %}My name is <strong>Matei Robescu</strong>, I'm 20 years old and currently a 2nd year student at <strong>Faculty of Cybernetics, Statistics and Economic Informatics, ASE</strong>, specializing in <em>Informatica Economică</em>.{% endblocktrans %}
          </p>
-         <p class="about-me__p"> I've been passionate about technology since I was really young and
-          this portfolio is my way of sharing that journey —
-          through the projects I am working on and the skills I continue to develop.
+         <p class="about-me__p">{% blocktrans trimmed %}I've been passionate about technology since I was really young and this portfolio is my way of sharing that journey — through the projects I am working on and the skills I continue to develop.{% endblocktrans %}
         </p>
       </article>
       <div class="my-skills">
-        <p class="my-skills__p">Technologies I've worked with — and I'm always open to learning more.</p>
+        <p class="my-skills__p">{% blocktrans trimmed %}Technologies I've worked with — and I'm always open to learning more.{% endblocktrans %}</p>
         <div class="my-skills__icons">
           
             <div class="skill" data-label="Python"><i class="devicon-python-plain" role="img" aria-label="Python"></i></div>
@@ -44,10 +41,10 @@
     </div>
     
   </section>
-  <section class="projects" id="projects" aria-label="Projects">
-    <h2 class="projects__header">Projects</h2>
+  <section class="projects" id="projects" aria-label="{% trans 'Projects' %}">
+    <h2 class="projects__header">{% trans "Projects" %}</h2>
     <div class="projects-stacks">
-      <button class="stack stack-all active-stack clear__btn" data-filter="all">All</button>
+      <button class="stack stack-all active-stack clear__btn" data-filter="all">{% trans "All" %}</button>
 
       {% for stack in stacks %}
         <button class="stack clear__btn" data-filter="{{ stack.name_lower }}">{{ stack.name }}</button>
@@ -84,7 +81,7 @@
               
               {% if project.live_demo_url %}
                 <a class="live-demo" href="{{ project.live_demo_url }}" target="_blank" rel="noopener noreferrer">
-                  <span class="live-demo-text">Live demo</span>
+                  <span class="live-demo-text">{% trans "Live demo" %}</span>
                 </a>  
               {% endif %}
               
@@ -92,23 +89,23 @@
           </div>
         </div>
         {% endfor %}  
-        <span class="no-projects disabled">I haven't built anything like this... yet!</span>
+        <span class="no-projects disabled">{% trans "I haven't built anything like this... yet!" %}</span>
     </div>
 
   </section>
 
-  <section class="cv" id="cv" aria-label="CV">
+  <section class="cv" id="cv" aria-label="{% trans 'CV' %}">
 
-    <h2 class="cv__header">CV</h2>
+    <h2 class="cv__header">{% trans "CV" %}</h2>
     <div class="cv__title-info">
-        <h1>Matei-Gabriel Robescu</h1>
+        <h1>{% trans "Matei-Gabriel Robescu" %}</h1>
         <div class="info">
           <div>
             <a
               href="https://mateirobescu.com/"
               target="_blank"
               rel="noopener noreferrer"
-              ><ion-icon name="globe-outline"></ion-icon>mateirobescu.com</a
+              ><ion-icon name="globe-outline"></ion-icon>{% trans "mateirobescu.com" %}</a
             >
           </div>
           <div>
@@ -117,7 +114,7 @@
               target="_blank"
               rel="noopener noreferrer"
               ><ion-icon name="mail-outline"></ion-icon
-              >matei.robescu@gmail.com</a
+              >{% trans "matei.robescu@gmail.com" %}</a
             >
           </div>
           <div>
@@ -125,7 +122,7 @@
               href="https://www.linkedin.com/in/matei-robescu-758665241/"
               target="_blank"
               rel="noopener noreferrer"
-              ><ion-icon name="logo-linkedin"></ion-icon>matei-robescu</a
+              ><ion-icon name="logo-linkedin"></ion-icon>{% trans "matei-robescu" %}</a
             >
           </div>
           <div>
@@ -133,7 +130,7 @@
               href="https://github.com/mateirobescu"
               target="_blank"
               rel="noopener noreferrer"
-              ><ion-icon name="logo-github"></ion-icon>mateirobescu</a
+              ><ion-icon name="logo-github"></ion-icon>{% trans "mateirobescu" %}</a
             >
           </div>
         </div>
@@ -141,88 +138,78 @@
       <div class="cv__content">
         <div class="cv__column">
           <div class="cv__section">
-            <h2>Education</h2>
+            <h2>{% trans "Education" %}</h2>
             <div class="spacer"></div>
             <div class="cv__items">
               <div class="cv__items">
                 <div class="cv__item">
-                  <h3>Bachelor degree in Computer Science</h3>
+                  <h3>{% trans "Bachelor degree in Computer Science" %}</h3>
                   <h4>
-                    Faculty of Cybernetics, Statistics and Economic Informatics
+                    {% trans "Faculty of Cybernetics, Statistics and Economic Informatics" %}
                   </h4>
                   <div class="cv__time-location">
                     <div class="time">
-                      <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> Oct.
-                      2024 - present
+                      <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2024 - present{% endblocktrans %}
                     </div>
                     <div class="location">
-                      <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon> Bucharest,
-                      RO
+                      <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Bucharest, RO{% endblocktrans %}
                     </div>
                   </div>
                   <ul>
                     <li>
-                      Relevant coursework: Data Structures and Algorithms, OOP,
-                      Information and communication technologies
+                      {% blocktrans trimmed %}Relevant coursework: Data Structures and Algorithms, OOP, Information and communication technologies{% endblocktrans %}
                     </li>
                   </ul>
                 </div>
                 <div class="cv__item">
-                  <h3>Baccalaureate Diploma (Mathematics-Informatics)</h3>
-                  <h4>National College Matei Basarab</h4>
-                  <div class="cv__time-location">
-                    <div class="time">
-                      <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> Oct.
-                      2020 - 2024
+                  <h3>{% trans "Baccalaureate Diploma (Mathematics-Informatics)" %}</h3>
+                  <h4>{% trans "National College Matei Basarab" %}</h4>
+                    <div class="cv__time-location">
+                      <div class="time">
+                      <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2020 - 2024{% endblocktrans %}
+                      </div>
+                      <div class="location">
+                      <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Bucharest, RO{% endblocktrans %}
+                      </div>
                     </div>
-                    <div class="location">
-                      <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon> Bucharest,
-                      RO
-                    </div>
-                  </div>
                   <ul>
-                    <li>Final Grade: 9.81 / 10</li>
+                    <li>{% blocktrans %}Final Grade: 9.81 / 10{% endblocktrans %}</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
           <div class="cv__section">
-            <h2>Projects</h2>
+            <h2>{% trans "Projects" %}</h2>
             <div class="spacer"></div>
             <div class="cv__items">
               <div class="cv__item">
-                <h3>mateirobescu.com Personal Portfolio</h3>
+                <h3>{% trans "mateirobescu.com Personal Portfolio" %}</h3>
                 <div class="cv__time-location">
                   <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> Oct.
-                    2025
+                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2025{% endblocktrans %}
                   </div>
                 </div>
 
                 <ul>
                   <li>
-                    Developed a full-stack portfolio web app with Python,
-                    Django, JavaScript, HTML/SCSS to showcase personal projects.
+                    {% blocktrans trimmed %}Developed a full-stack portfolio web app with Python, Django, JavaScript, HTML/SCSS to showcase personal projects.{% endblocktrans %}
                   </li>
                   <li>
-                    Deployed to AWS EC2 with Gunicorn + Nginx for production
-                    readiness.
+                    {% blocktrans trimmed %}Deployed to AWS EC2 with Gunicorn + Nginx for production readiness.{% endblocktrans %}
                   </li>
                   <li>
-                    Integrated PostgreSQL and Cloudinary for scalable data &amp;
-                    media management.
+                    {% blocktrans trimmed %}Integrated PostgreSQL and Cloudinary for scalable data &amp; media management.{% endblocktrans %}
                   </li>
                 </ul>
               </div>
             </div>
             <div class="cv__items">
               <div class="cv__item">
-                <h3>Python UPC-A Barcode Generator</h3>
+                <h3>{% trans "Python UPC-A Barcode Generator" %}</h3>
                 <div class="cv__time-location">
                   <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> Oct.
-                    2024
+                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2024{% endblocktrans %}
                   </div>
                 </div>
               </div>
@@ -232,7 +219,7 @@
 
         <div class="cv__column">
           <div class="cv__section">
-            <h2>Skills</h2>
+            <h2>{% trans "Skills" %}</h2>
             <div class="spacer"></div>
             <div class="cv__items">
               <div class="cv__item">
@@ -252,7 +239,7 @@
             </div>
           </div>
           <div class="cv__section">
-            <h2>Awards and Certifications</h2>
+            <h2>{% trans "Awards and Certifications" %}</h2>
             <div class="spacer"></div>
             <div class="cv__items">
               <div class="cv__item">
@@ -262,55 +249,49 @@
                 </h3>
                 <div class="cv__time-location">
                   <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> Apr.
-                    2024
+                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Apr. 2024{% endblocktrans %}
                   </div>
                 </div>
               </div>
               <div class="cv__item">
                 <h3>
-                  Participant of
-                  <em>"Inovative Evaluation Methods"</em>, University of
-                  Bucharest
+                  {% blocktrans trimmed %}Participant of <em>"Inovative Evaluation Methods"</em>, University of Bucharest{% endblocktrans %}
                 </h3>
                 <div class="cv__time-location">
                   <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> Apr.
-                    2024
+                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Apr. 2024{% endblocktrans %}
                   </div>
                 </div>
               </div>
             </div>
             <div class="cv__items">
               <div class="cv__item">
-                <h3>European Computer Driving Licence (ECDL)</h3>
+                <h3>{% trans "European Computer Driving Licence (ECDL)" %}</h3>
                 <div class="cv__time-location">
                   <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> Mar.
-                    2024
+                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Mar. 2024{% endblocktrans %}
                   </div>
                 </div>
               </div>
             </div>
             <div class="cv__items">
               <div class="cv__item">
-                <h3>Cambridge B1 Certificate</h3>
+                <h3>{% trans "Cambridge B1 Certificate" %}</h3>
                 <div class="cv__time-location">
                   <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> Mar.
-                    2018
+                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Mar. 2018{% endblocktrans %}
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="cv__section">
-            <h2>Languages</h2>
+            <h2>{% trans "Languages" %}</h2>
             <div class="spacer"></div>
             <div class="cv__items">
               <div class="cv__item">
                 <div class="language">
-                  <span>Romanian:</span>
+                  <span>{% trans "Romanian:" %}</span>
                   <div class="dots">
                     <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
                     <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
@@ -322,7 +303,7 @@
               </div>
               <div class="cv__item">
                 <div class="language">
-                  <span>English:</span>
+                  <span>{% trans "English:" %}</span>
                   <div class="dots">
                     <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
                     <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
@@ -334,7 +315,7 @@
               </div>
               <div class="cv__item">
                 <div class="language">
-                  <span>Spanish:</span>
+                  <span>{% trans "Spanish:" %}</span>
                   <div class="dots">
                     <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
                     <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
@@ -352,43 +333,49 @@
   </section>
 
   <section class="contact" id="contact">
-    <h2 class="contact__header">Let's get in touch!</h2>
+    <h2 class="contact__header">{% trans "Let's get in touch!" %}</h2>
 
     <form id="contact-form" class="contact__form" method="post" data-url="{% url 'contact_api' %}">
       {% csrf_token %}
 
       <div class="form__group">
-        <label for="first_name">First Name</label>
-        <input class="form__input" type="text" id="first_name" name="first_name" placeholder="e.g., John" required/>
-        <small class="error-message">This field shoud not be empty.</small>
+        <label for="first_name">{% trans "First Name" %}</label>
+        <input class="form__input" type="text" id="first_name" name="first_name" placeholder="{% trans 'e.g., John' %}" required/>
+        <small class="error-message">{% trans "This field shoud not be empty." %}</small>
       </div>
       <div class="form__group">
-        <label for="last_name">Last Name</label>
-        <input class="form__input" type="text" id="last_name" name="last_name" placeholder="e.g., Doe" required />
-        <small class="error-message">This field shoud not be empty.</small>
+        <label for="last_name">{% trans "Last Name" %}</label>
+        <input class="form__input" type="text" id="last_name" name="last_name" placeholder="{% trans 'e.g., Doe' %}" required />
+        <small class="error-message">{% trans "This field shoud not be empty." %}</small>
       </div>
       <div class="form__group">
-        <label for="email">Email</label>
-        <input class="form__input" type="email" id="email" name="email" placeholder="e.g., john.doe@example.com" required />
-        <small class="error-message">Please enter a valid email address.</small>
+        <label for="email">{% trans "Email" %}</label>
+        <input class="form__input" type="email" id="email" name="email" placeholder="{% trans 'e.g., john.doe@example.com' %}" required />
+        <small class="error-message">{% trans "Please enter a valid email address." %}</small>
       </div>
       <div class="form__group">
-        <label for="company">Company (optional)</label>
-        <input class="form__input" type="text" id="company" name="company" placeholder="e.g., YourCompany Inc."/>
-        <small class="error-message">No error.</small>
+        <label for="company">{% trans "Company (optional)" %}</label>
+        <input class="form__input" type="text" id="company" name="company" placeholder="{% trans 'e.g., YourCompany Inc.' %}"/>
+        <small class="error-message">{% trans "No error." %}</small>
       </div>
       <div class="form__group message">
-        <label for="message">Message</label>
+        <label for="message">{% trans "Message" %}</label>
         <textarea class="form__input" id="message" name="message" rows="5" 
-              placeholder="Write your message here..." required></textarea>
-        <small class="error-message">This field shoud not be empty.</small>
-        <p class="confirmation-disclaimer">We'll send you a quick confirmation email so you know it went through. </p>
-        <p class="confirmation-disclaimer">Check your spam folder if you don't see it.</p>
+              placeholder="{% trans 'Write your message here...' %}" required></textarea>
+        <small class="error-message">{% trans "This field shoud not be empty." %}</small>
+        <p class="confirmation-disclaimer">{% trans "We'll send you a quick confirmation email so you know it went through." %}</p>
+        <p class="confirmation-disclaimer">{% trans "Check your spam folder if you don't see it." %}</p>
+      </div>
+
+      <div class="btn-translations"
+            data-send="{% trans 'Send' %}"
+            data-sent="{% trans 'Sent' %}"
+            data-failed="{% trans 'Failed' %}">
       </div>
 
       <div class="submit">
         <button type="submit" class="submit__btn clear__btn contact-settings__btn ">
-          <span>Sent</span>
+          <span>{% trans "Send" %}</span>
         </button>
       </div>
     </form>

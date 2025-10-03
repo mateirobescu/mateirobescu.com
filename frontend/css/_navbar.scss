@@ -161,8 +161,12 @@
 .lang__list {
   list-style: none;
   display: flex;
-  align-items: center;
+  // align-items: center;
   gap: variables.$spacer-1;
+}
+
+.lang__item button {
+  display: inline-flex;
 }
 
 .mobile__nav {

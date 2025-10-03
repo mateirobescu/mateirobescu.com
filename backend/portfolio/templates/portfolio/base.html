@@ -1,16 +1,16 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="{{ LANGUAGE_CODE }}" data-theme="light">
   <head>
       <meta charset="utf-8">
       <meta name="color-scheme" content="light dark">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>{% block title %}mateirobescu.com{% endblock %}</title>
-      <meta name="description" content="Personal portfolio of Matei Robescu — showcasing web development projects, Django apps, and AWS cloud experiments.">
-      <meta name="keywords" content="Matei Robescu, mateirobescu, portfolio, Django, AWS, Python, web development, projects">
-      <meta name="author" content="Matei Robescu">
-
+      <title>{% block title %}{% trans "mateirobescu.com" %}{% endblock %}</title>
+      <meta name="description" content="{% trans 'Personal portfolio of Matei Robescu — showcasing web development projects, Django apps, and AWS cloud experiments.' %}">
+      <meta name="keywords" content="{% trans 'Matei Robescu, mateirobescu, portfolio, Django, AWS, Python, web development, projects' %}">
+      <meta name="author" content="{% trans 'Matei Robescu' %}">
 
       <script>
         try {
@@ -66,34 +66,47 @@
 
   </head>
 
+  <script>
+    function setLang(langCode) {
+      const input = document.getElementById("lang-input");
+      const form = document.getElementById("lang-form");
+      input.value = langCode;
+      form.submit();
+    }
+  </script>
+
   <body>
+    <form id="lang-form" action="{% url 'set_language' %}" method="post" style="display:none;">
+      {% csrf_token %}
+      <input type="hidden" name="language" id="lang-input">
+    </form>
 
     <div class="mobile__nav__panel disabled">
       <nav class="navbar">
         <ul class="navbar__list">
-          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">home</a></li>
-          <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">projects</a></li>
-          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#cv">CV</a></li>
+          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">{% trans "home" %}</a></li>
+          <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">{% trans "projects" %}</a></li>
+          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#cv">{% trans "CV" %}</a></li>
         </ul>
       </nav>
       <div class="contact-settings">
         <a href="#contact" class="clear__btn contact-settings__btn navbar__scroll">
-          <span>Contact</span>
+          <span>{% trans "Contact" %}</span>
         </a>
         <div class="settings">
-            {% comment %} <div class="settings-lang">
+             <div class="settings-lang">
               <ul class="lang__list">
                 <li class="lang__item">
-                  <button class="clear__btn navbar__link ">ro</button>
+                  <button class="clear__btn navbar__link {% if LANGUAGE_CODE == 'ro' %}active{% endif %}" onclick="setLang('ro')">ro</button>
                 </li>
                 <li class="lang__item">
                   <span class="no-select" aria-hidden="true">/</span>
                 </li>
                 <li class="lang__item">
-                  <button class="clear__btn navbar__link">en</button>
+                  <button class="clear__btn navbar__link {% if LANGUAGE_CODE == 'en' %}active{% endif %}" onclick="setLang('en')">en</button>
                 </li>
               </ul>
-            </div> {% endcomment %}
+            </div>
             
             <div class="settings-theme">
               <button class="settings-theme__btn clear__btn">
@@ -111,7 +124,7 @@
         width="1024" height="526" viewBox="0 0 1024 526"
         preserveAspectRatio="xMidYMid meet"
         class="logo__img" role="img" aria-labelledby="logoTitle">
-          <title id="logoTitle">Logo of mateirobescu.com</title>
+          <title id="logoTitle">{% trans "Logo of mateirobescu.com" %}</title>
 
           <g transform="translate(0,526) scale(0.1,-0.1)"
             fill="currentColor" stroke="none">
@@ -132,30 +145,30 @@
       <nav class="navbar grid--center">
         <ul class="navbar__list">
           {% comment %} class active to show active traits {% endcomment %}
-          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">home</a></li>
+          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#home">{% trans "home" %}</a></li>
           <li class="navbar__item no-select" aria-hidden="true">/</li>
-          <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">projects</a></li>
+          <li class="navbar__item "><a class="navbar__link navbar__scroll scrollspy" href="#projects">{% trans "projects" %}</a></li>
           <li class="navbar__item no-select" aria-hidden="true">/</li>
-          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#cv">CV</a></li>
+          <li class="navbar__item"><a class="navbar__link navbar__scroll scrollspy" href="#cv">{% trans "CV" %}</a></li>
         </ul>
       </nav>
 
       <div class="contact-settings grid--right">
         <div class="settings">
           <div class="settings-panel">
-            {% comment %} <div class="settings-lang">
+           <div class="settings-lang">
               <ul class="lang__list">
                 <li class="lang__item">
-                  <button class="clear__btn navbar__link ">ro</button>
+                  <button class="clear__btn navbar__link {% if LANGUAGE_CODE == 'ro' %}active{% endif %}" onclick="setLang('ro')">ro</button>
                 </li>
                 <li class="lang__item">
                   <span class="no-select" aria-hidden="true">/</span>
                 </li>
                 <li class="lang__item">
-                  <button class="clear__btn navbar__link">en</button>
+                  <button class="clear__btn navbar__link {% if LANGUAGE_CODE == 'en' %}active{% endif %}" onclick="setLang('en')">en</button>
                 </li>
               </ul>
-            </div> {% endcomment %}
+            </div>
             
             <div class="settings-theme">
               <button class="settings-theme__btn clear__btn">
@@ -165,7 +178,7 @@
           </div>
         </div>
         <a href="#contact" class="clear__btn contact-settings__btn navbar__scroll">
-          <span>Contact</span>
+          <span>{% trans "Contact" %}</span>
         </a>
       </div>
 
@@ -186,7 +199,7 @@
           width="1024" height="526" viewBox="0 0 1024 526"
           preserveAspectRatio="xMidYMid meet"
           class="logo__img" role="img" aria-labelledby="logoTitle">
-            <title id="logoTitle">Logo of mateirobescu.com</title>
+          <title id="logoTitle">{% trans "Logo of mateirobescu.com" %}</title>
 
             <g transform="translate(0,526) scale(0.1,-0.1)"
               fill="currentColor" stroke="none">
@@ -218,15 +231,16 @@
 
           <nav>
             <ul class="footer__navbar">
-              <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#home">home</a></li>
-              <li class="navbar__item "><a class="navbar__link navbar__scroll" href="#projects">projects</a></li>
-              <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#cv">CV</a></li>
-              <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#contact">Contact</a></li>
+              <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#home">{% trans "home" %}</a></li>
+              <li class="navbar__item "><a class="navbar__link navbar__scroll" href="#projects">{% trans "projects" %}</a></li>
+              <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#cv">{% trans "CV" %}</a></li>
+              <li class="navbar__item"><a class="navbar__link navbar__scroll" href="#contact">{% trans "Contact" %}</a></li>
             </ul>
           </nav>
         </div>
         <div class="footer__copyright">
-          <span>&copy; {% now "Y" %} Matei Robescu. Built with Django.</span>
+          {% now "Y" as current_year %}
+          <span>&copy; {% blocktrans with current_year=current_year %}{{ current_year }} Matei Robescu. Built with Django.{% endblocktrans %}</span>
         </div>
       </div>
     </footer>
