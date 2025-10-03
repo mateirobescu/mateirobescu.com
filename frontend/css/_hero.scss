@@ -20,18 +20,11 @@
     display: flex;
     align-items: center;
 
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-
-    // Change it only for safari as clamp is a bit different
-    @supports (-webkit-hyphens: none) and (not (-ms-ime-align: auto)) {
-      font-size: clamp(2.5rem, 6vw, 6rem);
-    }
-
-    font-weight: 700;
-    line-height: 0.9;
-    letter-spacing: clamp(-0.3rem, -1vw, -0.5rem);
-
-    @media (max-width: variables.$bp-lg) {
+    h1 {
+      font-size: clamp(2.5rem, 25vw, 9rem);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: clamp(-0.3rem, -1vw, -0.5rem);
     }
   }
 
