@@ -31,7 +31,14 @@ const ScrollLock = (() => {
       document.body.style.left = "";
       document.body.style.right = "";
       document.body.style.width = "";
-      window.scrollTo(0, y);
+
+      const html = document.documentElement;
+      const prevScrollBehavior = html.style.scrollBehavior;
+      html.style.scrollBehavior = "auto";
+
+      window.scrollTo({ top: y, left: 0 });
+
+      html.style.scrollBehavior = prevScrollBehavior || "";
     },
   };
 })();
