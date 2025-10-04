@@ -140,6 +140,7 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease,
       opacity 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
     height: 100%;
+
     &.card--disabled {
       display: none;
       pointer-events: none;
@@ -172,6 +173,7 @@
     &-title {
       font-size: clamp(1.5rem, 3vw, 2rem);
       text-align: center;
+      margin-bottom: 0.4rem;
     }
 
     &-description {
@@ -181,6 +183,7 @@
       overflow: hidden;
       margin-bottom: clamp(1.5rem, 4vh, 2rem);
       font-size: clamp(1rem, 2vw, 1.3rem);
+      line-height: 1.5;
 
       height: 5lh;
 

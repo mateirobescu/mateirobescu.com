@@ -23,7 +23,7 @@
 .cv__header {
   font-size: clamp(2rem, 6vw, 4rem);
   text-transform: uppercase;
-  margin-bottom: clamp(2rem, 8vw, 4rem);
+  margin-bottom: clamp(0.5rem, 2vh, 1rem);
 }
 
 .info {
@@ -47,7 +47,8 @@
 }
 
 .cv__content {
-  padding-top: 3rem;
+  padding-top: clamp(1.5rem, 3vw, 3rem);
+
   flex-grow: 1;
   display: grid;
   grid-template-columns: 3fr 2fr;
@@ -82,8 +83,12 @@
 .cv__items {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.cv__items.languages {
   gap: 1rem;
-  margin-top: 1rem;
 }
 
 .cv__time-location {
@@ -109,6 +114,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 .cv__content li {
