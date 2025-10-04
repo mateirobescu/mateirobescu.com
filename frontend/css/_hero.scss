@@ -4,17 +4,30 @@
   position: relative;
   display: grid;
   grid-template-columns: 2fr 1px 3fr;
-  @media (max-width: variables.$bp-lg) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1px 3fr;
-    row-gap: clamp(3rem, 3vw, 4.5rem);
-  }
 
   column-gap: 2rem;
   align-items: center;
   height: calc(100vh - 5rem);
   height: calc(100dvh - 5rem);
-  min-height: 45rem;
+
+  @media (max-width: variables.$bp-lg) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1px 3fr;
+    row-gap: clamp(3rem, 3vw, 4.5rem);
+    height: 47.5rem;
+  }
+
+  @media (max-width: variables.$bp-md) {
+    height: 42.5rem;
+  }
+
+  @media (max-width: variables.$bp-xs) {
+    height: 50rem;
+  }
+
+  @media (max-width: variables.$bp-xxs) {
+    height: 52.5rem;
+  }
 
   &__title {
     display: flex;
