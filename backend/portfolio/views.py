@@ -23,17 +23,19 @@ def send_email(data, confirmation=False):
 		subject = "We've received your message – Matei Robescu Portfolio"
 		mail_file = 'confirmation'
 		to_email = [data["email"]]
+		reply_email = [config("PERSONAL_EMAIL")]
 	else:
 		subject = "You have received a new message from your Portfolio"
 		mail_file = 'contact'
 		to_email = [config("PERSONAL_EMAIL")]
+		reply_email = [data["email"]]
 		
 	from_email = config("DEFAULT_FROM_EMAIL")
 	
 	text_content = render_to_string(f"email/{mail_file}.txt", data)
 	html_content = render_to_string(f"email/{mail_file}.html", data)
 
-	msg = EmailMultiAlternatives(subject, text_content, from_email, to_email, reply_to=[config("PERSONAL_EMAIL")] if confirmation else None)
+	msg = EmailMultiAlternatives(subject, text_content, from_email, to_email, reply_to=reply_email)
 	msg.attach_alternative(html_content, "text/html")
 	msg.send()
 	
