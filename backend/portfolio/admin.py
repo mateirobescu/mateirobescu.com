@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Stack, Project, ProjectStack
+from .models import Stack, Project, ProjectStack, EmailLog
+
 
 # Register your models here.
 @admin.register(Stack)
@@ -21,3 +22,18 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ("title",)
     inlines = [ProjectStackInline]
     ordering = ("order",)
+
+@admin.register(EmailLog)
+class EmailLogAdmin(admin.ModelAdmin):
+    list_display = ("send_time", "sender_email")
+    search_fields = ("sender_email",)
+    ordering = ("send_time",)
+    
+    def has_add_permission(self, request):
+        return False
+    
+    def has_change_permission(self, request, obj=None):
+        return False
+    
+    def has_delete_permission(self, request, obj=None):
+        return False

@@ -1,13 +1,15 @@
+import datetime
 import re
 
 from decouple import config
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.utils import timezone
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
-from .models import Stack, Project
+from .models import Stack, Project, EmailLog
 
 def home(request):
 	stacks = Stack.objects.all()
@@ -39,7 +41,29 @@ def send_email(data, confirmation=False):
 	msg.attach_alternative(html_content, "text/html")
 	msg.send()
 	
+	
+def log_mail(data, error_msg=None):
+	first_name = data.get("first_name", "")
+	last_name = data.get("last_name", "")
+	company = data.get("company", "")
+	message = data.get("message", "")
+	sender_email = data.get("email", "unknown@example.com")
 
+	info = f"""\
+First Name: {first_name}
+Last Name: {last_name}
+Company: {company}
+
+{message}
+"""
+	
+	EmailLog.objects.create(
+		sender_email=sender_email,
+		send_time=timezone.now(),  # ✅ aware datetime
+		info=info.strip(),
+		status="sent" if not error_msg else "failed",
+		error_message=error_msg or "",
+	)
 
 @require_POST
 def contact_api(request):
@@ -51,13 +75,12 @@ def contact_api(request):
 	if not (data["first_name"] and data["last_name"] and data["email"] and data["message"]) or not re.match(r"[^\s@]+@[^\s@]+\.[^\s@]+", data["email"]):
 		return JsonResponse({"error": "Missing required fields"}, status=400)
 	
-
-	
 	try:
 		send_email(data)
 		send_email(data, confirmation=True)
+		log_mail(data)
 		
 		return JsonResponse({"success": "sent"})
-	except Exception as e:
-		print(e)
-		return JsonResponse({"error": str(e)}, status=500)
+	except Exception as error_msg:
+		log_mail(data, error_msg)
+		return JsonResponse({"error": str(error_msg)}, status=500)

@@ -89,3 +89,22 @@ class ProjectStack(models.Model):
 	
 	def __str__(self):
 		return f"{self.project.title} - {self.stack.name} ({self.order})"
+	
+
+class EmailLog(models.Model):
+	sender_email = models.EmailField()
+	send_time = models.DateTimeField()
+	info = models.TextField()
+	status = models.CharField(max_length=20, choices=[
+		("sent", "Sent"),
+		("failed", "Failed"),
+	])
+	error_message = models.TextField(blank=True, null=True)
+	
+	class Meta:
+		ordering = ["-send_time"]
+		verbose_name = "Email Log"
+		verbose_name_plural = "Email Logs"
+	
+	def __str__(self):
+		return f"{self.sender_email} — {self.status} at {self.send_time:%Y-%m-%d %H:%M}"
