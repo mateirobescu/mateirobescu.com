@@ -12,13 +12,14 @@
 
   column-gap: 2rem;
   align-items: center;
-  height: 93vh;
-  height: 93dvh;
+  height: calc(100vh - 5rem);
+  height: calc(100dvh - 5rem);
   min-height: 45rem;
 
   &__title {
     display: flex;
     align-items: center;
+    padding-top: 3rem;
 
     @media (max-width: variables.$bp-lg) {
       align-self: end;
