@@ -38,6 +38,12 @@
       transition: 0.3s color ease-in-out, 0.3s background-color ease-in-out,
         0.3s border-color ease-in-out, 0.3s transform ease-in-out;
 
+      &--hidden {
+        display: none;
+        opacity: 0;
+        pointer-events: none;
+      }
+
       &:hover {
         @include active-stack;
       }
@@ -106,6 +112,24 @@
       }
     }
   }
+
+  .more-stacks__btn {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1;
+
+    transition: 0.3s color ease-in-out;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    vertical-align: middle;
+
+    &:hover {
+      color: var(--c-text-secondary);
+    }
+  }
+
   .card {
     background-color: var(--c-bg);
     border: 4px solid var(--c-text);

@@ -9,6 +9,8 @@ class Projects {
   #projectCards = document.querySelectorAll(".card");
   #noProjectsText = document.querySelector(".no-projects");
 
+  #moreStacksBtn = document.querySelector(".more-stacks__btn");
+
   #activeStacks = new Set();
 
   constructor() {}
@@ -101,12 +103,28 @@ class Projects {
     else this.#noProjectsText.classList.add("disabled");
   }
 
+  #initMoreStacksBtn() {
+    this.#moreStacksBtn.addEventListener(
+      "click",
+      this.#showMoreOrLessStack.bind(this)
+    );
+  }
+
+  #showMoreOrLessStack() {
+    this.#stackBtns
+      .slice(3)
+      .forEach((btn) => btn.classList.toggle("stack--hidden"));
+    this.#moreStacksBtn.innerHTML =
+      this.#moreStacksBtn.textContent === "+" ? "-" : "+";
+  }
+
   init() {
     if (this.#allStacksBtn) {
       this.#activeStacks.add(this.#allStacksBtn.dataset.filter);
     }
     this.#initStateManager();
     this.#filterProjects();
+    this.#initMoreStacksBtn();
   }
 }
 

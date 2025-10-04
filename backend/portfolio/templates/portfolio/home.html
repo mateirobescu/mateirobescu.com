@@ -47,8 +47,10 @@
       <button class="stack stack-all active-stack clear__btn" data-filter="all">{% trans "All" %}</button>
 
       {% for stack in stacks %}
-        <button class="stack clear__btn" data-filter="{{ stack.name_lower }}">{{ stack.name }}</button>
+        <button class="stack clear__btn {% if forloop.counter > 3 %}stack--hidden{% endif %}" data-filter="{{ stack.name_lower }}">{{ stack.name }}</button>
       {% endfor %}
+
+      <button class="more-stacks__btn clear__btn">+</button>
 
       
     </div>
