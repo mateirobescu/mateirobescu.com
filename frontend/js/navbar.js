@@ -13,6 +13,29 @@ const prefersReduced = function () {
   );
 };
 
+// Scroll lock util
+const ScrollLock = (() => {
+  let y = 0;
+  return {
+    lock() {
+      y = window.scrollY || document.documentElement.scrollTop;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${y}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
+    },
+    unlock() {
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+      window.scrollTo(0, y);
+    },
+  };
+})();
+
 class Navbar {
   // Mobile Navigation
   #mobileNavPanel = document.querySelector(".mobile__nav__panel");
@@ -64,8 +87,10 @@ class Navbar {
     this.#mobileNavPanel.classList.toggle("mobile-open");
 
     // Enabling mobileNavPanel functions
-    if (this.#mobileNavIsOpen)
+    if (this.#mobileNavIsOpen) {
       this.#mobileNavPanel.classList.remove("disabled");
+      ScrollLock.lock();
+    } else ScrollLock.unlock();
 
     // If reduce motion is preferred disable imediately, otherwise the panel will be disabled later on, after the transition ends
     if (prefersReduced() && !this.#mobileNavIsOpen)
