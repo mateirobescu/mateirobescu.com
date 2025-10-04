@@ -7,8 +7,8 @@
 
   column-gap: 2rem;
   align-items: center;
-  height: calc(100vh - 5rem);
-  height: calc(100dvh - 5rem);
+  height: calc(100vh - 4.5rem);
+  height: calc(100dvh - 4.5rem);
 
   @media (max-width: variables.$bp-lg) {
     grid-template-columns: 1fr;

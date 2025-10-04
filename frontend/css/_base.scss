@@ -35,13 +35,11 @@ html {
   max-width: 80rem;
   margin: auto;
   padding: 0 clamp(1rem, 5vw, 3rem);
-  padding-top: max(3.5rem, 7vh);
-  padding-top: max(3.5rem, 7dvh);
+  padding-top: 4.5rem;
 }
 
 section {
-  scroll-margin-top: max(3.5rem, 7vh);
-  scroll-margin-top: max(3.5rem, 7dvh);
+  scroll-margin-top: 4.5rem;
   margin-bottom: 6rem;
 }
 
