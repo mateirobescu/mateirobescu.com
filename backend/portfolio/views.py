@@ -8,7 +8,6 @@ from django.utils import timezone
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
-from django_ratelimit.decorators import ratelimit
 
 from .models import Stack, Project, EmailLog
 
@@ -67,7 +66,6 @@ Company: {company}
 	)
 
 @require_POST
-@ratelimit(key='ip', rate='3/m', block=True)
 def contact_api(request):
 	if request.POST.get("website"):
 		return JsonResponse({"error": "Invalid submission."}, status=400)

@@ -10,4 +10,3 @@ pillow==11.3.0
 cloudinary==1.44.1
 dj-database-url==3.0.1
 django-modeltranslation==0.19.17
-django-ratelimit==4.1.0
