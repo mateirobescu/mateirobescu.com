@@ -6,6 +6,12 @@
   text-decoration: none;
 }
 
+.cv a:focus-visible {
+  outline: 2px solid var(--c-text-secondary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 .cv {
   font-size: clamp(1rem, 2vw, 1.3rem);
   display: flex;
@@ -32,6 +38,7 @@
   @media (max-width: variables.$bp-xs) {
     grid-template-columns: 1fr;
   }
+  justify-items: start;
 
   row-gap: 0.75rem;
   padding-bottom: 1.5rem;

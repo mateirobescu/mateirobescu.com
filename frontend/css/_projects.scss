@@ -247,6 +247,17 @@
           justify-self: center;
           color: var(--c-text);
           align-items: center;
+          transition: 0.3s color ease-in-out;
+        }
+
+        &:hover {
+          color: var(--c-text-secondary);
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--c-text-secondary);
+          outline-offset: 3px;
+          border-radius: 4px;
         }
       }
 
