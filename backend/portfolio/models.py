@@ -5,7 +5,7 @@ from cloudinary.models import CloudinaryField
 from cloudinary.uploader import destroy
 from django.db import models
 from django.core.validators import RegexValidator
-from django.db.models.signals import post_delete
+from django.db.models.signals import post_delete, pre_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 
@@ -73,10 +73,25 @@ class Project(models.Model):
 @receiver(post_delete, sender=Project)
 def delete_project_image(sender, instance, **kwargs):
 	if instance.image and getattr(instance.image, "public_id", None):
-		public_id = str(instance.image)
-		print("deleted",public_id)
-		print(destroy(public_id))
-			
+		public_id = str(instance.image.public_id)
+		print(destroy(public_id, invalidate=True))
+		
+@receiver(pre_save, sender=Project)
+def delete_changed_project_image(sender, instance, **kwargs):
+	if not instance.pk:
+		return
+	
+	try:
+		old_image = sender.objects.get(pk=instance.pk).image
+	except sender.DoesNotExist:
+		return
+	
+	new_image = instance.image
+	if old_image and old_image != new_image:
+		if getattr(old_image, "public_id", None):
+			public_id = str(old_image.public_id)
+			print(destroy(public_id, invalidate=True))
+	
 		
 class ProjectStack(models.Model):
 	project = models.ForeignKey("Project", on_delete=models.CASCADE, related_name="projects_stacks")

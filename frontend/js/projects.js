@@ -114,8 +114,13 @@ class Projects {
     this.#stackBtns
       .slice(3)
       .forEach((btn) => btn.classList.toggle("stack--hidden"));
-    this.#moreStacksBtn.innerHTML =
-      this.#moreStacksBtn.textContent === "+" ? "-" : "+";
+
+    this.#moreStacksBtn.children[0].setAttribute(
+      "name",
+      this.#moreStacksBtn.children[0].name.startsWith("add")
+        ? "remove"
+        : "add" + "-outline"
+    );
   }
 
   init() {

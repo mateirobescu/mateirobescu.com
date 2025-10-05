@@ -1,8 +1,6 @@
-import ssl
 from pathlib import Path
 from urllib.parse import urlparse, parse_qsl
 
-import certifi
 from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

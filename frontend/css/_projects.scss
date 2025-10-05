@@ -13,6 +13,7 @@
   &-stacks {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     margin-bottom: clamp(2rem, 8vh, 4rem);
     gap: clamp(1rem, 2vw, 1.5rem);
     z-index: 100;
@@ -114,8 +115,8 @@
   }
 
   .more-stacks__btn {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    line-height: 1;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    line-height: 0.6;
 
     transition: 0.3s color ease-in-out;
 

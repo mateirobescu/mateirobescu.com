@@ -27,15 +27,20 @@
     // flex-direction: column;
     gap: clamp(0.5rem, 4vh, 1.5rem);
 
+    a:focus-visible {
+      outline: 2px solid var(--c-text-secondary);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
     .social__icon {
       font-size: 2.5rem;
       color: var(--c-text);
       display: block;
+      transition: 0.3s color ease-in-out;
 
-      a:focus-visible {
-        outline: 2px solid var(--c-text-secondary);
-        outline-offset: 3px;
-        border-radius: 4px;
+      &:hover {
+        color: var(--c-text-secondary);
       }
     }
   }

@@ -35,7 +35,7 @@
     </div>
 
     <div class="scroll-down">
-      <a href="#projects">
+      <a href="#projects" aria-label="Scroll to next section">
         <ion-icon name="chevron-down-outline" class="scroll-down__icon"></ion-icon>
       </a>
     </div>
@@ -50,7 +50,7 @@
         <button class="stack clear__btn {% if forloop.counter > 3 %}stack--hidden{% endif %}" data-filter="{{ stack.name_lower }}">{{ stack.name }}</button>
       {% endfor %}
 
-      <button class="more-stacks__btn clear__btn">+</button>
+      <button class="more-stacks__btn clear__btn" aria-label="Show more stacks button"><ion-icon name="add-outline"></ion-icon></button>
 
       
     </div>
@@ -76,7 +76,7 @@
             <div class="card-links">
 
               {% if project.github_url %}
-                <a class="github" href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer"> 
+                <a class="github" href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">> 
                   <i class="devicon-github-original link-icon"></i>
                 </a>
               {% endif %}

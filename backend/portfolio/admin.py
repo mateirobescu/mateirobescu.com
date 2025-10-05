@@ -5,7 +5,7 @@ from .models import Stack, Project, ProjectStack, EmailLog
 # Register your models here.
 @admin.register(Stack)
 class StackAdmin(admin.ModelAdmin):
-    list_display = ("name", "icon", "iconColor", "order")
+    list_display = ("name", "icon", "iconColor")
     search_fields = ("name",)
     ordering = ("order",)
     
@@ -18,7 +18,7 @@ class ProjectStackInline(admin.TabularInline):
     
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("title", "active")
+    list_display = ("title", "active", "order")
     search_fields = ("title",)
     inlines = [ProjectStackInline]
     ordering = ("order",)
