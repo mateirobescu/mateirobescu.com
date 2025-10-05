@@ -8,12 +8,13 @@ from django.utils import timezone
 from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
+from django_ratelimit.decorators import ratelimit
 
 from .models import Stack, Project, EmailLog
 
 def home(request):
 	stacks = Stack.objects.all()
-	projects = Project.objects.filter(hide=False)
+	projects = Project.objects.prefetch_related('stacks').filter(hide=False)
 	
 	return render(request, 'portfolio/home.html', {"stacks": stacks, "projects": projects})
 
@@ -66,7 +67,11 @@ Company: {company}
 	)
 
 @require_POST
+@ratelimit(key='ip', rate='3/m', block=True)
 def contact_api(request):
+	if request.POST.get("website"):
+		return JsonResponse({"error": "Invalid submission."}, status=400)
+	
 	data = {}
 	
 	for field in ("first_name", "last_name", "email", "company", "message"):
@@ -83,4 +88,4 @@ def contact_api(request):
 		return JsonResponse({"success": "sent"})
 	except Exception as error_msg:
 		log_mail(data, error_msg)
-		return JsonResponse({"error": str(error_msg)}, status=500)
+		return JsonResponse({"error": "Something went wrong while sending your message. Please try again later."}, status=500)

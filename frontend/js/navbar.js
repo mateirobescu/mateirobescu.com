@@ -1,4 +1,3 @@
-import { documentSharp, enter } from "ionicons/icons";
 import ThemeManager from "./themeManager";
 
 /**

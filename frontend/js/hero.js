@@ -1,5 +1,3 @@
-import { scanOutline } from "ionicons/icons";
-
 class Hero {
   #scrollDownArrow = document.querySelector(".scroll-down");
   #hero = document.querySelector(".hero");

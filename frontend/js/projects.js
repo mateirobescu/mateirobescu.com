@@ -1,5 +1,3 @@
-import { documentOutline, tabletLandscape } from "ionicons/icons";
-
 class Projects {
   #projectStacksContainer = document.querySelector(".projects-stacks");
   #stackBtns = Array.from(document.querySelectorAll(".stack")).filter(
