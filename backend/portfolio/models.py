@@ -61,6 +61,9 @@ class Project(models.Model):
 	def __str__(self):
 		return self.title
 	
+	def ordered_stacks(self):
+		return self.stacks.all().order_by("projects_stacks__order")
+	
 	@property
 	def data_stacks(self):
 		return ";".join(stack.name_lower for stack in self.stacks.all())
@@ -87,7 +90,7 @@ def delete_changed_project_image(sender, instance, **kwargs):
 		return
 	
 	new_image = instance.image
-	if old_image and old_image != new_image:
+	if old_image and str(old_image) != str(new_image):
 		if getattr(old_image, "public_id", None):
 			public_id = str(old_image.public_id)
 			print(destroy(public_id, invalidate=True))

@@ -69,7 +69,7 @@
             <h3 class="card-title">{{ project.title }}</h3>
             <p class="card-description">{{ project.description }}</p>
             <div class="card-stacks">
-              {% for stack in project.stacks.all %}
+              {% for stack in project.ordered_stacks %}
                 <i class="{{ stack.icon }} stack-icon" role="img" aria-label="{{ stack.name }}" data-label="{{ stack.name }}"></i>
               {% endfor %}
             </div>
