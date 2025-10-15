@@ -15,7 +15,7 @@ def home(request):
 	stacks = Stack.objects.all()
 	projects = Project.objects.prefetch_related('stacks').filter(hide=False)
 	
-	return render(request, 'portfolio/home.html', {"stacks": stacks, "projects": projects})
+	return render(request, 'portfolio/home.html', {"stacks": stacks, "projects": projects, "timestamp": timezone.now().timestamp()})
 
 
 def send_email(data, confirmation=False):
@@ -68,6 +68,12 @@ Company: {company}
 def contact_api(request):
 	if request.POST.get("extra_field"):
 		return JsonResponse({"error": "Bot reported."}, status=400)
+	
+	timestamp = request.POST.get("timestamp")
+	now = timezone.now().timestamp()
+	delta = now - float(timestamp)
+	if delta < 5:
+		return JsonResponse({"error": "Too fast"}, status=400)
 	
 	data = {}
 	
