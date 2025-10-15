@@ -18,7 +18,6 @@ def home(request):
 	return render(request, 'portfolio/home.html', {"stacks": stacks, "projects": projects})
 
 
-
 def send_email(data, confirmation=False):
 	
 	if confirmation:
@@ -59,7 +58,7 @@ Company: {company}
 	
 	EmailLog.objects.create(
 		sender_email=sender_email,
-		send_time=timezone.now(),  # ✅ aware datetime
+		send_time=timezone.now(),
 		info=info.strip(),
 		status="sent" if not error_msg else "failed",
 		error_message=error_msg or "",
@@ -67,8 +66,8 @@ Company: {company}
 
 @require_POST
 def contact_api(request):
-	if request.POST.get("website"):
-		return JsonResponse({"error": "Invalid submission."}, status=400)
+	if request.POST.get("extra_field"):
+		return JsonResponse({"error": "Bot reported."}, status=400)
 	
 	data = {}
 	
