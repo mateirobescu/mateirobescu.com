@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Server error - 500</title>
+  <meta charset="utf-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Matei Robescu">
+  <link rel="preload" href="{% static 'portfolio/css/style.css' %}" as="style" onload="this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{% static 'portfolio/css/style.css' %}"></noscript>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+
+<style>
+  * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Funnel Sans", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+  .error-page {
+  display: flex;
+  height: 100dvh;
+  width: 100dvw;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  background-color: #fff;
+  color: #212529;
+  text-align: center;
+
+  
+}
+
+.error-page h1 {
+  font-size: 3rem;
+}
+.error-page h2 {
+  font-size: 2rem;
+}
+.error-page p {
+  font-size: 1.5rem;
+}
+.error-page button {
+  all: unset;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  border-bottom: 1px solid #212529;
+  line-height: 1.2;
+
+}
+</style>
+
+<body >
+  <div class="error-page">
+    <h1>Ooops! Something went wrong!</h1>
+    <h2>Our database is probably asleep.</h2>
+    <p>If the page doesn't refresh on its own, click <button onclick="window.location.reload();">here</button> or refresh manually.</p>
+  </div>
+</body>
+</html>
+
+
+
+
+

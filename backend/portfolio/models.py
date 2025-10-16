@@ -1,13 +1,9 @@
-import os.path
-
-from cloudinary.api import upload_preset
 from cloudinary.models import CloudinaryField
 from cloudinary.uploader import destroy
 from django.db import models
 from django.core.validators import RegexValidator
 from django.db.models.signals import post_delete, pre_save
 from django.dispatch import receiver
-from django.utils.text import slugify
 
 # Create your models here.
 class Stack(models.Model):
