@@ -23,13 +23,9 @@
         <p class="my-skills__p">{% blocktrans trimmed %}Technologies I've worked with — and I'm always open to learning more.{% endblocktrans %}</p>
         <div class="my-skills__icons">
           
-            <div class="skill" data-label="Python"><i class="devicon-python-plain" role="img" aria-label="Python"></i></div>
-            <div class="skill" data-label="Django"><i class="devicon-django-plain" role="img" aria-label="Django"></i></div>
-            <div class="skill" data-label="JavaScript"><i class="devicon-javascript-plain" role="img" aria-label="JavaScript"></i></div>
-            <div class="skill" data-label="HTML5"><i class="devicon-html5-plain" role="img" aria-label="HTML5"></i></div>
-            <div class="skill" data-label="CSS3"><i class="devicon-css3-plain" role="img" aria-label="CSS3"></i></div>
-            <div class="skill" data-label="Git"><i class="devicon-git-plain" role="img" aria-label="Git"></i></div>
-            <div class="skill" data-label="Linux"><i class="devicon-linux-plain" role="img" aria-label="Linux"></i></div>
+          {% for stack in stacks %}
+            <div class="skill" data-label="{{ stack.name }}"><i class="{{ stack.icon }}" role="img" aria-label="{{ stack.name }}"></i></div>
+          {% endfor %}
       </div>
       </div>
     </div>
@@ -47,7 +43,9 @@
       <button class="stack stack-all active-stack clear__btn" data-filter="all">{% trans "All" %}</button>
 
       {% for stack in stacks %}
-        <button class="stack clear__btn {% if forloop.counter > 3 %}stack--hidden{% endif %}" data-filter="{{ stack.name_lower }}">{{ stack.name }}</button>
+        {% if stack.is_filterable %}
+          <button class="stack clear__btn {% if forloop.counter > 3 %}stack--hidden{% endif %}" data-filter="{{ stack.name_lower }}">{{ stack.name }}</button>
+        {% endif %}
       {% endfor %}
 
       <button class="more-stacks__btn clear__btn" aria-label="Show more stacks button"><ion-icon name="add-outline"></ion-icon></button>
@@ -70,7 +68,9 @@
             <p class="card-description">{{ project.description }}</p>
             <div class="card-stacks">
               {% for stack in project.ordered_stacks %}
-                <i class="{{ stack.icon }} stack-icon" role="img" aria-label="{{ stack.name }}" data-label="{{ stack.name }}"></i>
+                <div class="stack-icon" data-label="{{ stack.name }}">
+                  <i class="{{ stack.icon }}" role="img" aria-label="{{ stack.name }}" ></i>
+                </div>
               {% endfor %}
             </div>
             <div class="card-links">

@@ -9,12 +9,13 @@ from django.dispatch import receiver
 class Stack(models.Model):
 	name = models.CharField(max_length=50, unique=True)
 	icon = models.CharField(max_length=50)
-	iconColor = models.CharField(max_length=7, validators=[
+	iconColor = models.CharField(max_length=7, null=True, blank=True, validators=[
 		RegexValidator(
 			regex="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
 			message="Enter a valid HEX color (e.g., #1a2b3c)"
 		)])
 	order = models.PositiveIntegerField(default=0, db_index=True)
+	is_filterable = models.BooleanField(default=False)
 	
 	class Meta:
 		ordering = ["order"]

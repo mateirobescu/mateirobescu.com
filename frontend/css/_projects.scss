@@ -224,6 +224,7 @@
           pointer-events: none;
           transition: opacity 0.2s ease, transform 0.2s ease;
           z-index: 1;
+          font-family: inherit;
         }
 
         &:hover::after {

@@ -120,33 +120,12 @@
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
     z-index: 1;
+    font-family: inherit;
   }
 
   .skill:hover::after {
     opacity: 1;
     transform: translateX(-50%) translateY(4px);
-  }
-
-  .skill[data-label="Python"]:hover {
-    color: #3776ab;
-  }
-  .skill[data-label="Django"]:hover {
-    color: #092e20;
-  }
-  .skill[data-label="JavaScript"]:hover {
-    color: #f7df1e;
-  }
-  .skill[data-label="HTML5"]:hover {
-    color: #e34f26;
-  }
-  .skill[data-label="CSS3"]:hover {
-    color: #1572b6;
-  }
-  .skill[data-label="Git"]:hover {
-    color: #f05032;
-  }
-  .skill[data-label="Linux"]:hover {
-    color: #fcc624;
   }
 }
 
