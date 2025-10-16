@@ -1,6 +1,8 @@
 import re
 
+import requests
 from decouple import config
+from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
@@ -63,6 +65,17 @@ Company: {company}
         error_message=error_msg or "",
     )
 
+def verify_recaptcha(token):
+    url = "https://www.google.com/recaptcha/api/siteverify"
+    data = {
+        "secret": settings.RECAPTCHA_SECRET_KEY,
+        "response": token,
+    }
+    
+    r = requests.post(url, data=data)
+    result = r.json()
+    return result.get("success", False) and result.get("score", 0) > 0.5
+
 @require_POST
 def contact_api(request):
     if request.POST.get("extra_field"):
@@ -73,6 +86,10 @@ def contact_api(request):
     delta = now - float(timestamp)
     if delta < 5:
         return JsonResponse({"error": "Too fast"}, status=400)
+    
+    token = request.POST.get("g-recaptcha-response")
+    if token:
+        print(verify_recaptcha(token))
     
     data = {}
     
