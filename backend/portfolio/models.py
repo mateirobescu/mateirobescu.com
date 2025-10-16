@@ -27,8 +27,10 @@ class Stack(models.Model):
 	def clean(self):
 		super().clean()
 		
-		self.iconColor = self.iconColor.lower()
+		if not self.iconColor:
+			return
 		
+		self.iconColor = self.iconColor.lower()
 		if len(self.iconColor) == 4:
 			self.iconColor = "#" + "".join([ch * 2 for ch in self.iconColor[1:]])
 			
