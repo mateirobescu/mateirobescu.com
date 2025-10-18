@@ -244,6 +244,13 @@
           </nav>
         </div>
         <div class="footer__copyright">
+          <p class="confirmation-disclaimer">
+            {% trans "This site is protected by reCAPTCHA and the Google" %} 
+            <a class="google__link" href="https://policies.google.com/privacy" target="_blank">{% trans "Privacy Policy" %}</a> 
+            {% trans "and" %}
+            <a class="google__link" href="https://policies.google.com/terms" target="_blank">{% trans "Terms of Service" %} </a>
+            {% trans "apply." %}
+           </p>
           {% now "Y" as current_year %}
           <span>&copy; {% blocktrans with current_year=current_year %}{{ current_year }} Matei Robescu. Built with Django.{% endblocktrans %}</span>
         </div>

@@ -42,12 +42,13 @@ def send_email(data, confirmation=False):
     msg.send()
     
     
-def log_mail(data, error_msg=None):
+def log_mail(data, error_msg=""):
     first_name = data.get("first_name", "")
     last_name = data.get("last_name", "")
     company = data.get("company", "")
     message = data.get("message", "")
     sender_email = data.get("email", "unknown@example.com")
+    score = data.get("score", 0)
 
     info = f"""\
 First Name: {first_name}
@@ -63,6 +64,7 @@ Company: {company}
         info=info.strip(),
         status="sent" if not error_msg else "failed",
         error_message=error_msg or "",
+        recaptcha_score=score
     )
 
 def verify_recaptcha(token):
@@ -72,9 +74,14 @@ def verify_recaptcha(token):
         "response": token,
     }
     
-    r = requests.post(url, data=data)
-    result = r.json()
-    return result.get("success", False) and result.get("score", 0) > 0.5
+    try:
+        r = requests.post(url, data=data, timeout=5)
+        result = r.json()
+        score = result.get("score", 0)
+        return result.get("success", False) and score > 0.5, score
+    
+    except requests.RequestException:
+        return False
 
 @require_POST
 def contact_api(request):
@@ -88,10 +95,14 @@ def contact_api(request):
         return JsonResponse({"error": "Too fast"}, status=400)
     
     token = request.POST.get("g-recaptcha-response")
-    if token:
-        print(verify_recaptcha(token))
+    if not token:
+        return JsonResponse({"error": "No recaptcha"}, status=400)
     
-    data = {}
+    is_human, score = verify_recaptcha(token)
+    if not is_human:
+        return JsonResponse({"error": "Bot reported via recaptcha"}, status=400)
+    
+    data = {"score": score}
     
     for field in ("first_name", "last_name", "email", "company", "message"):
         data[field] = request.POST.get(field)
