@@ -117,6 +117,7 @@ class EmailLog(models.Model):
 		("failed", "Failed"),
 	])
 	error_message = models.TextField(blank=True, null=True)
+	recaptcha_score = models.FloatField(null=True, blank=True)
 	
 	class Meta:
 		ordering = ["-send_time"]

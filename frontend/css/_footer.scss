@@ -67,3 +67,26 @@
     }
   }
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.google__link {
+  text-decoration: none;
+  padding-bottom: 1px;
+  color: var(--c-text);
+  border-color: var(--c-text);
+  border-bottom: 1px solid var(--c-text-secondary);
+  transition: color 0.3s, border-bottom 0.3s;
+
+  &:hover {
+    color: var(--c-text-secondary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--c-text-secondary);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}

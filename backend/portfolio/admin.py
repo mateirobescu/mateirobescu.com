@@ -5,7 +5,7 @@ from .models import Stack, Project, ProjectStack, EmailLog
 # Register your models here.
 @admin.register(Stack)
 class StackAdmin(admin.ModelAdmin):
-    list_display = ("name", "icon", "iconColor")
+    list_display = ("name", "order")
     search_fields = ("name",)
     ordering = ("order",)
     
