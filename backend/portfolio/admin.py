@@ -27,7 +27,7 @@ class ProjectAdmin(admin.ModelAdmin):
 class EmailLogAdmin(admin.ModelAdmin):
     list_display = ("send_time", "sender_email")
     search_fields = ("sender_email",)
-    ordering = ("send_time",)
+    ordering = ("-send_time",)
     
     def has_add_permission(self, request):
         return False
