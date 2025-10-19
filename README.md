@@ -1,6 +1,7 @@
 # [mateirobescu.com](https://www.mateirobescu.com)
-
-![Demo of mateirobescu.com](https://www.mateirobescu.com/static/portfolio/images/github_logo.png)
+<p>
+  <img src="https://www.mateirobescu.com/static/portfolio/images/github_logo.png" alt="Demo of mateirobescu.com" width="250">
+</p>
 
 A full-stack personal portfolio built with Django and vanilla JavaScript, showcasing my projects and skills. The site is optimized for performance, security, and scalability — hosted on AWS with a PostgreSQL database and Cloudinary CDN.
 ## 🎨 Frontend
