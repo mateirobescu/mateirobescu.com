@@ -45,3 +45,5 @@ build/
 # ML data
 corpus_data/raw/
 corpus_data/clean/
+
+github_data/
