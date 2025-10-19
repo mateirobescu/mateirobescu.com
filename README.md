@@ -1,4 +1,4 @@
-# [mateirobescu.com](https://www.mateirobescu.com)
+# <a href="https://www.mateirobescu.com" target="_blank">mateirobescu.com 🔗</a>
 <p>
   <img src="https://www.mateirobescu.com/static/portfolio/images/github_logo.png" alt="Demo of mateirobescu.com" width="250">
 </p>
