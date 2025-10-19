@@ -94,6 +94,20 @@ def contact_api(request):
     if delta < 5:
         return JsonResponse({"error": "Too fast"}, status=400)
     
+    data = {}
+    
+    from .nlp_detectors import is_spam_gibberish
+    
+    for field in ("first_name", "last_name", "email", "company", "message"):
+        data[field] = request.POST.get(field)
+        
+        if data[field] and is_spam_gibberish(data[field]):
+            return JsonResponse({"error": "Gibberish detected"}, status=400)
+        
+    
+    if not (data["first_name"] and data["last_name"] and data["email"] and data["message"]) or not re.match(r"[^\s@]+@[^\s@]+\.[^\s@]+", data["email"]):
+        return JsonResponse({"error": "Missing required fields"}, status=400)
+    
     token = request.POST.get("g-recaptcha-response")
     if not token:
         return JsonResponse({"error": "No recaptcha"}, status=400)
@@ -102,13 +116,7 @@ def contact_api(request):
     if not is_human:
         return JsonResponse({"error": "Bot reported via recaptcha"}, status=400)
     
-    data = {"score": score}
-    
-    for field in ("first_name", "last_name", "email", "company", "message"):
-        data[field] = request.POST.get(field)
-    
-    if not (data["first_name"] and data["last_name"] and data["email"] and data["message"]) or not re.match(r"[^\s@]+@[^\s@]+\.[^\s@]+", data["email"]):
-        return JsonResponse({"error": "Missing required fields"}, status=400)
+    data["score"] = score
     
     try:
         send_email(data)
