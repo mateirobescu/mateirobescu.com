@@ -11,3 +11,4 @@ cloudinary==1.44.1
 dj-database-url==3.0.1
 django-modeltranslation==0.19.17
 requests==2.32.5
+gibberish-detector==0.1.1

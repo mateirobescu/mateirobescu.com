@@ -41,3 +41,7 @@ build/
 
 # Bash Scripts
 *.sh
+
+# ML data
+corpus_data/raw/
+corpus_data/clean/
