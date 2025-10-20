@@ -6,17 +6,6 @@
 
 {% block content %}
 <script src="https://www.google.com/recaptcha/api.js?render=6LcYw-wrAAAAAMrZFIx6iK81Qr0y8jw5KUvU95vi"></script>
-<script>
-  grecaptcha.ready(() => {
-    grecaptcha.execute("6LcYw-wrAAAAAMrZFIx6iK81Qr0y8jw5KUvU95vi", {action: "contact"}).then(token => {
-      document.getElementById("contact-form").insertAdjacentHTML(
-        "beforeend",
-        `<input type="hidden" name="g-recaptcha-response" value="${token}">`
-      );
-    });
-  });
-</script>
-
 
 <main class="main">
   <section class="hero" id="home" aria-label="{% trans 'About me' %}">
@@ -393,6 +382,7 @@
       <div style="display: none;">
           <input type="text" name="timestamp" value="{{ timestamp }}" tabindex="-1" autocomplete="nope">
       </div>
+      <input type="hidden" class="reCaptcha" name="g-recaptcha-response" value>
       
       <div class="btn-translations"
             data-send="{% trans 'Send' %}"

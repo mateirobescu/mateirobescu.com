@@ -17,6 +17,7 @@ class Form {
   #submitBtn = document.querySelector(".submit__btn");
   #form = document.querySelector(".contact__form");
   #translations = document.querySelector(".btn-translations").dataset;
+  #reCapthcaInput = document.querySelector(".reCaptcha");
 
   #inputs = [];
 
@@ -78,20 +79,23 @@ class Form {
 
   async #sumbitForm(event) {
     event.preventDefault();
-    const formData = new FormData(this.#form);
+
     const csrfToken = getCookie("csrftoken");
     const url = this.#form.dataset.url;
 
     this.#STATE = this.#STATES.SENDING;
     this.#applySumbitState();
 
-    if (!this.#validateAllInput()) {
-      this.#STATE = this.#STATES.FAILED;
-      this.#applySumbitState();
-      return;
-    }
-
     try {
+      await this.#refreshReCaptcha();
+      const formData = new FormData(this.#form);
+
+      if (!this.#validateAllInput()) {
+        this.#STATE = this.#STATES.FAILED;
+        this.#applySumbitState();
+        return;
+      }
+
       const response = await fetch(url, {
         method: "POST",
         body: formData,
@@ -106,6 +110,24 @@ class Form {
     }
 
     this.#applySumbitState();
+  }
+
+  async #refreshReCaptcha() {
+    return new Promise((resolve, reject) =>
+      grecaptcha.ready(() => {
+        grecaptcha
+          .execute("6LcYw-wrAAAAAMrZFIx6iK81Qr0y8jw5KUvU95vi", {
+            action: "contact",
+          })
+          .then((token) => {
+            this.#reCapthcaInput.setAttribute("value", token);
+            resolve();
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      })
+    );
   }
 
   #applySumbitState() {

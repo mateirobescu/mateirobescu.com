@@ -104,7 +104,6 @@ def contact_api(request):
         if data[field] and is_spam_gibberish(data[field]):
             return JsonResponse({"error": "Gibberish detected"}, status=400)
         
-    
     if not (data["first_name"] and data["last_name"] and data["email"] and data["message"]) or not re.match(r"[^\s@]+@[^\s@]+\.[^\s@]+", data["email"]):
         return JsonResponse({"error": "Missing required fields"}, status=400)
     
