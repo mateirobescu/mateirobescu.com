@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mateirobescu.com 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-19 17:12+0000\n"
+"POT-Creation-Date: 2025-11-15 17:28+0000\n"
 "PO-Revision-Date: 2025-10-03 22:20+0300\n"
 "Last-Translator: Matei Robescu <EMAIL@ADDRESS>\n"
 "Language-Team: Romanian\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: templates/portfolio/base.html:10 templates/portfolio/home.html:123
+#: templates/portfolio/base.html:10 templates/portfolio/home.html:112
 msgid "mateirobescu.com"
 msgstr "mateirobescu.com"
 
@@ -53,8 +53,8 @@ msgid "projects"
 msgstr "proiecte"
 
 #: templates/portfolio/base.html:93 templates/portfolio/base.html:160
-#: templates/portfolio/base.html:244 templates/portfolio/home.html:112
-#: templates/portfolio/home.html:114
+#: templates/portfolio/base.html:244 templates/portfolio/home.html:101
+#: templates/portfolio/home.html:103
 msgid "CV"
 msgstr "CV"
 
@@ -96,19 +96,19 @@ msgstr "%(current_year)s Matei Robescu. Realizat cu Django."
 msgid "Matei Robescu | Personal Portfolio"
 msgstr "Matei Robescu | Portofoliu personal"
 
-#: templates/portfolio/home.html:22
+#: templates/portfolio/home.html:11
 msgid "About me"
 msgstr "Despre mine"
 
-#: templates/portfolio/home.html:24
+#: templates/portfolio/home.html:13
 msgid "ABOUT<br>ME"
 msgstr "DESPRE<br>MINE"
 
-#: templates/portfolio/home.html:29
+#: templates/portfolio/home.html:18
 msgid "Hi!"
 msgstr "Salut!"
 
-#: templates/portfolio/home.html:30
+#: templates/portfolio/home.html:19
 msgid ""
 "My name is <strong>Matei Robescu</strong>, I'm 20 years old and currently a "
 "2nd year student at <strong>Faculty of Cybernetics, Statistics and Economic "
@@ -118,7 +118,7 @@ msgstr ""
 "anul 2 la <strong>Facultatea de Cibernetică, Statistică și Informatică "
 "Economică, ASE</strong>, specializarea <em>Informatică Economică</em>."
 
-#: templates/portfolio/home.html:32
+#: templates/portfolio/home.html:21
 msgid ""
 "I've been passionate about technology since I was really young and this "
 "portfolio is my way of sharing that journey — through the projects I am "
@@ -128,73 +128,106 @@ msgstr ""
 "de a împărtăși această călătorie — prin proiectele la care lucrez și "
 "abilitățile pe care continui să le dezvolt."
 
-#: templates/portfolio/home.html:36
+#: templates/portfolio/home.html:25
 msgid "Technologies I've worked with — and I'm always open to learning more."
 msgstr ""
 "Tehnologii cu care am lucrat — și sunt mereu deschis să învăț altele noi."
 
-#: templates/portfolio/home.html:53 templates/portfolio/home.html:54
-#: templates/portfolio/home.html:176
+#: templates/portfolio/home.html:42 templates/portfolio/home.html:43
+#: templates/portfolio/home.html:165
 msgid "Projects"
 msgstr "Proiecte"
 
-#: templates/portfolio/home.html:56
+#: templates/portfolio/home.html:45
 msgid "All"
 msgstr "Toate"
 
-#: templates/portfolio/home.html:99
+#: templates/portfolio/home.html:88
 msgid "Live demo"
 msgstr "Demo live"
 
-#: templates/portfolio/home.html:107
+#: templates/portfolio/home.html:96
 msgid "I haven't built anything like this... yet!"
 msgstr "Nu am construit încă ceva de acest fel... încă!"
 
-#: templates/portfolio/home.html:116
+#: templates/portfolio/home.html:105
 msgid "Matei-Gabriel Robescu"
 msgstr "Matei-Gabriel Robescu"
 
-#: templates/portfolio/home.html:132
+#: templates/portfolio/home.html:121
 msgid "matei.robescu@gmail.com"
 msgstr "matei.robescu@gmail.com"
 
-#: templates/portfolio/home.html:140
+#: templates/portfolio/home.html:129
 msgid "matei-robescu"
 msgstr "matei-robescu"
 
-#: templates/portfolio/home.html:148
+#: templates/portfolio/home.html:137
 msgid "mateirobescu"
 msgstr "mateirobescu"
 
-#: templates/portfolio/home.html:156
+#: templates/portfolio/home.html:145
 msgid "Education"
 msgstr "Educație"
 
-#: templates/portfolio/home.html:160
+#: templates/portfolio/home.html:149
 msgid "Bachelor degree in Computer Science"
 msgstr "Licență în Informatică"
 
-#: templates/portfolio/home.html:162
+#: templates/portfolio/home.html:151
 msgid "Faculty of Cybernetics, Statistics and Economic Informatics"
 msgstr "Facultatea de Cibernetică, Statistică și Informatică Economică"
 
-#: templates/portfolio/home.html:166
-msgid "Oct. 2024 - present"
-msgstr "Oct. 2024 - prezent"
+#: templates/portfolio/home.html:155
+#, fuzzy
+#| msgid "Oct. 2024 - Present"
+msgid "Oct. 2024 &ndash; Present"
+msgstr "oct. 2024 &ndash; Prezent"
 
-#: templates/portfolio/home.html:169
+#: templates/portfolio/home.html:158
 msgid "Bucharest, RO"
 msgstr "București, RO"
 
-#: templates/portfolio/home.html:180
+#: templates/portfolio/home.html:172
+msgid ""
+" Nov.\n"
+"                    2025 &ndash; Present "
+msgstr ""
+" Nov.\n"
+"                    2025 &ndash; Prezent "
+
+#: templates/portfolio/home.html:178
+msgid ""
+"Built a serverless AWS ETL pipeline using Lambda, S3,\n"
+"                    DynamoDB, RDS, and Secrets Manager, with all "
+"infrastructure\n"
+"                    managed through Terraform."
+msgstr ""
+"Am construit un pipeline ETL serverless pe AWS folosind Lambda, S3,\n"
+"                    DynamoDB, RDS și Secrets Manager, cu toată infrastructura\n"
+"                    gestionată prin Terraform."
+
+#: templates/portfolio/home.html:184
+msgid ""
+"Automated ingestion, cleaning, and transformation of\n"
+"                    weather-API data using Python, storing validated results "
+"in\n"
+"                    MySQL for further analysis."
+msgstr ""
+"Preluare automată, curățare și transformare a datelor\n"
+"                    din weather-API folosind Python, cu stocarea rezultatelor "
+"validate în\n"
+"                    MySQL pentru analize ulterioare."
+
+#: templates/portfolio/home.html:191
 msgid "mateirobescu.com Personal Portfolio"
 msgstr "Portofoliul personal mateirobescu.com"
 
-#: templates/portfolio/home.html:183
+#: templates/portfolio/home.html:194
 msgid "Oct. 2025"
-msgstr "Oct. 2025"
+msgstr "oct. 2025"
 
-#: templates/portfolio/home.html:189
+#: templates/portfolio/home.html:200
 msgid ""
 "Developed a full-stack portfolio web app with Python, Django, JavaScript, "
 "HTML/SCSS to showcase personal projects."
@@ -202,11 +235,11 @@ msgstr ""
 "Am dezvoltat o aplicație web full-stack de portofoliu cu Python, Django, "
 "JavaScript, HTML/SCSS pentru a prezenta proiecte personale."
 
-#: templates/portfolio/home.html:192
+#: templates/portfolio/home.html:203
 msgid "Deployed to AWS EC2 with Gunicorn + Nginx for production readiness."
 msgstr "Implementat pe AWS EC2 cu Gunicorn + Nginx pentru rulare în producție."
 
-#: templates/portfolio/home.html:195
+#: templates/portfolio/home.html:206
 msgid ""
 "Integrated PostgreSQL and Cloudinary for scalable data &amp; media "
 "management."
@@ -214,48 +247,47 @@ msgstr ""
 "Am integrat PostgreSQL și Cloudinary pentru gestionarea scalabilă a datelor "
 "și media."
 
-#: templates/portfolio/home.html:198
+#: templates/portfolio/home.html:209
+#, fuzzy
+#| msgid ""
+#| "Secured forms with reCaptcha v3 and an NLP pipeline to combat gibberish/"
+#| "bot spam and ensure data integrity."
 msgid ""
-"Secured forms with reCaptcha v3 and an NLP pipeline to combat gibberish/bot "
+"Secured forms with reCAPTCHA v3 and an NLP pipeline to combat gibberish/bot "
 "spam and ensure data integrity."
 msgstr ""
 "Formulare securizate cu reCaptcha v3 și o conductă NLP pentru a combate "
 "spamul de tip 'gibberish'/bot și pentru a asigura integritatea datelor."
 
-#: templates/portfolio/home.html:213
+#: templates/portfolio/home.html:224
 msgid ""
 "Developed a fast, minimalist countdown web app using React/Vite, optimizing "
 "performance to handle real-time deadline visualization."
-msgstr "Am dezvoltat o aplicație web de numărătoare inversă rapidă și minimalistă, folosind React/Vite, optimizând performanța pentru a gestiona vizualizarea în timp real a termenelor limită."
-
-#: templates/portfolio/home.html:229
-msgid ""
-"Developed a cross-platform arcade game (Python/Kivy) with in-game "
-"monetization (skins shop) and SQLite3 for persistent score/analysis."
 msgstr ""
-"Am dezvoltat un joc arcade multiplatformă (Python/Kivy) cu monetizare în joc "
-"(magazin de skin-uri) și SQLite3 pentru persistența/analiza scorurilor."
+"Am dezvoltat o aplicație web de numărătoare inversă rapidă și minimalistă, "
+"folosind React/Vite, optimizând performanța pentru a gestiona vizualizarea "
+"în timp real a termenelor limită."
 
-#: templates/portfolio/home.html:241
+#: templates/portfolio/home.html:236
 msgid "Skills"
 msgstr "Competențe"
 
-#: templates/portfolio/home.html:263
+#: templates/portfolio/home.html:259
 msgid "Awards and Certifications"
 msgstr "Premii și certificări"
 
-#: templates/portfolio/home.html:268
+#: templates/portfolio/home.html:264
 msgid ""
 "Winner of <em>\"Realiști fără egal\"</em>, edition XI, Informatics discipline"
 msgstr ""
 "Câștigător al <em>„Realiști fără egal”</em>, ediția a XI-a, disciplina "
 "Informatică"
 
-#: templates/portfolio/home.html:272 templates/portfolio/home.html:282
+#: templates/portfolio/home.html:268 templates/portfolio/home.html:278
 msgid "Apr. 2024"
 msgstr "Apr. 2024"
 
-#: templates/portfolio/home.html:278
+#: templates/portfolio/home.html:274
 msgid ""
 "Participant of <em>\"Inovative Evaluation Methods\"</em>, University of "
 "Bucharest"
@@ -263,116 +295,127 @@ msgstr ""
 "Participant la <em>„Metode inovative de evaluare”</em>, Universitatea din "
 "București"
 
-#: templates/portfolio/home.html:289
+#: templates/portfolio/home.html:285
 msgid "European Computer Driving Licence (ECDL)"
 msgstr "Certificat European de Operare a Computerului (ECDL)"
 
-#: templates/portfolio/home.html:292
+#: templates/portfolio/home.html:288
 msgid "Mar. 2024"
 msgstr "Mar. 2024"
 
-#: templates/portfolio/home.html:299
+#: templates/portfolio/home.html:295
 msgid "Cambridge B1 Certificate"
 msgstr "Certificat Cambridge B1"
 
-#: templates/portfolio/home.html:302
+#: templates/portfolio/home.html:298
 msgid "Mar. 2018"
 msgstr "Mar. 2018"
 
-#: templates/portfolio/home.html:309
+#: templates/portfolio/home.html:305
 msgid "Languages"
 msgstr "Limbi"
 
-#: templates/portfolio/home.html:314
+#: templates/portfolio/home.html:310
 msgid "Romanian:"
 msgstr "Română:"
 
-#: templates/portfolio/home.html:326
+#: templates/portfolio/home.html:322
 msgid "English:"
 msgstr "Engleză:"
 
-#: templates/portfolio/home.html:338
-msgid "Spanish:"
-msgstr "Spaniolă:"
+#: templates/portfolio/home.html:334
+msgid "French:"
+msgstr "Franceză:"
 
-#: templates/portfolio/home.html:356
+#: templates/portfolio/home.html:352
 msgid "Let's get in touch!"
 msgstr "Hai să luăm legătura!"
 
-#: templates/portfolio/home.html:362
+#: templates/portfolio/home.html:358
 msgid "First Name"
 msgstr "Prenume"
 
-#: templates/portfolio/home.html:363
+#: templates/portfolio/home.html:359
 msgid "e.g., John"
 msgstr "ex.: Ion"
 
-#: templates/portfolio/home.html:364 templates/portfolio/home.html:369
-#: templates/portfolio/home.html:385
+#: templates/portfolio/home.html:360 templates/portfolio/home.html:365
+#: templates/portfolio/home.html:381
 msgid "This field shoud not be empty."
 msgstr "Acest câmp nu trebuie să fie gol."
 
-#: templates/portfolio/home.html:367
+#: templates/portfolio/home.html:363
 msgid "Last Name"
 msgstr "Nume"
 
-#: templates/portfolio/home.html:368
+#: templates/portfolio/home.html:364
 msgid "e.g., Doe"
 msgstr "ex.: Popescu"
 
-#: templates/portfolio/home.html:372
+#: templates/portfolio/home.html:368
 msgid "Email"
 msgstr "Email"
 
-#: templates/portfolio/home.html:373
+#: templates/portfolio/home.html:369
 msgid "e.g., john.doe@example.com"
 msgstr "ex.: ion.popescu@example.com"
 
-#: templates/portfolio/home.html:374
+#: templates/portfolio/home.html:370
 msgid "Please enter a valid email address."
 msgstr "Te rog introdu o adresă de email validă."
 
-#: templates/portfolio/home.html:377
+#: templates/portfolio/home.html:373
 msgid "Company (optional)"
 msgstr "Companie (opțional)"
 
-#: templates/portfolio/home.html:378
+#: templates/portfolio/home.html:374
 msgid "e.g., YourCompany Inc."
 msgstr "ex.: CompaniaTa SRL"
 
-#: templates/portfolio/home.html:379
+#: templates/portfolio/home.html:375
 msgid "No error."
 msgstr "Nicio eroare."
 
-#: templates/portfolio/home.html:382
+#: templates/portfolio/home.html:378
 msgid "Message"
 msgstr "Mesaj"
 
-#: templates/portfolio/home.html:384
+#: templates/portfolio/home.html:380
 msgid "Write your message here..."
 msgstr "Scrie mesajul tău aici..."
 
-#: templates/portfolio/home.html:386
+#: templates/portfolio/home.html:382
 msgid "We'll send you a quick confirmation email so you know it went through."
 msgstr ""
 "Îți vom trimite rapid un email de confirmare ca să știi că mesajul a fost "
 "trimis."
 
-#: templates/portfolio/home.html:387
+#: templates/portfolio/home.html:383
 msgid "Check your spam folder if you don't see it."
 msgstr "Verifică folderul Spam dacă nu îl vezi."
 
-#: templates/portfolio/home.html:398 templates/portfolio/home.html:405
+#: templates/portfolio/home.html:395 templates/portfolio/home.html:402
 msgid "Send"
 msgstr "Trimite"
 
-#: templates/portfolio/home.html:399
+#: templates/portfolio/home.html:396
 msgid "Sent"
 msgstr "Trimis"
 
-#: templates/portfolio/home.html:400
+#: templates/portfolio/home.html:397
 msgid "Failed"
 msgstr "Eșuat"
+
+#~ msgid ""
+#~ "Developed a cross-platform arcade game (Python/Kivy) with in-game "
+#~ "monetization (skins shop) and SQLite3 for persistent score/analysis."
+#~ msgstr ""
+#~ "Am dezvoltat un joc arcade multiplatformă (Python/Kivy) cu monetizare în "
+#~ "joc (magazin de skin-uri) și SQLite3 pentru persistența/analiza "
+#~ "scorurilor."
+
+#~ msgid "Spanish:"
+#~ msgstr "Spaniolă:"
 
 #~ msgid ""
 #~ "Relevant coursework: Data Structures and Algorithms, OOP, Information and "
