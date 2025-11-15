@@ -152,7 +152,7 @@
                   </h4>
                   <div class="cv__time-location">
                     <div class="time">
-                      <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2024 - present{% endblocktrans %}
+                      <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2024 &ndash; Present{% endblocktrans %}
                     </div>
                     <div class="location">
                       <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Bucharest, RO{% endblocktrans %}
@@ -165,6 +165,28 @@
             <h2>{% trans "Projects" %}</h2>
             <div class="spacer"></div>
             <div class="cv__items">
+              <div class="cv__item">
+                <h3>Weather Data ETL Pipeline</h3>
+                <div class="cv__time-location">
+                  <div class="time">
+                    <ion-icon name="calendar-number-outline"></ion-icon>{% blocktrans %} Nov.
+                    2025 &ndash; Present {% endblocktrans %} 
+                  </div>
+                </div>
+                <ul>
+                  <li>
+                    {% blocktrans %}Built a serverless AWS ETL pipeline using Lambda, S3,
+                    DynamoDB, RDS, and Secrets Manager, with all infrastructure
+                    managed through Terraform.{% endblocktrans %}
+                    
+                  </li>
+                  <li>
+                    {% blocktrans %}Automated ingestion, cleaning, and transformation of
+                    weather-API data using Python, storing validated results in
+                    MySQL for further analysis.{% endblocktrans %}  
+                  </li>
+                </ul>
+              </div>
               <div class="cv__item">
                 <h3>{% trans "mateirobescu.com Personal Portfolio" %}</h3>
                 <div class="cv__time-location">
@@ -184,7 +206,7 @@
                     {% blocktrans trimmed %}Integrated PostgreSQL and Cloudinary for scalable data &amp; media management.{% endblocktrans %}
                   </li>
                   <li>
-                    {% blocktrans trimmed %}Secured forms with reCaptcha v3 and an NLP pipeline to
+                    {% blocktrans trimmed %}Secured forms with reCAPTCHA v3 and an NLP pipeline to
                     combat gibberish/bot spam and ensure data integrity.{% endblocktrans %}
                   </li>
                 </ul>
@@ -193,8 +215,8 @@
                 <h3>amr.io</h3>
                 <div class="cv__time-location">
                   <div class="time">
-                    <ion-icon name="calendar-number-outline"></ion-icon> Oct.
-                    2025
+                    <ion-icon name="calendar-number-outline"></ion-icon> {% blocktrans %} Oct.
+                    2025 {% endblocktrans %} 
                   </div>
                 </div>
                 <ul>
@@ -202,22 +224,6 @@
                     {% blocktrans trimmed %}Developed a fast, minimalist countdown web app using
                     React/Vite, optimizing performance to handle real-time
                     deadline visualization.{% endblocktrans %}
-                  </li>
-                </ul>
-              </div>
-              <div class="cv__item">
-                <h3>Android Arcade Game</h3>
-                <div class="cv__time-location">
-                  <div class="time">
-                    <ion-icon name="calendar-number-outline"></ion-icon> April.
-                    2023
-                  </div>
-                </div>
-                <ul>
-                  <li>
-                    {% blocktrans trimmed %}Developed a cross-platform arcade game (Python/Kivy) with
-                    in-game monetization (skins shop) and SQLite3 for persistent
-                    score/analysis.{% endblocktrans %}
                   </li>
                 </ul>
               </div>
@@ -325,7 +331,7 @@
               </div>
               <div class="cv__item">
                 <div class="language">
-                  <span>{% trans "Spanish:" %}</span>
+                  <span>{% trans "French:" %}</span>
                   <div class="dots">
                     <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
                     <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
