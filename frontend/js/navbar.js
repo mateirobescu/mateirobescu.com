@@ -45,23 +45,21 @@ const ScrollLock = (() => {
 class Navbar {
   // Mobile Navigation
   #mobileNavPanel = document.querySelector(".mobile__nav__panel");
-  #mobileNav = document.querySelector(".mobile__nav__panel > .navbar");
   #mobileNavBtn = document.querySelector(".mobile__nav__btn");
   #mobileNavIsOpen = false;
 
   //THEMES
   #themeToggleBtns = document.querySelectorAll(".settings-theme__btn");
 
-  #nav = document.querySelector(".header > .navbar");
   #header = document.querySelector(".header");
 
   #footerNav = document.querySelector(".footer__navbar");
 
   // SCROLL
   #scrollingTo;
+  #currSection;
 
   #allSections = document.querySelectorAll("section");
-  #allLinks = document.querySelectorAll(".navbar__scroll");
   #scrollSpyLinks = document.querySelectorAll(".scrollspy");
 
   #initMobileNav() {
@@ -147,7 +145,7 @@ class Navbar {
   }
 
   #initScrollToSection() {
-    const navbars = [
+    [
       this.#header,
       this.#mobileNavPanel,
       this.#footerNav,
@@ -166,21 +164,25 @@ class Navbar {
       sectionId === "#" ? "#home" : sectionId
     );
 
-    if (sectionToScroll) {
-      this.#scrollingTo = sectionId.slice(1);
-      this.#setActiveAnchor(this.#scrollingTo);
-      sectionToScroll.scrollIntoView({ behavior: "smooth" });
-    }
+    if (sectionToScroll)
+      if(this.#currSection !== sectionId.slice(1))
+      {
+        this.#scrollingTo = sectionId.slice(1);
+        this.#setActiveAnchor(this.#scrollingTo);
+        sectionToScroll.scrollIntoView({ behavior: "smooth" });
+      }
   }
 
   #initScrollSpy() {
+    const headerHeight = document.querySelector(".header").offsetHeight;
+    const virtualVH = window.innerHeight - headerHeight;
     const sectionObserver = new IntersectionObserver(
       this.#setActiveSection.bind(this),
       {
-        threshold: 0.5,
-        rootMargin: `-${
-          document.querySelector(".header").offsetHeight
-        }px 0px 0px 0px`,
+        threshold: 0,
+        rootMargin: `-${virtualVH  * 0.3}px 0px -${
+          virtualVH * 0.3
+        }px 0px`,
       }
     );
 
@@ -198,15 +200,17 @@ class Navbar {
 
   #setActiveSection(entries) {
     entries.forEach((entry) => {
+      console.log(entry)
       if (!entry.isIntersecting) return;
 
-      const sectionId = entry.target.getAttribute("id");
+      this.#currSection = entry.target.getAttribute("id");
+
       if (this.#scrollingTo) {
-        if (this.#scrollingTo === sectionId) this.#scrollingTo = null;
+        if (this.#scrollingTo === this.#currSection) this.#scrollingTo = null;
         return;
       }
 
-      this.#setActiveAnchor(sectionId);
+      this.#setActiveAnchor(this.#currSection);
     });
   }
 
