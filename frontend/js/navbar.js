@@ -169,8 +169,8 @@ class Navbar {
       {
         this.#scrollingTo = sectionId.slice(1);
         this.#setActiveAnchor(this.#scrollingTo);
-        sectionToScroll.scrollIntoView({ behavior: "smooth" });
       }
+      sectionToScroll.scrollIntoView({ behavior: "smooth" });
   }
 
   #initScrollSpy() {
