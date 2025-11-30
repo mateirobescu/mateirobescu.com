@@ -1,0 +1,64 @@
+# --- 1. Version Control (Crucial for Speed) ---
+# Docker doesn't need your entire Git history.
+# Ignoring this makes the build start 10x faster if the repo is large.
+.git
+.gitignore
+.dockerignore
+
+# --- 2. Large Data (Crucial for Speed) ---
+# You ignore these in Git, but you MUST ignore them in Docker too.
+# Otherwise, Docker copies gigabytes of data into the build context before starting.
+corpus_data/
+github_data/
+
+# --- 3. Secrets (Crucial for Security) ---
+.env
+*.pem
+Access.pem
+
+# --- 4. Python / Virtual Envs ---
+# Never copy a local venv; Docker builds its own fresh one.
+venv/
+env/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+
+# --- 5. Frontend Dependencies & Build Artifacts ---
+# We run 'npm install' and 'npm run build' INSIDE Docker.
+# We do not want to copy your local Mac/Windows versions.
+frontend/node_modules
+root/node_modules
+node_modules
+.parcel-cache
+frontend/.parcel-cache
+
+# Ignore local build outputs so they don't overwrite the Docker build
+dist/
+build/
+backend/portfolio/static/portfolio/css/
+backend/portfolio/static/portfolio/js/
+backend/staticfiles/
+
+# --- 6. Django Local Files ---
+db.sqlite3
+media/
+*.log
+
+# --- 7. System / IDE Junk ---
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- 8. Docker Configuration ---
+# The image doesn't need to contain the instructions on how to build itself
+Dockerfile
+docker-compose.yml
+
+# --- 9. Scripts Exception ---
+# You ignore *.sh in git, but we need entrypoint.sh for Docker.
+*.sh
+!backend/entrypoint.sh

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A personal developer portfolio built with **Django** and **Bootstrap**, deployed on **Render**.",
   "scripts": {
-    "dev": "parcel watch frontend/css/style.scss frontend/js/index.js --dist-dir backend/portfolio/static/portfolio --public-url /static/portfolio --no-content-hash",
-    "build": "parcel build frontend/css/style.scss frontend/js/index.js --dist-dir backend/portfolio/static/portfolio --public-url /static/portfolio --no-content-hash"
+    "dev": "../node_modules/.bin/parcel watch css/style.scss js/index.js --dist-dir ../backend/portfolio/static/portfolio --public-url /static/portfolio --no-content-hash",
+    "build": "../node_modules/.bin/parcel build css/style.scss js/index.js --dist-dir ../backend/portfolio/static/portfolio --public-url /static/portfolio --no-content-hash"
   },
   "repository": {
     "type": "git",
