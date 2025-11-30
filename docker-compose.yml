@@ -16,7 +16,6 @@ services:
       - "80:80"
       - "443:443" # Prepare the port
     volumes:
-      # Add these two lines so Nginx can read certificates
       - certbot_conf:/etc/letsencrypt
       - certbot_www:/var/www/certbot
     depends_on:
