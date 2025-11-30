@@ -198,7 +198,6 @@ class Navbar {
 
   #setActiveSection(entries) {
     entries.forEach((entry) => {
-      console.log(entry)
       if (!entry.isIntersecting) return;
 
       this.#currSection = entry.target.getAttribute("id");
