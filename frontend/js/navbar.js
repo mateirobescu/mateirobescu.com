@@ -180,9 +180,7 @@ class Navbar {
       this.#setActiveSection.bind(this),
       {
         threshold: 0,
-        rootMargin: `-${virtualVH  * 0.3}px 0px -${
-          virtualVH * 0.3
-        }px 0px`,
+        rootMargin: `-${virtualVH * 0.5}px 0px -${virtualVH * 0.5}px 0px`,
       }
     );
 
