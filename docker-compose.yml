@@ -14,20 +14,3 @@ services:
     build: ./nginx
     ports:
       - "80:80"
-      - "443:443"  # Open HTTPS port
-    volumes:
-      - certs:/etc/letsencrypt
-      - certbot_data:/var/www/certbot
-    depends_on:
-      - backend
-    restart: always
-
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - certs:/etc/letsencrypt
-      - certbot_data:/var/www/certbot
-
-volumes:
-  certs:
-  certbot_data:
