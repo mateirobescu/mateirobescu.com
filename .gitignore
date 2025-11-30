@@ -18,6 +18,7 @@ backend/portfolio/static/portfolio/js/
 
 # Secrets
 .env
+.env.prod
 
 # Logs & misc
 *.log
