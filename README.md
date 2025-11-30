@@ -26,9 +26,8 @@ Built the backend in Django (Python), following best practices for performance, 
 - Custom Natural Language Processing (NLP) spam detection using the `gibberish-detector` model, trained with English and Romanian data from the [Leipzig Corpora Collection](https://wortschatz.uni-leipzig.de/en/download/English), cleaned first with the ```data_cleaner.py``` script to maximize accuracy, in order to detect bot/spam-like content and reject those emails.
 
 ### Cloud
-- Deployed on an AWS EC2 instance running Ubuntu
+- Deployed on an AWS EC2 instance running Ubuntu through.
 - High-performance serving managed by Nginx (reverse proxy) routing to Gunicorn (WSGI server).
-- Used `pull.sh` script that automatically fetches from the main branch, collects static files, downloads python and npm modules and restarts the webserver to apply changes. 
 - Managed environment configuration and secrets using Django-Environ to securely separate sensitive data from the version control system.
 - PostgreSQL database hosted remotely on Nano in order to sustain scalability and possible server changes in the future.
 - Media (project thumbnails) hosted on Cloudinary and delivered via their CDN, also for future proofing.
