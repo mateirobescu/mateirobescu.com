@@ -170,7 +170,7 @@
                 <div class="cv__time-location">
                   <div class="time">
                     <ion-icon name="calendar-number-outline"></ion-icon>{% blocktrans %} Nov.
-                    2025 &ndash; Present {% endblocktrans %} 
+                    2025 &ndash; Dec. 2025 {% endblocktrans %}
                   </div>
                 </div>
                 <ul>
@@ -200,7 +200,9 @@
                     {% blocktrans trimmed %}Developed a full-stack portfolio web app with Python, Django, JavaScript, HTML/SCSS to showcase personal projects.{% endblocktrans %}
                   </li>
                   <li>
-                    {% blocktrans trimmed %}Deployed to AWS EC2 with Gunicorn + Nginx for production readiness.{% endblocktrans %}
+                    {% blocktrans trimmed %}Deployed Dockerized containers to AWS EC2 via GitHub Actions
+                    CI/CD, utilizing Gunicorn and Nginx for a production-ready
+                    environment.{% endblocktrans %}
                   </li>
                   <li>
                     {% blocktrans trimmed %}Integrated PostgreSQL and Cloudinary for scalable data &amp; media management.{% endblocktrans %}
@@ -241,7 +243,6 @@
                   <div class="skill">Python</div>
                   <div class="skill">Django</div>
                   <div class="skill">JavaScript</div>
-                  <div class="skill">TypeScript</div>
                   <div class="skill">C/C++</div>
                   <div class="skill">React</div>
                   <div class="skill">HTML</div>
@@ -251,6 +252,8 @@
                   <div class="skill">Linux</div>
                   <div class="skill">Git</div>
                   <div class="skill">Bash</div>
+                  <div class="skill">Terraform</div>
+                  <div class="skill">Docker</div>
                 </div>
               </div>
             </div>
@@ -279,27 +282,14 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="cv__items">
               <div class="cv__item">
-                <h3>{% trans "European Computer Driving Licence (ECDL)" %}</h3>
-                <div class="cv__time-location">
-                  <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Mar. 2024{% endblocktrans %}
+                  <h3>{% trans "European Computer Driving Licence (ECDL)" %}</h3>
+                  <div class="cv__time-location">
+                    <div class="time">
+                        <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Mar. 2024{% endblocktrans %}
+                    </div>
                   </div>
-                </div>
               </div>
-            </div>
-            <div class="cv__items">
-              <div class="cv__item">
-                <h3>{% trans "Cambridge B1 Certificate" %}</h3>
-                <div class="cv__time-location">
-                  <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Mar. 2018{% endblocktrans %}
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="cv__section">
             <h2>{% trans "Languages" %}</h2>
