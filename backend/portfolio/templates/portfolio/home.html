@@ -102,239 +102,240 @@
 
     <h2 class="cv__header">{% trans "CV" %}</h2>
     <div class="cv__title-info">
-        <h2 class="name">{% trans "Matei-Gabriel Robescu" %}</h2>
-        <div class="info">
-          <div>
-            <a
-              href="https://mateirobescu.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              ><ion-icon name="globe-outline"></ion-icon>{% trans "mateirobescu.com" %}</a
-            >
-          </div>
-          <div>
-            <a
-              href="mailto:matei.robescu@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              ><ion-icon name="mail-outline"></ion-icon
-              >{% trans "matei.robescu@gmail.com" %}</a
-            >
-          </div>
-          <div>
-            <a
-              href="https://www.linkedin.com/in/matei-robescu-758665241/"
-              target="_blank"
-              rel="noopener noreferrer"
-              ><ion-icon name="logo-linkedin"></ion-icon>{% trans "matei-robescu" %}</a
-            >
-          </div>
-          <div>
-            <a
-              href="https://github.com/mateirobescu"
-              target="_blank"
-              rel="noopener noreferrer"
-              ><ion-icon name="logo-github"></ion-icon>{% trans "mateirobescu" %}</a
-            >
-          </div>
+      <h2 class="name">{% trans "Matei-Gabriel Robescu" %}</h2>
+      <div class="info">
+        <div>
+          <a
+            href="https://mateirobescu.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><ion-icon name="globe-outline"></ion-icon>{% trans "mateirobescu.com" %}</a
+          >
+        </div>
+        <div>
+          <a
+            href="mailto:matei.robescu@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><ion-icon name="mail-outline"></ion-icon
+            >{% trans "matei.robescu@gmail.com" %}</a
+          >
+        </div>
+        <div>
+          <a
+            href="https://www.linkedin.com/in/matei-robescu-758665241/"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><ion-icon name="logo-linkedin"></ion-icon>{% trans "matei-robescu" %}</a
+          >
+        </div>
+        <div>
+          <a
+            href="https://github.com/mateirobescu"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><ion-icon name="logo-github"></ion-icon>{% trans "mateirobescu" %}</a
+          >
         </div>
       </div>
-      <div class="cv__content">
-        <div class="cv__column">
-          <div class="cv__section">
-            <h2>{% trans "Education" %}</h2>
-            <div class="spacer"></div>
-              <div class="cv__items">
-                <div class="cv__item">
-                  <h3>{% trans "Bachelor degree in Computer Science" %}</h3>
-                  <h4>
-                    {% trans "Faculty of Cybernetics, Statistics and Economic Informatics" %}
-                  </h4>
-                  <div class="cv__time-location">
-                    <div class="time">
-                      <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2024 &ndash; Present{% endblocktrans %}
-                    </div>
-                    <div class="location">
-                      <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Bucharest, RO{% endblocktrans %}
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
-          <div class="cv__section">
-            <h2>{% trans "Projects" %}</h2>
-            <div class="spacer"></div>
+    </div>
+    <div class="cv__content">
+      <div class="cv__column">
+        <div class="cv__section">
+          <h2>{% trans "Education" %}</h2>
+          <div class="spacer"></div>
             <div class="cv__items">
               <div class="cv__item">
-                <h3>Weather Data ETL Pipeline</h3>
+                <h3>{% trans "Bachelor degree in Computer Science" %}</h3>
+                <h4>
+                  {% trans "Faculty of Cybernetics, Statistics and Economic Informatics" %}
+                </h4>
                 <div class="cv__time-location">
                   <div class="time">
-                    <ion-icon name="calendar-number-outline"></ion-icon>{% blocktrans %} Nov.
-                    2025 &ndash; Dec. 2025 {% endblocktrans %}
+                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2024 &ndash; Present{% endblocktrans %}
+                  </div>
+                  <div class="location">
+                    <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Bucharest, RO{% endblocktrans %}
                   </div>
                 </div>
-                <ul>
-                  <li>
-                    {% blocktrans %}Built a serverless AWS ETL pipeline using Lambda, S3,
-                    DynamoDB, RDS, and Secrets Manager, with all infrastructure
-                    managed through Terraform.{% endblocktrans %}
-                    
-                  </li>
-                  <li>
-                    {% blocktrans %}Automated ingestion, cleaning, and transformation of
-                    weather-API data using Python, storing validated results in
-                    MySQL for further analysis.{% endblocktrans %}  
-                  </li>
-                </ul>
               </div>
-              <div class="cv__item">
-                <h3>{% trans "mateirobescu.com Personal Portfolio" %}</h3>
-                <div class="cv__time-location">
-                  <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2025{% endblocktrans %}
-                  </div>
-                </div>
-
-                <ul>
-                  <li>
-                    {% blocktrans trimmed %}Developed a full-stack portfolio web app with Python, Django, JavaScript, HTML/SCSS to showcase personal projects.{% endblocktrans %}
-                  </li>
-                  <li>
-                    {% blocktrans trimmed %}Deployed Dockerized containers to AWS EC2 via GitHub Actions
-                    CI/CD, utilizing Gunicorn and Nginx for a production-ready
-                    environment.{% endblocktrans %}
-                  </li>
-                  <li>
-                    {% blocktrans trimmed %}Integrated PostgreSQL and Cloudinary for scalable data &amp; media management.{% endblocktrans %}
-                  </li>
-                  <li>
-                    {% blocktrans trimmed %}Secured forms with reCAPTCHA v3 and an NLP pipeline to
-                    combat gibberish/bot spam and ensure data integrity.{% endblocktrans %}
-                  </li>
-                </ul>
-              </div>
-              <div class="cv__item">
-                <h3>amr.io</h3>
-                <div class="cv__time-location">
-                  <div class="time">
-                    <ion-icon name="calendar-number-outline"></ion-icon> {% blocktrans %} Oct.
-                    2025 {% endblocktrans %} 
-                  </div>
-                </div>
-                <ul>
-                  <li>
-                    {% blocktrans trimmed %}Developed a fast, minimalist countdown web app using
-                    React/Vite, optimizing performance to handle real-time
-                    deadline visualization.{% endblocktrans %}
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
-
-        <div class="cv__column">
-          <div class="cv__section">
-            <h2>{% trans "Skills" %}</h2>
-            <div class="spacer"></div>
-            <div class="cv__items">
-              <div class="cv__item">
-                <div class="skills__container">
-                  <div class="skill">Python</div>
-                  <div class="skill">Django</div>
-                  <div class="skill">JavaScript</div>
-                  <div class="skill">C/C++</div>
-                  <div class="skill">React</div>
-                  <div class="skill">HTML</div>
-                  <div class="skill">CSS</div>
-                  <div class="skill">SQL</div>
-                  <div class="skill">AWS</div>
-                  <div class="skill">Linux</div>
-                  <div class="skill">Git</div>
-                  <div class="skill">Bash</div>
-                  <div class="skill">Terraform</div>
-                  <div class="skill">Docker</div>
+        <div class="cv__section">
+          <h2>{% trans "Projects" %}</h2>
+          <div class="spacer"></div>
+          <div class="cv__items">
+            <div class="cv__item">
+              <h3>Weather Data ETL Pipeline</h3>
+              <div class="cv__time-location">
+                <div class="time">
+                  <ion-icon name="calendar-number-outline"></ion-icon>{% blocktrans %} Nov.
+                  2025 &ndash; Dec. 2025 {% endblocktrans %}
                 </div>
               </div>
+              <ul>
+                <li>
+                  {% blocktrans %}Built a serverless AWS ETL pipeline using Lambda, S3,
+                  DynamoDB, RDS, and Secrets Manager, with all infrastructure
+                  managed through Terraform.{% endblocktrans %}
+                  
+                </li>
+                <li>
+                  {% blocktrans %}Automated ingestion, cleaning, and transformation of
+                  weather-API data using Python, storing validated results in
+                  MySQL for further analysis.{% endblocktrans %}  
+                </li>
+              </ul>
             </div>
-          </div>
-          <div class="cv__section">
-            <h2>{% trans "Awards and Certifications" %}</h2>
-            <div class="spacer"></div>
-            <div class="cv__items">
-              <div class="cv__item">
-                <h3>
-                  {% blocktrans trimmed %}Winner of <em>"Realiști fără egal"</em>, edition XI, Informatics discipline {% endblocktrans %}
-                </h3>
-                <div class="cv__time-location">
-                  <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Apr. 2024{% endblocktrans %}
-                  </div>
+            <div class="cv__item">
+              <h3>{% trans "mateirobescu.com Personal Portfolio" %}</h3>
+              <div class="cv__time-location">
+                <div class="time">
+                  <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2025{% endblocktrans %}
                 </div>
               </div>
-              <div class="cv__item">
-                <h3>
-                  {% blocktrans trimmed %}Participant of <em>"Inovative Evaluation Methods"</em>, University of Bucharest{% endblocktrans %}
-                </h3>
-                <div class="cv__time-location">
-                  <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Apr. 2024{% endblocktrans %}
-                  </div>
+
+              <ul>
+                <li>
+                  {% blocktrans trimmed %}Developed a full-stack portfolio web app with Python, Django, JavaScript, HTML/SCSS to showcase personal projects.{% endblocktrans %}
+                </li>
+                <li>
+                  {% blocktrans trimmed %}Deployed Dockerized containers to AWS EC2 via GitHub Actions
+                  CI/CD, utilizing Gunicorn and Nginx for a production-ready
+                  environment.{% endblocktrans %}
+                </li>
+                <li>
+                  {% blocktrans trimmed %}Integrated PostgreSQL and Cloudinary for scalable data &amp; media management.{% endblocktrans %}
+                </li>
+                <li>
+                  {% blocktrans trimmed %}Secured forms with reCAPTCHA v3 and an NLP pipeline to
+                  combat gibberish/bot spam and ensure data integrity.{% endblocktrans %}
+                </li>
+              </ul>
+            </div>
+            <div class="cv__item">
+              <h3>amr.io</h3>
+              <div class="cv__time-location">
+                <div class="time">
+                  <ion-icon name="calendar-number-outline"></ion-icon> {% blocktrans %} Oct.
+                  2025 {% endblocktrans %} 
                 </div>
               </div>
-              <div class="cv__item">
-                  <h3>{% trans "European Computer Driving Licence (ECDL)" %}</h3>
-                  <div class="cv__time-location">
-                    <div class="time">
-                        <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Mar. 2024{% endblocktrans %}
-                    </div>
-                  </div>
-              </div>
-          </div>
-          <div class="cv__section">
-            <h2>{% trans "Languages" %}</h2>
-            <div class="spacer"></div>
-            <div class="cv__items languages">
-              <div class="cv__item">
-                <div class="language">
-                  <span>{% trans "Romanian:" %}</span>
-                  <div class="dots">
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  </div>
-                </div>
-              </div>
-              <div class="cv__item">
-                <div class="language">
-                  <span>{% trans "English:" %}</span>
-                  <div class="dots">
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
-                  </div>
-                </div>
-              </div>
-              <div class="cv__item">
-                <div class="language">
-                  <span>{% trans "French:" %}</span>
-                  <div class="dots">
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
-                    <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
-                  </div>
-                </div>
-              </div>
+              <ul>
+                <li>
+                  {% blocktrans trimmed %}Developed a fast, minimalist countdown web app using
+                  React/Vite, optimizing performance to handle real-time
+                  deadline visualization.{% endblocktrans %}
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="cv__column">
+        <div class="cv__section">
+          <h2>{% trans "Skills" %}</h2>
+          <div class="spacer"></div>
+          <div class="cv__items">
+            <div class="cv__item">
+              <div class="skills__container">
+                <div class="skill">Python</div>
+                <div class="skill">Django</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">C/C++</div>
+                <div class="skill">React</div>
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">SQL</div>
+                <div class="skill">AWS</div>
+                <div class="skill">Linux</div>
+                <div class="skill">Git</div>
+                <div class="skill">Bash</div>
+                <div class="skill">Terraform</div>
+                <div class="skill">Docker</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cv__section">
+          <h2>{% trans "Awards and Certifications" %}</h2>
+          <div class="spacer"></div>
+          <div class="cv__items">
+            <div class="cv__item">
+              <h3>
+                {% blocktrans trimmed %}Winner of <em>"Realiști fără egal"</em>, edition XI, Informatics discipline {% endblocktrans %}
+              </h3>
+              <div class="cv__time-location">
+                <div class="time">
+                  <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Apr. 2024{% endblocktrans %}
+                </div>
+              </div>
+            </div>
+            <div class="cv__item">
+              <h3>
+                {% blocktrans trimmed %}Participant of <em>"Inovative Evaluation Methods"</em>, University of Bucharest{% endblocktrans %}
+              </h3>
+              <div class="cv__time-location">
+                <div class="time">
+                  <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Apr. 2024{% endblocktrans %}
+                </div>
+              </div>
+            </div>
+            <div class="cv__item">
+                <h3>{% trans "European Computer Driving Licence (ECDL)" %}</h3>
+                <div class="cv__time-location">
+                  <div class="time">
+                      <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Mar. 2024{% endblocktrans %}
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="cv__section">
+          <h2>{% trans "Languages" %}</h2>
+          <div class="spacer"></div>
+          <div class="cv__items languages">
+            <div class="cv__item">
+              <div class="language">
+                <span>{% trans "Romanian:" %}</span>
+                <div class="dots">
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                </div>
+              </div>
+            </div>
+            <div class="cv__item">
+              <div class="language">
+                <span>{% trans "English:" %}</span>
+                <div class="dots">
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                </div>
+              </div>
+            </div>
+            <div class="cv__item">
+              <div class="language">
+                <span>{% trans "French:" %}</span>
+                <div class="dots">
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
+                  <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </section>
 
