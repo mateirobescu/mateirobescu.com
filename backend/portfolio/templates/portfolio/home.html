@@ -24,7 +24,6 @@
       <div class="my-skills">
         <p class="my-skills__p">{% blocktrans trimmed %}Technologies I've worked with — and I'm always open to learning more.{% endblocktrans %}</p>
         <div class="my-skills__icons">
-          
           {% for stack in stacks %}
             <div class="skill" data-label="{{ stack.name }}"><i class="{{ stack.icon }}" role="img" aria-label="{{ stack.name }}"></i></div>
           {% endfor %}
@@ -158,6 +157,12 @@
                     <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Bucharest, RO{% endblocktrans %}
                   </div>
                 </div>
+                <ul>
+                  <li>
+                    {% blocktrans %}Relevant Coursework: Data Structures, Algorithms, Object Oriented Programming, Database Systems, Operating
+                    Systems, Statistics.{% endblocktrans %}
+                  </li>
+                </ul>
               </div>
           </div>
         </div>
@@ -175,15 +180,19 @@
               </div>
               <ul>
                 <li>
-                  {% blocktrans %}Built a serverless AWS ETL pipeline using Lambda, S3,
-                  DynamoDB, RDS, and Secrets Manager, with all infrastructure
-                  managed through Terraform.{% endblocktrans %}
-                  
+                  {% blocktrans %}Built a serverles AWS ETL pipeline using Lambda, S3, DynamoDB, and RDS, managing the entire infrastructure
+                  as code (IaC) with Terraform.{% endblocktrans %}
                 </li>
                 <li>
-                  {% blocktrans %}Automated ingestion, cleaning, and transformation of
-                  weather-API data using Python, storing validated results in
-                  MySQL for further analysis.{% endblocktrans %}  
+                  {% blocktrans %}Architected a daily ingestion workflow where a trigger invokes Lambda to retrieve city metadata from DynamoDB
+                  and fetch weather API data, storing raw JSON payloads in S3.{% endblocktrans %}  
+                </li>
+                <li>
+                  {% blocktrans %}Implemented data transformation logic using Lambda toparse raw S3 objects and persist structured weather records
+                  into RDS MySQL.{% endblocktrans %}  
+                </li>
+                <li>
+                  {% blocktrans %}Developed a React frontend with TypeScript to interface with the pipeline, allowing users to fetch processed data and download CSV reports.{% endblocktrans %}  
                 </li>
               </ul>
             </div>
@@ -191,25 +200,21 @@
               <h3>{% trans "mateirobescu.com Personal Portfolio" %}</h3>
               <div class="cv__time-location">
                 <div class="time">
-                  <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2025{% endblocktrans %}
+                  <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Aug. 2025 &ndash; Oct. 2025{% endblocktrans %}
                 </div>
               </div>
-
               <ul>
                 <li>
-                  {% blocktrans trimmed %}Developed a full-stack portfolio web app with Python, Django, JavaScript, HTML/SCSS to showcase personal projects.{% endblocktrans %}
+                  {% blocktrans trimmed %}Developed a full-stack portfolio web app using Python and Django, creating a responsive frontend with JavaScript,
+                  HTML and SCSS.{% endblocktrans %}
                 </li>
                 <li>
-                  {% blocktrans trimmed %}Deployed Dockerized containers to AWS EC2 via GitHub Actions
-                  CI/CD, utilizing Gunicorn and Nginx for a production-ready
-                  environment.{% endblocktrans %}
+                  {% blocktrans trimmed %}Orchestrated a CI/CD pipeline using GitHub Actions to automate testing, linting, and deployment of Dockerized
+                  containers to AWS EC2.{% endblocktrans %}
                 </li>
                 <li>
-                  {% blocktrans trimmed %}Integrated PostgreSQL and Cloudinary for scalable data &amp; media management.{% endblocktrans %}
-                </li>
-                <li>
-                  {% blocktrans trimmed %}Secured forms with reCAPTCHA v3 and an NLP pipeline to
-                  combat gibberish/bot spam and ensure data integrity.{% endblocktrans %}
+                  {% blocktrans trimmed %}Integrated PostgreSQL for structured data storage and Cloudinary for optimized media management, implementing
+                  reCAPTCHA v3 and a custom NLP pipeline to filter spam emails.{% endblocktrans %}
                 </li>
               </ul>
             </div>
@@ -223,9 +228,13 @@
               </div>
               <ul>
                 <li>
-                  {% blocktrans trimmed %}Developed a fast, minimalist countdown web app using
-                  React/Vite, optimizing performance to handle real-time
-                  deadline visualization.{% endblocktrans %}
+                  {% blocktrans trimmed %}Developed a fast, minimalist countdown web app using React and Vite, leveraging custom hooks for state management.{% endblocktrans %}
+                </li>
+                <li>
+                  {% blocktrans trimmed %}Implemented Local Storage integration to persist user-configured deadlines across browser sessions.{% endblocktrans %}
+                </li>
+                <li>
+                  {% blocktrans trimmed %}Designed a responsive, mobile-first interface focused on accessibility and speed, utilizing modern CSS practices.{% endblocktrans %}
                 </li>
               </ul>
             </div>
@@ -239,22 +248,23 @@
           <div class="spacer"></div>
           <div class="cv__items">
             <div class="cv__item">
-              <div class="skills__container">
-                <div class="skill">Python</div>
-                <div class="skill">Django</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">C/C++</div>
-                <div class="skill">React</div>
-                <div class="skill">HTML</div>
-                <div class="skill">CSS</div>
-                <div class="skill">SQL</div>
-                <div class="skill">AWS</div>
-                <div class="skill">Linux</div>
-                <div class="skill">Git</div>
-                <div class="skill">Bash</div>
-                <div class="skill">Terraform</div>
-                <div class="skill">Docker</div>
-              </div>
+              <ul>
+                <li>
+                  <strong>{% blocktrans trimmed %}Programming Languages:{% endblocktrans %}</strong> Python, C/C++, JavaScript, TypeScript, SQL, Bash
+                </li>
+                <li>
+                  <strong>{% blocktrans trimmed %}Web Technologies:{% endblocktrans %}</strong> Django, React, HTML, CSS
+                </li>
+                <li>
+                  <strong>{% blocktrans trimmed %}Cloud:{% endblocktrans %}</strong> AWS Lambda, Amazon S3, Amazon RDS, DynamoDB, EC2
+                </li>
+                <li>
+                  <strong>{% blocktrans trimmed %}DevOps:{% endblocktrans %}</strong> Linux, Docker, Terraform, Git, CI/CD, GitHub Actions
+                </li>
+                <li>
+                  <strong>{% blocktrans trimmed %}Databases:{% endblocktrans %}</strong> MySQL, PostgreSQL, Oracle, DynamoDB
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -271,6 +281,9 @@
                   <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Apr. 2024{% endblocktrans %}
                 </div>
               </div>
+              <ul>
+                <li>{% blocktrans trimmed %}Collaborated in a multidisciplinary team to design and develop comprehensive test subjects across various academic fields, securing 1st place in the Informatics category.{% endblocktrans %}</li>
+              </ul>
             </div>
             <div class="cv__item">
               <h3>
@@ -282,14 +295,6 @@
                 </div>
               </div>
             </div>
-            <div class="cv__item">
-                <h3>{% trans "European Computer Driving Licence (ECDL)" %}</h3>
-                <div class="cv__time-location">
-                  <div class="time">
-                      <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Mar. 2024{% endblocktrans %}
-                  </div>
-                </div>
-            </div>
           </div>
         </div>
         <div class="cv__section">
@@ -298,38 +303,17 @@
           <div class="cv__items languages">
             <div class="cv__item">
               <div class="language">
-                <span>{% trans "Romanian:" %}</span>
-                <div class="dots">
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                </div>
+                <span>{% trans "Romanian: Native" %}</span>
               </div>
             </div>
             <div class="cv__item">
               <div class="language">
-                <span>{% trans "English:" %}</span>
-                <div class="dots">
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                </div>
+                <span>{% trans "English: Fluent" %}</span>  
               </div>
-            </div>
+            </div>        
             <div class="cv__item">
               <div class="language">
-                <span>{% trans "French:" %}</span>
-                <div class="dots">
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
-                  <ion-icon name="ellipse-outline" role="img" class="md hydrated"></ion-icon>
-                </div>
+                <span>{% trans "French: Intermediate" %}</span>
               </div>
             </div>
           </div>

@@ -57,11 +57,8 @@
   padding-top: clamp(1.5rem, 3vw, 3rem);
 
   flex-grow: 1;
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  @media (max-width: variables.$bp-xs) {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  flex-direction: column;
   gap: 2.5rem;
 }
 

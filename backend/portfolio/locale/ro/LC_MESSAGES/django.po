@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mateirobescu.com 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 11:03+0000\n"
+"POT-Creation-Date: 2025-12-27 19:48+0000\n"
 "PO-Revision-Date: 2025-10-03 22:20+0300\n"
 "Last-Translator: Matei Robescu <EMAIL@ADDRESS>\n"
 "Language-Team: Romanian\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: templates/portfolio/base.html:10 templates/portfolio/home.html:112
+#: templates/portfolio/base.html:10 templates/portfolio/home.html:111
 msgid "mateirobescu.com"
 msgstr "mateirobescu.com"
 
@@ -53,8 +53,8 @@ msgid "projects"
 msgstr "proiecte"
 
 #: templates/portfolio/base.html:93 templates/portfolio/base.html:160
-#: templates/portfolio/base.html:244 templates/portfolio/home.html:101
-#: templates/portfolio/home.html:103
+#: templates/portfolio/base.html:244 templates/portfolio/home.html:100
+#: templates/portfolio/home.html:102
 msgid "CV"
 msgstr "CV"
 
@@ -133,177 +133,239 @@ msgid "Technologies I've worked with — and I'm always open to learning more."
 msgstr ""
 "Tehnologii cu care am lucrat — și sunt mereu deschis să învăț altele noi."
 
-#: templates/portfolio/home.html:42 templates/portfolio/home.html:43
-#: templates/portfolio/home.html:165
+#: templates/portfolio/home.html:41 templates/portfolio/home.html:42
+#: templates/portfolio/home.html:170
 msgid "Projects"
 msgstr "Proiecte"
 
-#: templates/portfolio/home.html:45
+#: templates/portfolio/home.html:44
 msgid "All"
 msgstr "Toate"
 
-#: templates/portfolio/home.html:88
+#: templates/portfolio/home.html:87
 msgid "Live demo"
 msgstr "Demo live"
 
-#: templates/portfolio/home.html:96
+#: templates/portfolio/home.html:95
 msgid "I haven't built anything like this... yet!"
 msgstr "Nu am construit încă ceva de acest fel... încă!"
 
-#: templates/portfolio/home.html:105
+#: templates/portfolio/home.html:104
 msgid "Matei-Gabriel Robescu"
 msgstr "Matei-Gabriel Robescu"
 
-#: templates/portfolio/home.html:121
+#: templates/portfolio/home.html:120
 msgid "matei.robescu@gmail.com"
 msgstr "matei.robescu@gmail.com"
 
-#: templates/portfolio/home.html:129
+#: templates/portfolio/home.html:128
 msgid "matei-robescu"
 msgstr "matei-robescu"
 
-#: templates/portfolio/home.html:137
+#: templates/portfolio/home.html:136
 msgid "mateirobescu"
 msgstr "mateirobescu"
 
-#: templates/portfolio/home.html:145
+#: templates/portfolio/home.html:144
 msgid "Education"
 msgstr "Educație"
 
-#: templates/portfolio/home.html:149
+#: templates/portfolio/home.html:148
 msgid "Bachelor degree in Computer Science"
 msgstr "Licență în Informatică"
 
-#: templates/portfolio/home.html:151
+#: templates/portfolio/home.html:150
 msgid "Faculty of Cybernetics, Statistics and Economic Informatics"
 msgstr "Facultatea de Cibernetică, Statistică și Informatică Economică"
 
-#: templates/portfolio/home.html:155
+#: templates/portfolio/home.html:154
 #, fuzzy
-#| msgid "Oct. 2024 - Present"
 msgid "Oct. 2024 &ndash; Present"
 msgstr "oct. 2024 &ndash; Prezent"
 
-#: templates/portfolio/home.html:158
+#: templates/portfolio/home.html:157
 msgid "Bucharest, RO"
 msgstr "București, RO"
 
-#: templates/portfolio/home.html:172
+#: templates/portfolio/home.html:162
+msgid ""
+"Relevant Coursework: Data Structures, Algorithms, Object Oriented "
+"Programming, Database Systems, Operating\n"
+"                    Systems, Statistics."
+msgstr ""
+"Cursuri relevante: Structuri de date, Algoritmi, Programare orientată pe "
+"obiecte, Sisteme de baze de date, Sisteme de operare, Statistică."
+
+#: templates/portfolio/home.html:177
 #, fuzzy
-#| msgid ""
-#| " Nov.\n"
-#| "                    2025 &ndash; Present "
 msgid ""
 " Nov.\n"
-"                    2025 &ndash; Dec. 2025 "
+"                  2025 &ndash; Dec. 2025 "
 msgstr ""
 " Nov.\n"
 "                    2025 &ndash; Prezent "
 
-#: templates/portfolio/home.html:178
+#: templates/portfolio/home.html:183
 msgid ""
-"Built a serverless AWS ETL pipeline using Lambda, S3,\n"
-"                    DynamoDB, RDS, and Secrets Manager, with all "
-"infrastructure\n"
-"                    managed through Terraform."
+"Built a serverles AWS ETL pipeline using Lambda, S3, DynamoDB, and RDS, "
+"managing the entire infrastructure\n"
+"                  as code (IaC) with Terraform."
 msgstr ""
-"Am construit un pipeline ETL serverless pe AWS folosind Lambda, S3,\n"
-"                    DynamoDB, RDS și Secrets Manager, cu toată "
-"infrastructura\n"
-"                    gestionată prin Terraform."
+"Am construit un pipeline ETL serverless pe AWS folosind Lambda, S3, DynamoDB "
+"și RDS, gestionând întreaga infrastructură\n"
+"                  ca și cod (IaC) prin Terraform."
 
-#: templates/portfolio/home.html:184
+#: templates/portfolio/home.html:187
+#, fuzzy
+#| msgid ""
+#| "Architected a daily ingestion workflow where a trigger invokes Lambda to "
+#| "retrieve city metadata from DynamoDB\n"
+#| "                  and fetch weather API data, storing raw JSON payloads "
+#| "in S3."
 msgid ""
-"Automated ingestion, cleaning, and transformation of\n"
-"                    weather-API data using Python, storing validated results "
-"in\n"
-"                    MySQL for further analysis."
+"Achtected a daily ingestion workflow where a trigger invokes Lambda to "
+"retrieve city metadata from DynamoDB\n"
+"                  and fetch weather API data, storing raw JSON payloads in "
+"S3."
 msgstr ""
-"Preluare automată, curățare și transformare a datelor\n"
-"                    din weather-API folosind Python, cu stocarea "
-"rezultatelor validate în\n"
-"                    MySQL pentru analize ulterioare."
+"Am creat arhitectura unui flux de lucru de ingerare zilnică unde un trigger "
+"invocă Lambda pentru a prelua metadata orașelor din DynamoDB și a obține "
+"date de la API-ul meteo, stocând payload-uri JSON brute în S3."
 
 #: templates/portfolio/home.html:191
+msgid ""
+"Implemented data transformation logic using Lambda toparse raw S3 objects "
+"and persist structured weather records\n"
+"                  into RDS MySQL."
+msgstr ""
+"Am implementat logica de transformare a datelor folosind Lambda pentru a "
+"parsa obiectele brute din S3 și a persista înregistrările structurate de "
+"meteo\n"
+"                  în RDS MySQL."
+
+#: templates/portfolio/home.html:195
+msgid ""
+"Developed a React frontend with TypeScript to interface with the pipeline, "
+"allowing users to fetch processed data and download CSV reports."
+msgstr "Am dezvoltat un frontend React cu TypeScript pentru a interacționa cu pipeline-ul, permițând utilizatorilor să preia date procesate și să descarce rapoarte CSV."
+
+#: templates/portfolio/home.html:200
 msgid "mateirobescu.com Personal Portfolio"
 msgstr "Portofoliul personal mateirobescu.com"
 
-#: templates/portfolio/home.html:194
-msgid "Oct. 2025"
-msgstr "oct. 2025"
-
-#: templates/portfolio/home.html:200
-msgid ""
-"Developed a full-stack portfolio web app with Python, Django, JavaScript, "
-"HTML/SCSS to showcase personal projects."
-msgstr ""
-"Am dezvoltat o aplicație web full-stack de portofoliu cu Python, Django, "
-"JavaScript, HTML/SCSS pentru a prezenta proiecte personale."
-
 #: templates/portfolio/home.html:203
-msgid ""
-"Deployed Dockerized containers to AWS EC2 via GitHub Actions CI/CD, "
-"utilizing Gunicorn and Nginx for a production-ready environment."
+msgid "Aug. 2025 &ndash; Oct. 2025"
 msgstr ""
-"Containere Docker implementate pe AWS EC2 (CI/CD GitHub Actions), utilizând Gunicorn și Nginx pentru mediu de producție."
 
 #: templates/portfolio/home.html:208
 msgid ""
-"Integrated PostgreSQL and Cloudinary for scalable data &amp; media "
-"management."
+"Developed a full-stack portfolio web app using Python and Django, creating a "
+"responsive frontend with JavaScript, HTML and SCSS."
 msgstr ""
-"Am integrat PostgreSQL și Cloudinary pentru gestionarea scalabilă a datelor "
-"și media."
+"Am dezvoltat o aplicație web full-stack pentru portofoliul meu folosind "
+"Python și Django, creând un frontend responsiv cu JavaScript, HTML și SCSS."
 
-#: templates/portfolio/home.html:211
-#, fuzzy
-#| msgid ""
-#| "Secured forms with reCaptcha v3 and an NLP pipeline to combat gibberish/"
-#| "bot spam and ensure data integrity."
+#: templates/portfolio/home.html:212
 msgid ""
-"Secured forms with reCAPTCHA v3 and an NLP pipeline to combat gibberish/bot "
-"spam and ensure data integrity."
+"Orchestrated a CI/CD pipeline using GitHub Actions to automate testing, "
+"linting, and deployment of Dockerized containers to AWS EC2."
 msgstr ""
-"Formulare securizate cu reCaptcha v3 și o conductă NLP pentru a combate "
-"spamul de tip 'gibberish'/bot și pentru a asigura integritatea datelor."
+"Am orchestrat un pipeline CI/CD folosind GitHub Actions pentru a automatiza "
+"testarea, linting-ul și deployment-ul containerelor Docker pe AWS EC2."
 
-#: templates/portfolio/home.html:220
+#: templates/portfolio/home.html:216
+msgid ""
+"Integrated PostgreSQL for structured data storage and Cloudinary for "
+"optimized media management, implementing reCAPTCHA v3 and a custom NLP "
+"pipeline to filter spam emails."
+msgstr ""
+"Am integrat PostgreSQL pentru stocarea structurată a datelor și Cloudinary "
+"pentru gestionarea optimizată a media, implementând reCAPTCHA v3 și un "
+"pipeline NLP personalizat pentru filtrarea email-urilor spam."
+
+#: templates/portfolio/home.html:225
+#, fuzzy
 msgid ""
 " Oct.\n"
-"                    2025 "
+"                  2025 "
 msgstr ""
 " Nov.\n"
 "                    2025 &ndash; Prezent "
 
-#: templates/portfolio/home.html:226
+#: templates/portfolio/home.html:231
 msgid ""
-"Developed a fast, minimalist countdown web app using React/Vite, optimizing "
-"performance to handle real-time deadline visualization."
+"Developed a fast, minimalist countdown web app using React and Vite, "
+"leveraging custom hooks for state management."
 msgstr ""
-"Am dezvoltat o aplicație web de numărătoare inversă rapidă și minimalistă, "
-"folosind React/Vite, optimizând performanța pentru a gestiona vizualizarea "
-"în timp real a termenelor limită."
+"Am dezvoltat o aplicație web de numărătoare inversă rapidă și minimalistă folosind React și Vite, valorificând hook-uri personalizate pentru gestionarea stării."
 
-#: templates/portfolio/home.html:238
+
+#: templates/portfolio/home.html:234
+msgid ""
+"Implemented Local Storage integration to persist user-configured deadlines "
+"across browser sessions."
+msgstr ""
+"Am implementat integrarea Local Storage pentru a persista termenele "
+"configurate de utilizator între sesiunile browserului."
+
+#: templates/portfolio/home.html:237
+msgid ""
+"Designed a responsive, mobile-first interface focused on accessibility and "
+"speed, utilizing modern CSS practices."
+msgstr ""
+"Am proiectat o interfață responsivă, mobile-first, concentrată pe "
+"accesibilitate și viteză, utilizând practici moderne CSS."
+
+#: templates/portfolio/home.html:247
 msgid "Skills"
 msgstr "Competențe"
 
+#: templates/portfolio/home.html:253
+msgid "Programming Languages:"
+msgstr "Limbaje de programare:"
+
+#: templates/portfolio/home.html:256
+msgid "Web Technologies:"
+msgstr "Tehnologii web:"
+
+#: templates/portfolio/home.html:259
+msgid "Cloud:"
+msgstr "Cloud:"
+
 #: templates/portfolio/home.html:262
+msgid "DevOps:"
+msgstr "DevOps:"
+
+#: templates/portfolio/home.html:265
+msgid "Databases:"
+msgstr "Baze de date:"
+
+#: templates/portfolio/home.html:272
 msgid "Awards and Certifications"
 msgstr "Premii și certificări"
 
-#: templates/portfolio/home.html:267
+#: templates/portfolio/home.html:277
 msgid ""
 "Winner of <em>\"Realiști fără egal\"</em>, edition XI, Informatics discipline"
 msgstr ""
 "Câștigător al <em>„Realiști fără egal”</em>, ediția a XI-a, disciplina "
 "Informatică"
 
-#: templates/portfolio/home.html:271 templates/portfolio/home.html:281
+#: templates/portfolio/home.html:281 templates/portfolio/home.html:294
 msgid "Apr. 2024"
 msgstr "Apr. 2024"
 
-#: templates/portfolio/home.html:277
+#: templates/portfolio/home.html:285
+msgid ""
+"Collaborated in a multidisciplinary team to design and develop comprehensive "
+"test subjects across various academic fields, securing 1st place in the "
+"Informatics category."
+msgstr ""
+"Am colaborat într-o echipă multidisciplinară pentru a proiecta și dezvolta "
+"subiecte de testare pentru elevi în diverse domenii academice, obținând "
+"locul 1 în categoria Informatică."
+
+#: templates/portfolio/home.html:290
 msgid ""
 "Participant of <em>\"Inovative Evaluation Methods\"</em>, University of "
 "Bucharest"
@@ -311,141 +373,99 @@ msgstr ""
 "Participant la <em>„Metode inovative de evaluare”</em>, Universitatea din "
 "București"
 
-#: templates/portfolio/home.html:286
-msgid "European Computer Driving Licence (ECDL)"
-msgstr "Certificat European de Operare a Computerului (ECDL)"
-
-#: templates/portfolio/home.html:289
-msgid "Mar. 2024"
-msgstr "Mar. 2024"
-
-#: templates/portfolio/home.html:295
+#: templates/portfolio/home.html:301
 msgid "Languages"
 msgstr "Limbi"
 
-#: templates/portfolio/home.html:300
-msgid "Romanian:"
-msgstr "Română:"
+#: templates/portfolio/home.html:306
+#, fuzzy
+msgid "Romanian: Native"
+msgstr "Română: Nativ"
 
-#: templates/portfolio/home.html:312
-msgid "English:"
-msgstr "Engleză:"
+#: templates/portfolio/home.html:311
+#, fuzzy
+msgid "English: Fluent"
+msgstr "Engleză: Fluent"
 
-#: templates/portfolio/home.html:324
-msgid "French:"
-msgstr "Franceză:"
+#: templates/portfolio/home.html:316
+msgid "French: Intermediate"
+msgstr "Franceză: Nivel intermediar"
 
-#: templates/portfolio/home.html:342
+#: templates/portfolio/home.html:327
 msgid "Let's get in touch!"
 msgstr "Hai să luăm legătura!"
 
-#: templates/portfolio/home.html:348
+#: templates/portfolio/home.html:333
 msgid "First Name"
 msgstr "Prenume"
 
-#: templates/portfolio/home.html:349
+#: templates/portfolio/home.html:334
 msgid "e.g., John"
 msgstr "ex.: Ion"
 
-#: templates/portfolio/home.html:350 templates/portfolio/home.html:355
-#: templates/portfolio/home.html:371
+#: templates/portfolio/home.html:335 templates/portfolio/home.html:340
+#: templates/portfolio/home.html:356
 msgid "This field shoud not be empty."
 msgstr "Acest câmp nu trebuie să fie gol."
 
-#: templates/portfolio/home.html:353
+#: templates/portfolio/home.html:338
 msgid "Last Name"
 msgstr "Nume"
 
-#: templates/portfolio/home.html:354
+#: templates/portfolio/home.html:339
 msgid "e.g., Doe"
 msgstr "ex.: Popescu"
 
-#: templates/portfolio/home.html:358
+#: templates/portfolio/home.html:343
 msgid "Email"
 msgstr "Email"
 
-#: templates/portfolio/home.html:359
+#: templates/portfolio/home.html:344
 msgid "e.g., john.doe@example.com"
 msgstr "ex.: ion.popescu@example.com"
 
-#: templates/portfolio/home.html:360
+#: templates/portfolio/home.html:345
 msgid "Please enter a valid email address."
 msgstr "Te rog introdu o adresă de email validă."
 
-#: templates/portfolio/home.html:363
+#: templates/portfolio/home.html:348
 msgid "Company (optional)"
 msgstr "Companie (opțional)"
 
-#: templates/portfolio/home.html:364
+#: templates/portfolio/home.html:349
 msgid "e.g., YourCompany Inc."
 msgstr "ex.: CompaniaTa SRL"
 
-#: templates/portfolio/home.html:365
+#: templates/portfolio/home.html:350
 msgid "No error."
 msgstr "Nicio eroare."
 
-#: templates/portfolio/home.html:368
+#: templates/portfolio/home.html:353
 msgid "Message"
 msgstr "Mesaj"
 
-#: templates/portfolio/home.html:370
+#: templates/portfolio/home.html:355
 msgid "Write your message here..."
 msgstr "Scrie mesajul tău aici..."
 
-#: templates/portfolio/home.html:372
+#: templates/portfolio/home.html:357
 msgid "We'll send you a quick confirmation email so you know it went through."
 msgstr ""
 "Îți vom trimite rapid un email de confirmare ca să știi că mesajul a fost "
 "trimis."
 
-#: templates/portfolio/home.html:373
+#: templates/portfolio/home.html:358
 msgid "Check your spam folder if you don't see it."
 msgstr "Verifică folderul spam dacă nu îl vezi."
 
-#: templates/portfolio/home.html:385 templates/portfolio/home.html:392
+#: templates/portfolio/home.html:370 templates/portfolio/home.html:377
 msgid "Send"
 msgstr "Trimite"
 
-#: templates/portfolio/home.html:386
+#: templates/portfolio/home.html:371
 msgid "Sent"
 msgstr "Trimis"
 
-#: templates/portfolio/home.html:387
+#: templates/portfolio/home.html:372
 msgid "Failed"
 msgstr "Eșuat"
-
-#~ msgid "Cambridge B1 Certificate"
-#~ msgstr "Certificat Cambridge B1"
-
-#~ msgid "Mar. 2018"
-#~ msgstr "Mar. 2018"
-
-#~ msgid ""
-#~ "Developed a cross-platform arcade game (Python/Kivy) with in-game "
-#~ "monetization (skins shop) and SQLite3 for persistent score/analysis."
-#~ msgstr ""
-#~ "Am dezvoltat un joc arcade multiplatformă (Python/Kivy) cu monetizare în "
-#~ "joc (magazin de skin-uri) și SQLite3 pentru persistența/analiza "
-#~ "scorurilor."
-
-#~ msgid "Spanish:"
-#~ msgstr "Spaniolă:"
-
-#~ msgid ""
-#~ "Relevant coursework: Data Structures and Algorithms, OOP, Information and "
-#~ "communication technologies"
-#~ msgstr ""
-#~ "Cursuri relevante: Structuri de date și algoritmi, OOP, Tehnologii "
-#~ "informaționale și de comunicații"
-
-#~ msgid "Baccalaureate Diploma (Mathematics-Informatics)"
-#~ msgstr "Diploma de Bacalaureat (Matematică-Informatică)"
-
-#~ msgid "National College Matei Basarab"
-#~ msgstr "Colegiul Național Matei Basarab"
-
-#~ msgid "Oct. 2020 - 2024"
-#~ msgstr "Oct. 2020 - 2024"
-
-#~ msgid "Final Grade: 9.81 / 10"
-#~ msgstr "Media finală: 9,81 / 10"
