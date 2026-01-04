@@ -51,7 +51,7 @@
 
       <button class="more-stacks__btn clear__btn" aria-label="Show more stacks button"><ion-icon name="add-outline"></ion-icon></button>
 
-      
+
     </div>
     <div class="projects__container">
 
@@ -140,184 +140,45 @@
     </div>
     <div class="cv__content">
       <div class="cv__column">
-        <div class="cv__section">
-          <h2>{% trans "Education" %}</h2>
-          <div class="spacer"></div>
-            <div class="cv__items">
-              <div class="cv__item">
-                <h3>{% trans "Bachelor degree in Computer Science" %}</h3>
-                <h4>
-                  {% trans "Faculty of Cybernetics, Statistics and Economic Informatics" %}
-                </h4>
-                <div class="cv__time-location">
-                  <div class="time">
-                    <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Oct. 2024 &ndash; Present{% endblocktrans %}
-                  </div>
-                  <div class="location">
-                    <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Bucharest, RO{% endblocktrans %}
-                  </div>
+        {% for section in cv_sections %}
+        	<div class="cv__section">
+                <h2>{{ section.name }}</h2>
+                <div class="spacer"></div>
+                <div class="cv__items">
+                    {% for item in section.items.all %}
+                        <div class="cv__item">
+                            {% if item.title %}
+                                <h3>{{ item.title }}</h3>
+                            {% endif %}
+                            {% if item.subtitle %}
+                                <h4>{{ item.subtitle }}</h4>
+                            {% endif %}
+                            {% if item.start_date or item.end_date or item.location %}
+                            	<div class="cv__time-location">
+                                    {% if item.start_date %}
+                                    	<div class="time">
+                                            <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon>{{ item.start_date }}{% if item.end_date %} &ndash; {{ item.end_date }}{% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if item.location %}
+                                    	<div class="location">
+                                            <ion-icon name="location-outline" role="img" class="md hydrated"></ion-icon>{{ item.location }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                            {% if item.bullets.all %}
+                                <ul>
+                                    {% for bullet in item.bullets.all %}
+                                    	<li>{{ bullet.text }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
                 </div>
-                <ul>
-                  <li>
-                    {% blocktrans %}Relevant Coursework: Data Structures, Algorithms, Object Oriented Programming, Database Systems, Operating
-                    Systems, Statistics.{% endblocktrans %}
-                  </li>
-                </ul>
-              </div>
-          </div>
-        </div>
-        <div class="cv__section">
-          <h2>{% trans "Projects" %}</h2>
-          <div class="spacer"></div>
-          <div class="cv__items">
-            <div class="cv__item">
-              <h3>Weather Data ETL Pipeline</h3>
-              <div class="cv__time-location">
-                <div class="time">
-                  <ion-icon name="calendar-number-outline"></ion-icon>{% blocktrans %} Nov.
-                  2025 &ndash; Dec. 2025 {% endblocktrans %}
-                </div>
-              </div>
-              <ul>
-                <li>
-                  {% blocktrans %}Built a serverles AWS ETL pipeline using Lambda, S3, DynamoDB, and RDS, managing the entire infrastructure
-                  as code (IaC) with Terraform.{% endblocktrans %}
-                </li>
-                <li>
-                  {% blocktrans %}Architected a daily ingestion workflow where a trigger invokes Lambda to retrieve city metadata from DynamoDB
-                  and fetch weather API data, storing raw JSON payloads in S3.{% endblocktrans %}  
-                </li>
-                <li>
-                  {% blocktrans %}Implemented data transformation logic using Lambda toparse raw S3 objects and persist structured weather records
-                  into RDS MySQL.{% endblocktrans %}  
-                </li>
-                <li>
-                  {% blocktrans %}Developed a React frontend with TypeScript to interface with the pipeline, allowing users to fetch processed data and download CSV reports.{% endblocktrans %}  
-                </li>
-              </ul>
             </div>
-            <div class="cv__item">
-              <h3>{% trans "mateirobescu.com Personal Portfolio" %}</h3>
-              <div class="cv__time-location">
-                <div class="time">
-                  <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Aug. 2025 &ndash; Oct. 2025{% endblocktrans %}
-                </div>
-              </div>
-              <ul>
-                <li>
-                  {% blocktrans trimmed %}Developed a full-stack portfolio web app using Python and Django, creating a responsive frontend with JavaScript,
-                  HTML and SCSS.{% endblocktrans %}
-                </li>
-                <li>
-                  {% blocktrans trimmed %}Orchestrated a CI/CD pipeline using GitHub Actions to automate testing, linting, and deployment of Dockerized
-                  containers to AWS EC2.{% endblocktrans %}
-                </li>
-                <li>
-                  {% blocktrans trimmed %}Integrated PostgreSQL for structured data storage and Cloudinary for optimized media management, implementing
-                  reCAPTCHA v3 and a custom NLP pipeline to filter spam emails.{% endblocktrans %}
-                </li>
-              </ul>
-            </div>
-            <div class="cv__item">
-              <h3>amr.io</h3>
-              <div class="cv__time-location">
-                <div class="time">
-                  <ion-icon name="calendar-number-outline"></ion-icon> {% blocktrans %} Oct.
-                  2025 {% endblocktrans %} 
-                </div>
-              </div>
-              <ul>
-                <li>
-                  {% blocktrans trimmed %}Developed a fast, minimalist countdown web app using React and Vite, leveraging custom hooks for state management.{% endblocktrans %}
-                </li>
-                <li>
-                  {% blocktrans trimmed %}Implemented Local Storage integration to persist user-configured deadlines across browser sessions.{% endblocktrans %}
-                </li>
-                <li>
-                  {% blocktrans trimmed %}Designed a responsive, mobile-first interface focused on accessibility and speed, utilizing modern CSS practices.{% endblocktrans %}
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="cv__column">
-        <div class="cv__section">
-          <h2>{% trans "Skills" %}</h2>
-          <div class="spacer"></div>
-          <div class="cv__items">
-            <div class="cv__item">
-              <ul>
-                <li>
-                  <strong>{% blocktrans trimmed %}Programming Languages:{% endblocktrans %}</strong> Python, C/C++, JavaScript, TypeScript, SQL, Bash
-                </li>
-                <li>
-                  <strong>{% blocktrans trimmed %}Web Technologies:{% endblocktrans %}</strong> Django, React, HTML, CSS
-                </li>
-                <li>
-                  <strong>{% blocktrans trimmed %}Cloud:{% endblocktrans %}</strong> AWS Lambda, Amazon S3, Amazon RDS, DynamoDB, EC2
-                </li>
-                <li>
-                  <strong>{% blocktrans trimmed %}DevOps:{% endblocktrans %}</strong> Linux, Docker, Terraform, Git, CI/CD, GitHub Actions
-                </li>
-                <li>
-                  <strong>{% blocktrans trimmed %}Databases:{% endblocktrans %}</strong> MySQL, PostgreSQL, Oracle, DynamoDB
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="cv__section">
-          <h2>{% trans "Awards and Certifications" %}</h2>
-          <div class="spacer"></div>
-          <div class="cv__items">
-            <div class="cv__item">
-              <h3>
-                {% blocktrans trimmed %}Winner of <em>"Realiști fără egal"</em>, edition XI, Informatics discipline {% endblocktrans %}
-              </h3>
-              <div class="cv__time-location">
-                <div class="time">
-                  <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Apr. 2024{% endblocktrans %}
-                </div>
-              </div>
-              <ul>
-                <li>{% blocktrans trimmed %}Collaborated in a multidisciplinary team to design and develop comprehensive test subjects across various academic fields, securing 1st place in the Informatics category.{% endblocktrans %}</li>
-              </ul>
-            </div>
-            <div class="cv__item">
-              <h3>
-                {% blocktrans trimmed %}Participant of <em>"Inovative Evaluation Methods"</em>, University of Bucharest{% endblocktrans %}
-              </h3>
-              <div class="cv__time-location">
-                <div class="time">
-                  <ion-icon name="calendar-number-outline" role="img" class="md hydrated"></ion-icon> {% blocktrans %}Apr. 2024{% endblocktrans %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="cv__section">
-          <h2>{% trans "Languages" %}</h2>
-          <div class="spacer"></div>
-          <div class="cv__items languages">
-            <div class="cv__item">
-              <div class="language">
-                <span>{% trans "Romanian: Native" %}</span>
-              </div>
-            </div>
-            <div class="cv__item">
-              <div class="language">
-                <span>{% trans "English: Fluent" %}</span>  
-              </div>
-            </div>        
-            <div class="cv__item">
-              <div class="language">
-                <span>{% trans "French: Intermediate" %}</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
 

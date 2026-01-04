@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Stack, Project, ProjectStack, EmailLog
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
+
+from .models import Stack, Project, ProjectStack, EmailLog, BulletPoint, CvItem, CvSection
 
 
 # Register your models here.
@@ -17,7 +19,7 @@ class ProjectStackInline(admin.TabularInline):
     
     
 @admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
+class ProjectAdmin(TranslationAdmin):
     list_display = ("title", "active", "order")
     search_fields = ("title",)
     inlines = [ProjectStackInline]
@@ -37,3 +39,23 @@ class EmailLogAdmin(admin.ModelAdmin):
     
     def has_delete_permission(self, request, obj=None):
         return False
+    
+class BulletPointInline(TranslationTabularInline):
+    model = BulletPoint
+    extra = 1
+    
+@admin.register(CvItem)
+class CvItemAdmin(TranslationAdmin):
+    list_display = ('__str__', 'cv_section', 'order', 'is_visible')
+    list_editable = ('order', 'is_visible')
+    inlines = [BulletPointInline]
+    
+class CvItemInline(TranslationTabularInline):
+    model = CvItem
+    extra = 1
+
+@admin.register(CvSection)
+class CvSectionAdmin(TranslationAdmin):
+    list_display = ('name', 'order', 'is_visible')
+    list_editable = ('order', 'is_visible')
+    inlines = [CvItemInline]

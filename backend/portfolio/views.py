@@ -10,13 +10,20 @@ from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
-from .models import Stack, Project, EmailLog
+from .models import Stack, Project, EmailLog, CvSection
+
 
 def home(request):
     stacks = Stack.objects.all()
     projects = Project.objects.prefetch_related('stacks').filter(hide=False)
+    cv_sections = CvSection.objects.all()
     
-    return render(request, 'portfolio/home.html', {"stacks": stacks, "projects": projects, "timestamp": timezone.now().timestamp()})
+    return render(request, 'portfolio/home.html', {
+        "stacks": stacks,
+        "projects": projects,
+        "cv_sections": cv_sections,
+        "timestamp": timezone.now().timestamp()
+    })
 
 
 def send_email(data, confirmation=False):

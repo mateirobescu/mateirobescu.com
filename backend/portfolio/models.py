@@ -76,7 +76,7 @@ class Project(models.Model):
 def delete_project_image(sender, instance, **kwargs):
 	if instance.image and getattr(instance.image, "public_id", None):
 		public_id = str(instance.image.public_id)
-		print(destroy(public_id, invalidate=True))
+		destroy(public_id, invalidate=True)
 		
 @receiver(pre_save, sender=Project)
 def delete_changed_project_image(sender, instance, **kwargs):
@@ -92,7 +92,7 @@ def delete_changed_project_image(sender, instance, **kwargs):
 	if old_image and str(old_image) != str(new_image):
 		if getattr(old_image, "public_id", None):
 			public_id = str(old_image.public_id)
-			print(destroy(public_id, invalidate=True))
+			destroy(public_id, invalidate=True)
 	
 		
 class ProjectStack(models.Model):
@@ -126,3 +126,48 @@ class EmailLog(models.Model):
 	
 	def __str__(self):
 		return f"{self.sender_email} — {self.status} at {self.send_time:%Y-%m-%d %H:%M}"
+	
+	
+class CvSection(models.Model):
+	name = models.CharField(max_length=100, blank=False)
+	is_visible = models.BooleanField(default=True)
+	order = models.PositiveIntegerField(default=0)
+	
+	class Meta:
+		ordering = ["order"]
+		
+	def __str__(self):
+			return self.name
+		
+		
+class CvItem(models.Model):
+	cv_section = models.ForeignKey('CvSection', null=False, related_name='items',on_delete=models.CASCADE)
+	title = models.CharField(max_length=100, blank=True)
+	subtitle = models.CharField(max_length=200, blank=True)
+	start_date = models.CharField(max_length=50, blank=True)
+	end_date = models.CharField(max_length=50, blank=True)
+	location = models.CharField(max_length=50, blank=True)
+	is_visible = models.BooleanField(default=True)
+	order = models.PositiveIntegerField(default=0)
+	
+	class Meta:
+		ordering = ["order"]
+	
+	def __str__(self):
+		if self.title:
+			return self.title
+		if self.subtitle:
+			return self.subtitle
+		return f"Untitled Item ({self.cv_section.name} #{self.pk or 'New'})"
+
+class BulletPoint(models.Model):
+	cv_item = models.ForeignKey('CvItem', null=False,  related_name='bullets', on_delete=models.CASCADE)
+	text = models.TextField(blank=False)
+	is_visible = models.BooleanField(default=True)
+	order = models.PositiveIntegerField(default=0)
+	
+	class Meta:
+		ordering = ["order"]
+		
+	def __str__(self):
+		return self.text[:50]
