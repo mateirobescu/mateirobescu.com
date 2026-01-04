@@ -1,14 +1,14 @@
 @use "variables";
 :root[data-theme="light"] {
   --c-bg: #fff;
-  --c-text: #212529;
+  --c-text: #202020;
   --c-text-secondary: #868e96;
   --c-btn-bg: #495057;
   --card-shadow-hover: 0 14px 32px rgba(0, 0, 0, 0.14);
 }
 
 :root[data-theme="dark"] {
-  --c-bg: #212529;
+  --c-bg: #202020;
   --c-text: #ced4da;
   --c-text-secondary: #e9ecef;
   --c-btn-bg: #e9ecef;
