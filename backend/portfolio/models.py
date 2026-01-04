@@ -82,7 +82,6 @@ def delete_project_image(sender, instance, **kwargs):
 def delete_changed_project_image(sender, instance, **kwargs):
 	if not instance.pk:
 		return
-	
 	try:
 		old_image = sender.objects.get(pk=instance.pk).image
 	except sender.DoesNotExist:
@@ -90,7 +89,7 @@ def delete_changed_project_image(sender, instance, **kwargs):
 	
 	new_image = instance.image
 	if old_image and str(old_image) != str(new_image):
-		if getattr(old_image, "public_id", None):
+		if hasattr(old_image, "public_id"):
 			public_id = str(old_image.public_id)
 			destroy(public_id, invalidate=True)
 	
@@ -171,3 +170,37 @@ class BulletPoint(models.Model):
 		
 	def __str__(self):
 		return self.text[:50]
+	
+
+class CvFile(models.Model):
+	file = CloudinaryField('raw', resource_type='raw', null=True, blank=True, upload_preset="cv_default")
+	updated_at = models.DateTimeField(auto_now=True)
+	
+	class Meta:
+		verbose_name = "CV PDF"
+		verbose_name_plural = "CV PDF"
+	
+	def save(self, *args, **kwargs):
+		self.pk = 1
+		super(CvFile, self).save(*args, **kwargs)
+	
+	def delete(self, *args, **kwargs):
+		pass
+	
+	def __str__(self):
+		return "Your CV PDF (Main)"
+	
+@receiver(pre_save, sender=CvFile)
+def delete_old_cv(sender, instance, **kwargs):
+	if not instance.pk:
+		return
+	try:
+		old_file = sender.objects.get(pk=instance.pk).file
+	except sender.DoesNotExist:
+		return
+	
+	new_file = instance.file
+	if old_file and str(old_file) != str(new_file):
+		if hasattr(old_file, "public_id"):
+			public_id = str(old_file.public_id) + ".pdf"
+			destroy(public_id, resource_type='raw', invalidate=True)

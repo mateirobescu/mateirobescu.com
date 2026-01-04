@@ -10,7 +10,7 @@ from django.views.decorators.http import require_POST
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
-from .models import Stack, Project, EmailLog, CvSection
+from .models import Stack, Project, EmailLog, CvSection, CvFile
 
 
 def home(request):
@@ -22,6 +22,7 @@ def home(request):
         "stacks": stacks,
         "projects": projects,
         "cv_sections": cv_sections,
+        "cv_pdf": CvFile.objects.first(),
         "timestamp": timezone.now().timestamp()
     })
 
