@@ -32,7 +32,11 @@
     text-transform: uppercase;
   }
 
-
+  a:link, a:visited {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .cv__download-btn ion-icon {
     font-size: clamp(1.5rem, 6vw, 3rem);
