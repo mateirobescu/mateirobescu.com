@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
-from .models import Stack, Project, ProjectStack, EmailLog, BulletPoint, CvItem, CvSection
+from .models import Stack, Project, ProjectStack, EmailLog, BulletPoint, CvItem, CvSection, CvFile
 
 
 # Register your models here.
@@ -59,3 +59,13 @@ class CvSectionAdmin(TranslationAdmin):
     list_display = ('name', 'order', 'is_visible')
     list_editable = ('order', 'is_visible')
     inlines = [CvItemInline]
+
+@admin.register(CvFile)
+class CvFileAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        if CvFile.objects.exists():
+            return False
+        return True
+
+    def has_delete_permission(self, request, obj=None):
+        return False

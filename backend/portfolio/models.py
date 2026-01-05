@@ -16,6 +16,7 @@ class Stack(models.Model):
 		)])
 	order = models.PositiveIntegerField(default=0, db_index=True)
 	is_filterable = models.BooleanField(default=False)
+	is_visible = models.BooleanField(default=True)
 	
 	class Meta:
 		ordering = ["order"]
@@ -51,7 +52,7 @@ class Project(models.Model):
 	github_url = models.URLField(null=True, blank=True)
 	live_demo_url = models.URLField(null=True, blank=True)
 	order = models.PositiveIntegerField(default=0)
-	hide = models.BooleanField(default=False)
+	is_visible = models.BooleanField(default=True)
 	
 	class Meta:
 		ordering = ["order"]
@@ -82,7 +83,6 @@ def delete_project_image(sender, instance, **kwargs):
 def delete_changed_project_image(sender, instance, **kwargs):
 	if not instance.pk:
 		return
-	
 	try:
 		old_image = sender.objects.get(pk=instance.pk).image
 	except sender.DoesNotExist:
@@ -90,7 +90,7 @@ def delete_changed_project_image(sender, instance, **kwargs):
 	
 	new_image = instance.image
 	if old_image and str(old_image) != str(new_image):
-		if getattr(old_image, "public_id", None):
+		if hasattr(old_image, "public_id"):
 			public_id = str(old_image.public_id)
 			destroy(public_id, invalidate=True)
 	
@@ -135,6 +135,9 @@ class CvSection(models.Model):
 	
 	class Meta:
 		ordering = ["order"]
+		verbose_name = "CV Section"
+		verbose_name_plural = "CV Sections"
+
 		
 	def __str__(self):
 			return self.name
@@ -152,6 +155,8 @@ class CvItem(models.Model):
 	
 	class Meta:
 		ordering = ["order"]
+		verbose_name = "CV Item"
+		verbose_name_plural = "CV Items"
 	
 	def __str__(self):
 		if self.title:
@@ -168,6 +173,42 @@ class BulletPoint(models.Model):
 	
 	class Meta:
 		ordering = ["order"]
+		verbose_name = "CV Bullet Point"
+		verbose_name_plural = "CV Bullet Points"
 		
 	def __str__(self):
 		return self.text[:50]
+	
+
+class CvFile(models.Model):
+	file = CloudinaryField('raw', resource_type='raw', null=True, blank=True, upload_preset="cv_default")
+	updated_at = models.DateTimeField(auto_now=True)
+	
+	class Meta:
+		verbose_name = "CV PDF"
+		verbose_name_plural = "CV PDF"
+	
+	def save(self, *args, **kwargs):
+		self.pk = 1
+		super(CvFile, self).save(*args, **kwargs)
+	
+	def delete(self, *args, **kwargs):
+		pass
+	
+	def __str__(self):
+		return "Your CV PDF (Main)"
+	
+@receiver(pre_save, sender=CvFile)
+def delete_old_cv(sender, instance, **kwargs):
+	if not instance.pk:
+		return
+	try:
+		old_file = sender.objects.get(pk=instance.pk).file
+	except sender.DoesNotExist:
+		return
+	
+	new_file = instance.file
+	if old_file and str(old_file) != str(new_file):
+		if hasattr(old_file, "public_id"):
+			public_id = str(old_file.public_id) + ".pdf"
+			destroy(public_id, resource_type='raw', invalidate=True)

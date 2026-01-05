@@ -449,9 +449,9 @@ msgid "Write your message here..."
 msgstr "Scrie mesajul tău aici..."
 
 #: templates/portfolio/home.html:357
-msgid "We'll send you a quick confirmation email so you know it went through."
+msgid "I'll send you a quick confirmation email so you know it went through."
 msgstr ""
-"Îți vom trimite rapid un email de confirmare ca să știi că mesajul a fost "
+"Îți voi trimite rapid un email de confirmare ca să știi că mesajul a fost "
 "trimis."
 
 #: templates/portfolio/home.html:358

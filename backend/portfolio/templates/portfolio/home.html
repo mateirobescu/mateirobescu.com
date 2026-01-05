@@ -98,8 +98,18 @@
   </section>
 
   <section class="cv" id="cv" aria-label="{% trans 'CV' %}">
+    <div class="cv__header">
+        <h2>{% trans "CV" %}</h2>
+        {% if cv_pdf.file.url %}
+        	<a href="{{ cv_pdf.file.url }}"
+               class="cv__download-btn"
+               target="_blank"
+               rel="noopener noreferrer">
+                <ion-icon title="Download CV as PDF" name="download-outline"></ion-icon>
+            </a>
+        {% endif %}
 
-    <h2 class="cv__header">{% trans "CV" %}</h2>
+    </div>
     <div class="cv__title-info">
       <h2 class="name">{% trans "Matei-Gabriel Robescu" %}</h2>
       <div class="info">
@@ -215,7 +225,7 @@
         <textarea class="form__input" id="message" name="message" rows="5" 
               placeholder="{% trans 'Write your message here...' %}" required></textarea>
         <small class="error-message">{% trans "This field shoud not be empty." %}</small>
-        <p class="confirmation-disclaimer">{% trans "We'll send you a quick confirmation email so you know it went through." %}</p>
+        <p class="confirmation-disclaimer">{% trans "I'll send you a quick confirmation email so you know it went through." %}</p>
         <p class="confirmation-disclaimer">{% trans "Check your spam folder if you don't see it." %}</p>
       </div>
       <div style="position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;">
