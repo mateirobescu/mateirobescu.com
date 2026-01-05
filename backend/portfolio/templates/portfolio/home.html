@@ -100,13 +100,15 @@
   <section class="cv" id="cv" aria-label="{% trans 'CV' %}">
     <div class="cv__header">
         <h2>{% trans "CV" %}</h2>
-        <a href="{{ cv_pdf.file.url }}"
-           class="cv__download-btn"
-           target="_blank"
-           rel="noopener noreferrer"
-        >
-            <ion-icon title="Download CV as PDF" name="download-outline"></ion-icon>
-        </a>
+        {% if cv_pdf.file.url %}
+        	<a href="{{ cv_pdf.file.url }}"
+               class="cv__download-btn"
+               target="_blank"
+               rel="noopener noreferrer">
+                <ion-icon title="Download CV as PDF" name="download-outline"></ion-icon>
+            </a>
+        {% endif %}
+
     </div>
     <div class="cv__title-info">
       <h2 class="name">{% trans "Matei-Gabriel Robescu" %}</h2>
