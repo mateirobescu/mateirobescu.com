@@ -20,7 +20,7 @@ class ProjectStackInline(admin.TabularInline):
     
 @admin.register(Project)
 class ProjectAdmin(TranslationAdmin):
-    list_display = ("title", "active", "order")
+    list_display = ("title", "is_visible", "order")
     search_fields = ("title",)
     inlines = [ProjectStackInline]
     ordering = ("order",)

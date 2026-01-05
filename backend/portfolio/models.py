@@ -67,11 +67,6 @@ class Project(models.Model):
 	@property
 	def data_stacks(self):
 		return ";".join(stack.name_lower for stack in self.stacks.all())
-	
-	@property
-	def active(self):
-		return not self.hide
-
 		
 @receiver(post_delete, sender=Project)
 def delete_project_image(sender, instance, **kwargs):
