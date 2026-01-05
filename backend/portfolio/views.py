@@ -15,7 +15,7 @@ from .models import Stack, Project, EmailLog, CvSection, CvFile
 
 def home(request):
     stacks = Stack.objects.all().filter(is_visible=True)
-    projects = Project.objects.prefetch_related('stacks').filter(hide=False)
+    projects = Project.objects.prefetch_related('stacks').filter(is_visible=True)
     cv_sections = CvSection.objects.all().filter(is_visible=True)
     
     return render(request, 'portfolio/home.html', {
