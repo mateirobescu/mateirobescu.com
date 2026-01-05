@@ -16,6 +16,7 @@ class Stack(models.Model):
 		)])
 	order = models.PositiveIntegerField(default=0, db_index=True)
 	is_filterable = models.BooleanField(default=False)
+	is_visible = models.BooleanField(default=True)
 	
 	class Meta:
 		ordering = ["order"]
