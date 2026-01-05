@@ -135,6 +135,9 @@ class CvSection(models.Model):
 	
 	class Meta:
 		ordering = ["order"]
+		verbose_name = "CV Section"
+		verbose_name_plural = "CV Sections"
+
 		
 	def __str__(self):
 			return self.name
@@ -152,6 +155,8 @@ class CvItem(models.Model):
 	
 	class Meta:
 		ordering = ["order"]
+		verbose_name = "CV Item"
+		verbose_name_plural = "CV Items"
 	
 	def __str__(self):
 		if self.title:
@@ -168,6 +173,8 @@ class BulletPoint(models.Model):
 	
 	class Meta:
 		ordering = ["order"]
+		verbose_name = "CV Bullet Point"
+		verbose_name_plural = "CV Bullet Points"
 		
 	def __str__(self):
 		return self.text[:50]
