@@ -40,8 +40,6 @@ build/
 # AWS SSH Key
 *.pem
 
-# Bash Scripts
-*.sh
 
 # ML data
 corpus_data/raw/
